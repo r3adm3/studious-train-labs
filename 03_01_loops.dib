@@ -8,3 +8,19 @@
 #!pwsh
 
 $fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+$fruit[0,1,2,3,4,5]
+
+#!pwsh
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+$fruit[5,4,3,2,1,0]
+
+#!pwsh
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+$fruit[1]
+
+#!pwsh
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+$fruit[4]
