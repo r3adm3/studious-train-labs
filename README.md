@@ -6,7 +6,7 @@ The aim is to provide some record of what have we done so everyone can refresh t
 We want to open this repository for everyone to fill in the answers so there is a collection of questions with valid examples of how to answer them.
 The answers here do not necessarily present the only option how the particular question can be answered. If you see an alternative answer please feel free to contribute.
 
-# How to contribute
+## How to contribute
 If you find a question which is not answered yet or if you see an alternative answer to existing one feel free to raise a PR (Pull Request).
 
 1. Each question is numbered. To provide an answer add a sub-number with your answer.
