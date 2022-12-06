@@ -7,4 +7,44 @@
 
 #!pwsh
 
+# 1. loop through the array and print each item
+
 $fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+
+For($i=0; $i -lt $fruit.Count; $i += 1)
+{
+    $fruit[$i]
+}
+
+#!pwsh
+
+# 2. Print the second item directly
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+
+$fruit[1]
+
+#!pwsh
+
+# 3. Loop through the array backwards and print each item
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+$count = $fruit.Count
+
+For($i= $count; $i -gt -1; $i--)
+{
+    $fruit[$i]
+}
+
+#!pwsh
+
+# 4. Loop through the array and print only the item with no upper-case letter
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+$count = $fruit.Count
+For($i=0; $i -lt $count; $i ++)
+{
+    if ($fruit[$i][0] -cmatch "[a-z]"){
+        $fruit[$i]
+    }
+}
