@@ -1,4 +1,4 @@
-Some more questions
+General questions
 ===
 
 1. By what other names can a command line interface be referred to?
