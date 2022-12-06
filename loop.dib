@@ -5,3 +5,30 @@ $MantArray = "Spotted Eagle", "Devil Ray", "Bat Ray", "Bull Ray", "Myliobatis"
 foreach ($Species in $MantArray) {
     Write-Output $Species
   }
+
+#!pwsh
+
+$MantArray = "Spotted Eagle", "Devil Ray", "Bat Ray", "Bull Ray", "Myliobatis"
+$SecondItem = $MantArray[1]
+Write-Output $SecondItem
+
+#!pwsh
+
+$MantArray = "Spotted Eagle", "Devil Ray", "Bat Ray", "Bull Ray", "Myliobatis"
+
+for ($i = $MantArray.Count - 1; $i -ge 0; $i--) {
+    Write-Output $MantArray[$i]
+}
+
+#!pwsh
+
+$MantArray = "Spotted Eagle", "Devil Ray", "Bat Ray", "Bull Ray", "myliobatis"
+
+
+for ($i = 0; $i -lt $MantArray.Count; $i++) {
+    
+    if ($MantArray[$i][0] -cmatch '[a-z]') {
+        
+        Write-Output $MantArray[$i]
+    }
+}
