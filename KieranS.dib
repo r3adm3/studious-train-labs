@@ -1,11 +1,3 @@
 #!pwsh
 
-$animals = New-Object System.Collections.ArrayList
-
-$animals.Add("Dog")
-$animals.Add("Cat")
-$animals.Add("Mouse")
-$animals.Add("Horse")
-$animals.Add("Lion")
-
-$animals
+$animals = @('dog', 'cat', 'horse')
