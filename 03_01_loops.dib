@@ -8,3 +8,25 @@
 #!pwsh
 
 $fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+for($i=0; $i -lt 6; $i++) {
+    $fruit[$i]
+}
+
+#!pwsh
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+$fruit[1]
+
+#!pwsh
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+for($i=5; $i -ge 0; $i--) {
+    $fruit[$i]
+}
+
+#!pwsh
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+for($i=0; $i -lt 6; $i++) {
+    $fruit[$i].ToLower()
+}
