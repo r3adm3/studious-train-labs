@@ -1,0 +1,7 @@
+#!pwsh
+
+$MantArray = "Spotted Eagle", "Devil Ray", "Bat Ray", "Bull Ray", "Myliobatis"
+
+foreach ($Species in $MantArray) {
+    Write-Output $Species
+  }
