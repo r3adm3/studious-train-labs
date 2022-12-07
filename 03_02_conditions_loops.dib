@@ -17,16 +17,18 @@ for ($i = 0; $i -lt 100; $i++){
 
 for ($i = 0; $i -lt 100; $i++){
     if ($i % 3 -eq 0 -and $i % 5 -eq 0){
-        Write-Host "FizzBuzz"
+        Write-Output "FizzBuzz"
     }
         elseif ($i % 3 -eq 0){
-        Write-Host "Fizz"
+        Write-Output "Fizz"
         }
     elseif ($i % 5 -eq 0){
         Write-Host "Buzz"
     }
-    else{}
+    else {
+        Write-Output $i
     }
+}
 
 #!pwsh
 
