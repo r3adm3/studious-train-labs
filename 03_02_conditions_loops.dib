@@ -6,7 +6,18 @@ Print out all multiples of 3, then all multiples of 5 separately. Once you have 
 
 #!pwsh
 
-$variable = 0
+For($i=1; $i -le 100; $i ++){
+    $div = $i % 3
+    If($div -eq 0){
+        $i
+    }
+}
+For($i=1; $i -le 100; $i ++){
+    $div = $i % 5
+    If($div -eq 0){
+        $i
+    }
+}
 
 #!markdown
 
@@ -25,4 +36,18 @@ Therefore, 12 % 3 = 0 means that 12 is a multiple of 3
 
 #!pwsh
 
-$variable = 0
+For ($i = 1; $i -le 100; $i  ++){
+    $divThree = $i % 3
+    $divFive = $i % 5
+
+    If(($divThree -eq 0) -and ($divFive -eq 0)){
+        Write-Output $i" - Fizz Buzz!"
+    }
+    ElseIf($divThree -eq 0){
+        Write-Output $i" - Fizz!"
+    } ElseIf($divFive -eq 0){
+        Write-Output $i" - Buzz!"
+    } Else {
+        Write-Output $i
+    }
+}
