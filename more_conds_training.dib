@@ -1,5 +1,6 @@
 #!pwsh
 
-$list = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
-for($i=0; $i -lt 6; $i+=3){
-$fruit[$i]
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+for($i=0; $i -lt 6; $i++){
+    $fruit[$i]
+}
