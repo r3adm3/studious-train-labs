@@ -8,3 +8,26 @@
 #!pwsh
 
 $fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+$count=$fruit.Length
+for($i=0; $i -lt $count; $i++){
+    $fruit[$i]
+}
+
+#!pwsh
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+
+    $fruit[1]
+
+#!pwsh
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+for($i=0; $i -lt 6; $i++){
+ if(fruit[$i] -cmatch"[A-Z]")  {
+    $fruit[$i]}}
+
+#!pwsh
+
+foreach ($A in $fruit | Where-Object ($A -cmatch "[a-z]")){ 
+    $A
+ }
