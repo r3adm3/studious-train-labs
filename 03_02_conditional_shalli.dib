@@ -1,0 +1,39 @@
+#!markdown
+
+### Assignment
+
+### Write a program that prints on screen the numbers from 1 to 100. But for multiples of three print "Fizz" instead of the number and for the multiples of five print "Buzz". For numbers which are multiples of both three and five print "FizzBuzz".
+
+#!pwsh
+
+<# Need three variables #>
+for($one = 1; $one -le 100; $one++) {
+    $Output = ""
+
+<#Write-Host $one
+Write-Host $threes
+Write-Host $fives #>    
+
+    if(($one % 3 -eq 0) -and ($one % 5 -eq 0))  {
+        Write-Output "FizzBuzz" }
+        elseif($one % 3 -eq 0) {
+        Write-Output "Fizz"
+      } elseif($one % 5 -eq 0) {
+        Write-Output "Buzz"
+      } else{
+        Write-Output $one
+      }
+}
+
+#!pwsh
+
+for ($x = 1; $x -le 100; $x++) {
+    $Output = ""
+  
+    if (($x % 3 -eq 0) -and ($x % 5 -eq 0)) { $Output += "FizzBuzz" } 
+    elseif ($x % 3 -eq 0) { $Output += "Fizz" }
+    elseif ($x % 5 -eq 0) { $Output += "Buzz" }
+    elseif ($Output -eq "") { $Output = $x }
+  
+    Write-Output $Output
+  }

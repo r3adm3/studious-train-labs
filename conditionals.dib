@@ -1,0 +1,66 @@
+#!markdown
+
+### Conditionals
+
+#!pwsh
+
+if( 10 -gt 19 )
+{
+    Write-Host $true
+}
+else
+{
+    Write-Host $false
+}
+
+#!markdown
+
+### Example for IF and ELSE STATEMENTS
+
+#!pwsh
+
+$carprice = 10000
+$metallicpaint = 1500
+$response = Read-Host -Prompt "Is metallic paint included? y for yes, any other key is a no "
+
+if ($response -eq 'y')
+{
+    $metallicincluded = $true
+}
+else 
+{
+    $metallicincluded = $false
+}
+
+    if($metallicincluded)
+    {
+        $carprice = $carprice + $metallicpaint
+    }
+Write-Host "Your car wil cost £$carprice"
+
+#!markdown
+
+### Test for if statements and else 
+
+### Write a program that prints on screen the numbers from 1 to 100. But for multiples of three print "Fizz" instead of the number and for the multiples of five print "Buzz". For numbers which are multiples of both three and five print "FizzBuzz".
+
+#!pwsh
+
+<# Need three variables #>
+for($one = 1; $one -le 100; $one++) {
+    $Output = ""
+
+<#Write-Host $one
+Write-Host $threes
+Write-Host $fives #>    
+
+    if(($one % 3 -eq 0) -and ($one % 5 -eq 0))  {
+        Write-Output "FizzBuzz" }
+        elseif($one % 3 -eq 0) {
+        Write-Output "Fizz"
+      } elseif($one % 5 -eq 0) {
+        Write-Output "Buzz"
+      } else{
+        Write-Output $one
+      }
+}

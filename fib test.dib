@@ -1,0 +1,36 @@
+#!pwsh
+
+$fibarray = @(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144)
+<# define variables #>
+   $a = $fibarray[0]
+   $b = $fibarray[1]
+   $c = $fibarray[2]
+   $total = 0
+
+<# print variables test 
+   $fibarray[0]
+   $fibarray[1]
+   $fibarray[2] #>
+
+   $count = $fibarray.Count
+ <# do for loop #>
+     <# assign value to $i #>
+     for($i=0;
+
+     <# iterate through loop till i is less count #>
+     $i -le $count;
+
+     <# adds 1 to $i #>
+     $i++)
+
+     <# fib logic #>
+     {
+     <# test to print Write-Host $c #>
+     $a = $b
+     $b = $c
+     $c = $a + $b
+     }
+    
+     $total += $c
+
+    Write-Host "the sum of all the Fibonacci numbers $total"

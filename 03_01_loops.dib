@@ -8,3 +8,127 @@
 #!pwsh
 
 $fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+
+#!markdown
+
+### 1 Answer Loop through the array and print them
+
+#!pwsh
+
+<# this is array #>
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+
+$fruit[0]
+$fruit[1]
+$fruit[2]
+$fruit[3]
+$fruit[4]
+$fruit[5]
+$fruit[6]
+
+#!markdown
+
+### 1 Answer Loop through the array and print them
+
+#!pwsh
+
+<# this is array #>
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+
+$count = 6
+<# this sets the variable to zero #>
+for ($i=0;
+     <# this loop i till it hits 10   -lt is less than #>
+        $i -lt $count;
+        <# add 1 to i #>
+            $i = $i + 1)
+        {
+            $fruit[$i]
+        }
+
+#!markdown
+
+### 2 print the second item directly
+
+#!pwsh
+
+<# this is array #>
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+
+$fruit[1]
+
+#!markdown
+
+### 3 loop through the array backwards and print each item
+
+#!pwsh
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+[System.Array]::Reverse($fruit);
+ $fruit;
+
+#!markdown
+
+### 4 loop through the array and print only the item with no upper-case letter
+
+#!pwsh
+
+<# this is array #>
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+
+$count = 6
+<# this sets the variable to zero #>
+for ($i=0;
+     <# this loop i till it hits 10   -lt is less than #>
+        $i -lt $count;
+        <# add 1 to i #>
+            $i = $i + 1)
+        {
+              if ($fruit[$i][0] -cmatch "[a-z]") {
+            $fruit[$i]
+        }
+    }
+
+#!markdown
+
+### 4 b) any charachter is lowercase and doesnt have captails will show - this removes the zero from if statement
+
+#!pwsh
+
+<# this is array #>
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+
+$count = 6
+<# this sets the variable to zero #>
+for ($i=0;
+     <# this loop i till it hits 10   -lt is less than #>
+        $i -lt $count;
+        <# add 1 to i #>
+            $i = $i + 1)
+        {
+              if (-not ($fruit[$i] -cmatch "[A-Z]")) {
+            $fruit[$i]
+        }
+    }
+
+#!markdown
+
+### 4 C) any charachter that is lowercase and doesnt have captails will not show it will skip pinapple
+
+#!pwsh
+
+<# this is array #>
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+
+$count = 6
+<# this sets the variable to zero #>
+for ($i=0;
+     <# this loop i till it hits 10   -lt is less than #>
+        $i -lt $count;
+        <# add 1 to i #>
+            $i = $i + 1)
+        {
+            if ($fruit[$i] -cmatch "[A-Z]") {
+            $fruit[$i]
+        }
+    }
