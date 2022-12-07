@@ -6,20 +6,22 @@
 
 #!pwsh
 
-<# Need three variables #>
+<# Need a variables for 1 to 100  and add 1 #>
 for($one = 1; $one -le 100; $one++) {
     $Output = ""
 
-<#Write-Host $one
-Write-Host $threes
-Write-Host $fives #>    
+<#Write-Host $one #>
 
+<# if statement so first divide one by 3 and then 5#>
     if(($one % 3 -eq 0) -and ($one % 5 -eq 0))  {
         Write-Output "FizzBuzz" }
+        <# if statement just for 3 #>
         elseif($one % 3 -eq 0) {
         Write-Output "Fizz"
+        <# if statement just for 3 #>
       } elseif($one % 5 -eq 0) {
         Write-Output "Buzz"
+        <# if statement for anything else #>
       } else{
         Write-Output $one
       }
