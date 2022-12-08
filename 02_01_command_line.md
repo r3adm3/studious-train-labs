@@ -25,7 +25,7 @@ Command line excercises
     1. type `ipconfig` in command prompt
 20. run ipconfig and output to a file
 21. ping the computer's own IP address
-    1. type `10.123.123.0.1` command prompt
+    1. type `ping` then enter you IP Address in command prompt
 22. ping the default gateway
 23. ping google.com
 24. trace route to yahoo.co.uk and save the output in file `outputs.txt`
