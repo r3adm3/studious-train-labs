@@ -1,4 +1,4 @@
-Command line excercises
+1. Command line excercises
 ===
 
 1. go to your profile `C:\users\username` 
@@ -16,7 +16,6 @@ Command line excercises
 11. cd all the way back to the `win` folder
 12. create a new folder called help
 13. run the help command and export the output to a text file called `help.txt`  (use '> filename' to export)
-<<<<<<< HEAD
     1. help > help.txt
 14. go to the `C:\ directory`
 15. run a dir command with default output
@@ -24,34 +23,13 @@ Command line excercises
 16. run dir with output of system and hidden files only
 17. cd to your profile and create a dir called EnglandWinAgain
     1. cd 'C:\Users\studentadmin> mkdir EnglandWinAgain
-1.  go into it
-2.  run ipconfig to screen
-3.  run ipconfig and output to a file
-4.  ping the computer's own IP address
-5.  ping the default gateway
-6.  ping google.com
-7.  trace route to yahoo.co.uk and save the output in file `outputs.txt`
-8.  append an empty line to the end of `outputs.txt`
-9.  ping whatismyip.com 13 times and append the output in file `outputs.txt`, store errors in `err.txt`
-10. list the files inside EnglandWinAGAIN and redirect the output in `myfiles.txt`
-11. search for pattern `ttl` and forward the results to search1.txt (edited)
-=======
-    1. `mkdir help \ help.txt`
-14. go to the `C:\ directory`
-15. run a dir command with default output
-    1. `dir \ [drive][path][path[filename]]`
-16. run dir with output of system and hidden files only
-17. cd to your profile and create a dir called EnglandWinAgain
-    1. `mkdir EnglandWinAgain\cd EnglandWinAgain`
-18. go into it
-19. run ipconfig to screen
-20. run ipconfig and output to a file
-21. ping the computer's own IP address
-22. ping the default gateway
-23. ping google.com
-24. trace route to yahoo.co.uk and save the output in file `outputs.txt`
-25. append an empty line to the end of `outputs.txt`
-26. ping whatismyip.com 13 times and append the output in file `outputs.txt`, store errors in `err.txt`
-27. list the files inside EnglandWinAGAIN and redirect the output in `myfiles.txt`
-28. search for pattern `ttl` and forward the results to search1.txt (edited)
->>>>>>> 4b7e9bc9c41799354edfe84e2194350e74070df0
+18. run ipconfig to screen
+19. run ipconfig and output to a file
+20. ping the computer's own IP address
+21. ping the default gateway
+22. ping google.com
+23. trace route to yahoo.co.uk and save the output in file `outputs.txt`
+24. append an empty line to the end of `outputs.txt`
+25. ping whatismyip.com 13 times and append the output in file `outputs.txt`, store errors in `err.txt`
+26. list the files inside EnglandWinAGAIN and redirect the output in `myfiles.txt`
+27. search for pattern `ttl` and forward the results to search1.txt (edited)
