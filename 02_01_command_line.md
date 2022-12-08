@@ -18,8 +18,10 @@ Command line excercises
 13. run the help command and export the output to a text file called `help.txt`  (use '> filename' to export)
 14. go to the `C:\ directory`
 15. run a dir command with default output
+    1. dir > [drive][path][path[filename]]
 16. run dir with output of system and hidden files only
 17. cd to your profile and create a dir called EnglandWinAgain
+    1. mkdir EnglandWinAgain > cd EnglandWinAgain
 18. go into it
 19. run ipconfig to screen
 20. run ipconfig and output to a file
