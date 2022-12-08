@@ -26,7 +26,7 @@
 21.    ping the computer's own IP address
 22.    ping the default gateway
 23.    ping google.com
-   29i ping google.com
+       23.1 ping google.com
 24.    trace route to yahoo.co.uk and save the output in file `outputs.txt`
 25.    append an empty line to the end of `outputs.txt`
 26.    ping whatismyip.com 13 times and append the output in file `outputs.txt`, store errors in `err.txt`
