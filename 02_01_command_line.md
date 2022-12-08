@@ -16,13 +16,13 @@
 11. cd all the way back to the `win` folder
 12. create a new folder called help
 13. run the help command and export the output to a text file called `help.txt`  (use '> filename' to export)
-    1. help > help.txt
+    1. `help > help.txt`
 14. go to the `C:\ directory`
 15. run a dir command with default output
     1. `dir`
 16. run dir with output of system and hidden files only
 17. cd to your profile and create a dir called EnglandWinAgain
-    1. cd C:\Users\studentadmin> mkdir EnglandWinAgain
+    1. `cd C:\Users\studentadmin` and `mkdir EnglandWinAgain`
 18. run ipconfig to screen
 19. run ipconfig and output to a file
 20. ping the computer's own IP address
