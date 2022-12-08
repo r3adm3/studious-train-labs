@@ -19,9 +19,9 @@ Command line excercises
 16.    run dir with output of system and hidden files only
 17.    cd to your profile and create a dir called EnglandWinAgain
 18.    go into it
-19.    run ipconfig to screen - Open Command Line and type 'IPCONFIG' and press enter
+19.    run ipconfig to screen 'ipconfig'
 20.    run ipconfig and output to a file
-21.    ping the computer's own IP address - Open Command Line type 'Ping' followed by the IP address and then press enter
+21.    ping the computer's own IP address - 192.168.0.1
 22.    ping the default gateway
 23.    ping google.com
 24.    trace route to yahoo.co.uk and save the output in file `outputs.txt`
