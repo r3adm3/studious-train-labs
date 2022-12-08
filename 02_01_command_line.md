@@ -22,8 +22,10 @@ Command line excercises
 17. cd to your profile and create a dir called EnglandWinAgain
 18. go into it
 19. run ipconfig to screen
+    1. type `ipconfig` in command prompt
 20. run ipconfig and output to a file
 21. ping the computer's own IP address
+    1. type `ping` then enter you IP Address in command prompt
 22. ping the default gateway
 23. ping google.com
 24. trace route to yahoo.co.uk and save the output in file `outputs.txt`
