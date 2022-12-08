@@ -7,4 +7,28 @@
 
 #!pwsh
 
-$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'Jackfruit', 'Kiwi')
+$count =$fruit.Length
+for($i=0; $i -lt $count; $i++){
+    $fruit[$i]
+}
+
+#!pwsh
+
+$fruit = @('Apples','Pears','Bananas', 'Mango', 'Jackfruit', 'Kiwi')
+$fruit[1]
+
+#!pwsh
+
+$fruit = @('Apples','Pears','bananas', 'mango', 'Jackfruit', 'Kiwi')
+[array]::Reverse($fruit)
+$fruit
+
+#!pwsh
+
+$fruit = @('Apples','Pears','bananas', 'mango', 'Jackfruit', 'Kiwi')
+for($i=0; $i -lt 6; $i++) {
+        if ($fruit[$i][0] -cmatch "[a-z]") {
+        $fruit[$i]
+    }
+}
