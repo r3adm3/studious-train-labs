@@ -6,6 +6,23 @@ Print out all multiples of 3, then all multiples of 5 separately. Once you have 
 
 #!pwsh
 
+for ($i = 0; $i -lt 100; $i++){
+    if ($i % 3 -eq 0 -and $i % 5 -eq 0){
+        Write-Output "FizzBuzz"
+    }
+        elseif ($i % 3 -eq 0){
+        Write-Output "Fizz"
+        }
+    elseif ($i % 5 -eq 0){
+        Write-Host "Buzz"
+    }
+    else {
+        Write-Output $i
+    }
+}
+
+#!pwsh
+
 $variable = 0
 
 #!markdown

@@ -1,0 +1,6 @@
+#!pwsh
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+for($i=0; $i -lt 6; $i++){
+    $fruit[$i]
+}
