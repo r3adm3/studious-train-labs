@@ -1,4 +1,4 @@
-Command line excercises
+1. Command line excercises
 ===
 
 1.    go to your profile `C:\users\username`
