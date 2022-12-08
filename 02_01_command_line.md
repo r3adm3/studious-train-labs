@@ -27,9 +27,9 @@ Command line excercises
 22. ping the default gateway
 23. ping google.com
 24. trace route to yahoo.co.uk and save the output in file `outputs.txt`
-   1. tracert yahoo.co.uk -n1 > outputs.txt
+    1. tracert yahoo.co.uk -n1 > outputs.txt
 25. append an empty line to the end of `outputs.txt`
 26. ping whatismyip.com 13 times and append the output in file `outputs.txt`, store errors in `err.txt`
-   1. ping whatismyip.com -n 13 > err.txt
+    1. ping whatismyip.com -n 13 > err.txt
 27. list the files inside EnglandWinAGAIN and redirect the output in `myfiles.txt`
 28. search for pattern `ttl` and forward the results to search1.txt (edited)
