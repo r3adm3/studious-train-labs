@@ -10,8 +10,10 @@ Command line excercises
 7.    copy `newechofile.txt` to `win`
 8.    Move `newfsutilfile.txt` to `win`
 9.    cd into `win` folder
+CD .., CD.., CD Users, CD Studentadmin, CD WorkStuff, CD Win
 10.    cd all the way up to `C:` using `CD ..`
 11.    cd all the way back to the `win` folder
+CD .., CD.., CD Users, CD Studentadmin, CD WorkStuff, CD Win
 12.    create a new folder called help
 13.    run the help command and export the output to a text file called `help.txt`  (use '> filename' to export)
 14.    go to the `C:\ directory`
@@ -24,6 +26,7 @@ Command line excercises
 21.    ping the computer's own IP address
 22.    ping the default gateway
 23.    ping google.com
+ping google.com
 24.    trace route to yahoo.co.uk and save the output in file `outputs.txt`
 25.    append an empty line to the end of `outputs.txt`
 26.    ping whatismyip.com 13 times and append the output in file `outputs.txt`, store errors in `err.txt`
