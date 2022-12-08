@@ -2,8 +2,10 @@ Command line excercises
 ===
 
 1.    go to your profile `C:\users\username`
+ `cd 'C:\Users\studentadmin\`
 2.    create a folder called England, cd into the folder
 3.    use `fsutil file create new` to create a file of 0 bytes named `fsutilfile.txt`
+`fsutil file createnew fsutilfile.txt 0`
 4.    use `echo` to create a file called `echofile.txt` with one line of text reading `This is my echo file`
 5.    rename both files to `newechofile.txt` and `newfsutilefile.txt` else
 6.    create a new folder in the England folder called win
