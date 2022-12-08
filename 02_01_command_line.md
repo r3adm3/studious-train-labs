@@ -19,13 +19,13 @@ Command line excercises
 16.    run dir with output of system and hidden files only
 17.    cd to your profile and create a dir called EnglandWinAgain
 18.    go into it
-19.    run ipconfig to screen
+19.    run ipconfig to screen - Open Command Line and type 'IPCONFIG' and press enter
 20.    run ipconfig and output to a file
-21.    ping the computer's own IP address
+21.    ping the computer's own IP address - Open Command Line type 'Ping' followed by the IP address and then press enter
 22.    ping the default gateway
 23.    ping google.com
 24.    trace route to yahoo.co.uk and save the output in file `outputs.txt`
 25.    append an empty line to the end of `outputs.txt`
 26.    ping whatismyip.com 13 times and append the output in file `outputs.txt`, store errors in `err.txt`
 27.    list the files inside EnglandWinAGAIN and redirect the output in `myfiles.txt`
-28.    search for pattern `ttl` and forward the results to search1.txt (edited) 1234
+28.    search for pattern `ttl` and forward the results to search1.txt (edited)
