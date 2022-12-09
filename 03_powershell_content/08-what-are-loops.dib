@@ -77,7 +77,12 @@ Play around with what you've learned! Here's some starting ideas:
 
 #!pwsh
 
-"Playground"
+for ($counter = 10; $counter -gt 0; $counter--) {
+    "Hello World! The counter is $counter"
+}
+for ($counter = 0; $counter -lt 10; $counter+2) {
+    "Hello World! The counter is $counter"
+}
 
 #!markdown
 

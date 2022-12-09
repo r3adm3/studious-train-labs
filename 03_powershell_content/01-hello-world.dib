@@ -79,7 +79,7 @@ $MyGuffVariable = "oOh no I cant do any of this stuff"
 ${MyGuffVariable}
 $MyGuffVariable +". Lordy"
 ${MyGuffVariable}
-$Tool=[Math]::PI
+$Tool=[Math]::PI    #declaring variable tool as value PI
 ${tool}
 [Math]::PI
 

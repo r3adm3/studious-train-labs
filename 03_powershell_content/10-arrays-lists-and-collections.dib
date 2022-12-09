@@ -126,7 +126,13 @@ Play around with what you've learned! Here's some starting ideas:
 
 #!pwsh
 
-"Playground"
+#"Playground"
+[System.Collections.ArrayList]$groceries = "Pineapple", "Banana", "Melon","Lemon","toothpaste"
+foreach($thing in $groceries){
+ "Buy $($thing)"
+}
+$null = $groceries.Remove("Melon")  #remove Melon from array 
+Write-Output $groceries[2]
 
 #!markdown
 

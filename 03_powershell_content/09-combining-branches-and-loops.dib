@@ -10,7 +10,14 @@ First, try on your own in this notebook below, or in Visual Studio, or in Visual
 
 #!pwsh
 
-"Challenge"
+"Challenge Anneka"
+$threes=0
+for ($counter = 0; $counter -lt 20; $counter++) {
+    if ($counter % 3 -eq 0) {
+        $Threes=$Threes+$counter
+    }
+}
+$threes
 
 #!markdown
 
