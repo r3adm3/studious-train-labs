@@ -18,8 +18,8 @@ A string is a sequence of characters. A handy metaphor is a friendship bracelet,
 
 #!pwsh
 
-$firstFriend = "Maria"
-$secondFriend = "Sophia"
+$firstFriend = "Alys"
+$secondFriend = "Rosario"
 
 "My friends are ${firstFriend} and ${secondFriend}"
 
@@ -107,6 +107,32 @@ Now it's your turn to play around with what you've learned. Try these exercises:
 "Playground"
 "supercalifragilisticexpialidocious"
 "       friendship bracelet     "
+
+#!pwsh
+
+# creating three variables of three different people
+$personOne = "Tinky Winky"
+$personTwo = "Dipsy"
+$personThree = "Po"
+
+# length of first person, second all CAPS and third all lower
+$personOneTrim = $personOne.Replace(" ","")
+
+"The name $personOne has $($personOneTrim.Length) letters."
+$personTwo.ToUpper()
+$personThree.ToLower()
+
+# supercalifragilisticexpialidocious
+$word = "supercalifragilisticexpialidocious"
+"There are $($word.Length) letters in $word!"
+
+# trim
+$phrase = "       friendship bracelet     "
+$trimmed = $phrase.trim()
+$trimmedPhrase = $($trimmed.Length)
+$noSpaces = $phrase.Replace(" ", "")
+
+"When you use trim() it only removes the white spaces at either end and not anything in the middle. So the if you used trim() on '$phrase', it would leave you with '$trimmed' and if you were to then count the number of characters with .Length you would get $trimmedPhrase as it will include the space in the middle. But if you want to remove all white spaces, including the one in the middle, before counting the number of characters, you can use .Replace to replace the spaces with no spaces. In this instance, the number of characters for '$trimmed' without any spaces at all would be $($noSpaces.Length)."
 
 #!markdown
 
