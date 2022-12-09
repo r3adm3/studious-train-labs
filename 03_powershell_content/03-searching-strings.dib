@@ -20,7 +20,7 @@ The `Contains` operator returns a *boolean*. That's a type represented by the ke
 
 $songLyrics = "You say goodbye, and I say hello"
 
-$songLyrics -contains "goodbye"
+$songLyrics -match "goodbye"
 $songLyrics -contains "greetings"
 
 #!markdown
@@ -37,6 +37,11 @@ $songLyrics -contains "greetings"
 #!pwsh
 
 $songLyrics = "You say goodbye, and I say hello"
+
+$songLyrics.StartsWith('You')
+$songLyrics.StartsWith('I')
+$songLyrics.EndsWith('hello')
+$songLyrics.EndsWith('goodbye')
 
 #!markdown
 
@@ -63,6 +68,32 @@ $line3 = "Oh, no"
 $line4 = "You say goodbye and I say hello"
 $line5 = "Hello, hello"
 $line6 = "I don't know why you say goodbye, I say hello"
+
+
+# How many lines say "hello"
+$lines = @($line1, $line2, $line3, $line4, $line5, $line6)
+$hello = $lines -match "hello"
+"$($hello.count) lines say 'hello'" 
+
+
+"The lines that start with 'You' are:"
+
+foreach ($line in $lines) {
+    if ($line.StartsWith("You")){
+        $linenumber = $lines.IndexOf($line) + 1
+        write-host $linenumber
+    }
+} 
+
+
+"The lines that ends with 'no' are:"
+
+foreach ($line in $lines) {
+    if ($line.EndsWith("no")){
+        $linenumber = $lines.IndexOf($line) + 1
+        write-host $linenumber
+    }
+} 
 
 #!markdown
 
