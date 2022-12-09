@@ -39,7 +39,7 @@ A **variable** is a symbol you can use to run the same code with different value
 
 #!pwsh
 
-$aFriend = "Jayme"
+$aFriend = "Barney"
 $aFriend
 
 #!markdown
@@ -75,6 +75,35 @@ Try out printing words and variables! Here are some prompts to try:
 #!pwsh
 
 'Playground'
+
+# personal motto
+"My personal motto is: 'Don't wait for the right time because it never comes. Just go for it now!'"
+
+#!pwsh
+
+# variables and story
+$scottishFood = "haggis bon bons"
+$drink = "Irn Bru"
+$tea = "Yorkshire"
+$mydrink = "tea"
+
+"If you visit Edinburgh you must try some haggis. If you don't want the full haggis, neeps and tatties then at least try some " + $scottishFood + " with whisky sauce."
+"I'm sure you will probably visit many pubs while in Edinburgh and many people suggest having can of " + $drink + " after a good night out. But for me, a nice cup of " + $tea + " " + $mydrink + " is much better!"
+""
+
+#!pwsh
+
+#challenge
+$name = Read-Host -Prompt 'Please give me a name'
+$character = Read-Host -Prompt 'Who is your favourite movie character'
+$verb = Read-Host -Prompt 'Please give me a verb(with ing at the end)'
+$adjective = Read-Host -Prompt 'Please give me an adjective'
+$inbag = Read-Host -Prompt 'Name an item from your bag and make it plural'
+$object = Read-Host -Prompt 'Name an object(plural) beginning with the first letter of your surname'
+$seeobject = Read-Host -Prompt 'Name an item(plural) you can see right now'
+$food = Read-Host -Prompt 'Name food beginning with the first letter of your address'
+
+Write-Host "This year for Halloween $name wanted to dress up as $character. $name was excited about going trick-or-treating dressed as $character and then ending the night with some $verb! $name is often described as being quite $adjective. Swapping $inbag for $object to sell on the dark web just to fund their love of $seeobject and $food! $name could kill for some $food right now!"
 
 #!markdown
 
