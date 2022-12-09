@@ -8,6 +8,22 @@ Print out all multiples of 3, then all multiples of 5 separately. Once you have 
 
 $variable = 0
 
+for($i=0; $i -le 9; $i++){
+    $variable = $variable + 3
+
+    $variable
+}
+
+#!pwsh
+
+$variable = 0
+
+for($i=0; $i -le 9; $i++){
+    $variable = $variable + 5
+
+    $variable
+}
+
 #!markdown
 
 # FizzBuzz
@@ -26,3 +42,20 @@ Therefore, 12 % 3 = 0 means that 12 is a multiple of 3
 #!pwsh
 
 $variable = 0
+
+for($i=0;$i -le 99; $i++){
+
+    $output -eq $null
+
+    if($i % 3 -eq 0){
+        $output = "Fizz"
+    }
+    if($i % 5 -eq 0){
+        $output = $output + "Buzz"
+    }
+    if(-ne(($i % 5 -eq 0) -and ($i % 3 -eq 0))){
+        $output = $i
+    }
+
+    $output
+}
