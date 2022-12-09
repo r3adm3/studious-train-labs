@@ -51,7 +51,6 @@ Suppose your strings have leading or trailing spaces (also called **white space*
 $greeting = "      Hello World!       "
 $greeting
 
-$trimmedGreeting = $greeting.TrimStart()
 $trimmedGreeting
 
 $trimmedGreeting = $greeting.TrimEnd()
@@ -104,9 +103,13 @@ Now it's your turn to play around with what you've learned. Try these exercises:
 
 #!pwsh
 
-"Playground"
-"supercalifragilisticexpialidocious"
-"       friendship bracelet     "
+$ground = "      Playground     "
+$ground
+
+$trimmedground
+
+$trimmedground = $ground.TrimEnd("      Playground     ")
+$trimmedground
 
 #!markdown
 

@@ -8,10 +8,6 @@ Here's a challenge:
 >
 First, try on your own in this notebook below, or in Visual Studio, or in Visual Studio Code.
 
-#!pwsh
-
-"Challenge"
-
 #!markdown
 
 ## Tips and tricks
@@ -24,6 +20,31 @@ First, try on your own in this notebook below, or in Visual Studio, or in Visual
 ## Check your answer
 
 Your final answer should be 63.
+
+#!pwsh
+
+function get-sum{
+    param ([parameter(Mandatory = $true)][int]$enterednum
+    )
+$number = @(1...20)
+$current = 0
+$previous = 1
+
+for ($i = 1; $i -$enterednum; $i++) {
+    $current = $previous
+    $previous = $number
+    $number = $previous + $current
+    
+    if ($i % 3 -eq 0){
+$sum += $number[$i]
+} else 
+{break;
+}
+
+Write-Output "the sum of all numbers divisibe by 3 is: $sum"
+}
+get-sum
+}
 
 #!markdown
 
