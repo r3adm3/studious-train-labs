@@ -11,6 +11,10 @@ You have a few `integers` defined below. An `integer` is a positive or negative 
 
 #!markdown
 
+24,12,108,3
+
+#!markdown
+
 # Addition
 
 #!pwsh
@@ -92,6 +96,10 @@ $d
 
 Integer math will always produce integers. What that means is that even when math should result in a decimal or fraction, the answer will be truncated to a whole number.
 > Check it out. What should the answer truly be?
+
+#!markdown
+
+3 2/3
 
 #!pwsh
 

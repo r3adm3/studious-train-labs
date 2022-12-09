@@ -18,10 +18,14 @@ The `Contains` operator returns a *boolean*. That's a type represented by the ke
 
 #!pwsh
 
-$songLyrics = "You say goodbye, and I say hello"
+$songLyrics = @"You say goodbye, and I say hello"
+$yumyum = $songLyrics -contains "goodbye"
+Write-Output $($yumyum)
+$Wellyboots = $songLyrics -contains "greetings"
+write-output  $($Wellyboots)
 
-$songLyrics -contains "goodbye"
-$songLyrics -contains "greetings"
+#Doesn't work as contains only works on an array and array lists
+#btw, the -match operator is your best bet to do what you are trying to do there
 
 #!markdown
 

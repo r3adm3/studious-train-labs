@@ -74,7 +74,14 @@ Try out printing words and variables! Here are some prompts to try:
 
 #!pwsh
 
-'Playground'
+#'Playground'
+$MyGuffVariable = "oOh no I cant do any of this stuff"
+${MyGuffVariable}
+$MyGuffVariable +". Lordy"
+${MyGuffVariable}
+$Tool=[Math]::PI
+${tool}
+[Math]::PI
 
 #!markdown
 

@@ -104,9 +104,18 @@ Now it's your turn to play around with what you've learned. Try these exercises:
 
 #!pwsh
 
-"Playground"
-"supercalifragilisticexpialidocious"
-"       friendship bracelet     "
+#"Playground"
+#"supercalifragilisticexpialidocious"
+#"       friendship bracelet     "
+$sooper="supercalifragilisticexpialidocious"
+Write-Output "The length of "$sooper" is $($sooper.Length)"
+$bracelet="       friendship bracelet     "
+$trimmedStart=$bracelet.TrimStart()
+Write-Output $trimmedStart
+$trimmedend=$bracelet.TrimEnd()
+Write-Output $trimmedend
+$Trimmed=$bracelet.trim()
+Write-Output $Trimmed
 
 #!markdown
 
