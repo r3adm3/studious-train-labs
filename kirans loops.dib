@@ -1,0 +1,32 @@
+#!markdown
+
+1. loop through the array and print each item
+2. print the second item directly
+3. loop through the array backwards and print each item
+4. loop through the array and print only the item with no upper-case letter
+
+#!pwsh
+
+$fruit = @('Apples','Oranges','Bananas', 'Mango', 'pineapple', 'Lemon')
+$fruit
+
+#!pwsh
+
+for($i=0; $i -lt 3; $i += 1)
+{
+    $fruit
+}
+
+#!pwsh
+
+$fruit.GetValue(1)
+
+#!pwsh
+
+[array]::Reverse($fruit)
+$fruit
+
+#!pwsh
+
+[array]::Reverse($fruit)
+$fruit.GetValue(4)

@@ -1,0 +1,10 @@
+#!csharp
+
+Number 17
+Get-NetIPAddress
+test-connection 127.0.0.1
+
+#!csharp
+
+Number 1
+C:\users\kiran
