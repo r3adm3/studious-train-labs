@@ -23,6 +23,10 @@ Write your first PowerShell program! It outputs a string "Hello World" to the co
 
 "Hello World"
 
+#!pwsh
+
+"Hello Weekend"
+
 #!markdown
 
 Simply typing a string will print a message to the test console.
