@@ -21,8 +21,10 @@ Command line excercises
     1. `help > help.txt`
 14. go to the `C:\ directory`
 15. run a dir command with default output
+    1. `dir`
 16. run dir with output of system and hidden files only
 17. cd to your profile and create a dir called EnglandWinAgain
+    1. `cd C:\Users\studentadmin` and `mkdir EnglandWinAgain`
 18. go into it
 19. run ipconfig to screen
 20. run ipconfig and output to a file
@@ -30,8 +32,10 @@ Command line excercises
 22. ping the default gateway
 23. ping google.com
 24. trace route to yahoo.co.uk and save the output in file `outputs.txt`
+    1. `tracert yahoo.co.uk -n1 > outputs.txt`
 25. append an empty line to the end of `outputs.txt`
     1. `echo.>>outputs.txt`
 26. ping whatismyip.com 13 times and append the output in file `outputs.txt`, store errors in `err.txt`
+    1. `ping whatismyip.com -n 13 >> outputs.txt 2> err.txt`
 27. list the files inside EnglandWinAGAIN and redirect the output in `myfiles.txt`
 28. search for pattern `ttl` and forward the results to search1.txt (edited)
