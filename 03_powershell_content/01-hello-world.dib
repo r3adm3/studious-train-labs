@@ -39,7 +39,7 @@ A **variable** is a symbol you can use to run the same code with different value
 
 #!pwsh
 
-$aFriend = "Jayme"
+$aFriend = "Coco"
 $aFriend
 
 #!markdown
@@ -52,7 +52,7 @@ You may have noticed that the word "Hello" was missing from the last code block.
 
 #!pwsh
 
-"Hello " + $aFriend + "!"
+"Hello, " + $aFriend + "!"
 
 #!markdown
 
@@ -74,7 +74,7 @@ Try out printing words and variables! Here are some prompts to try:
 
 #!pwsh
 
-'Playground'
+$Pizza = "Yum"
 
 #!markdown
 
