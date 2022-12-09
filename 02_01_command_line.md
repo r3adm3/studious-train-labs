@@ -15,8 +15,10 @@ Command line excercises
 8. Move `newfsutilfile.txt` to `win`
 9. cd into `win` folder
 10. cd all the way up to `C:` using `CD ..`
+    1. cd c: 
 11. cd all the way back to the `win` folder
 12. create a new folder called help
+    1.  mkdir help
 13. run the help command and export the output to a text file called `help.txt`  (use '> filename' to export) 
     1. `help > help.txt`
 14. go to the `C:\ directory`
