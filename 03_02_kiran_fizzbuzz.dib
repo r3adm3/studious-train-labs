@@ -1,0 +1,58 @@
+#!markdown
+
+# Task 1
+
+Print out all multiples of 3, then all multiples of 5 separately. Once you have done that, the full challenge will appear much more straightforward.
+
+#!pwsh
+
+$variable = 0
+
+#!pwsh
+
+<# Need three variables #>
+for($one = 1; $one -le 100; $one++) {
+    $Output = ""
+
+<#Write-Host $one
+Write-Host $threes
+Write-Host $fives #>    
+
+    if(($one % 3 -eq 0) -and ($one % 5 -eq 0))  {
+        Write-Output "FizzBuzz" }
+        elseif($one % 3 -eq 0) {
+        Write-Output "Fizz"
+      } elseif($one % 5 -eq 0) {
+        Write-Output "Buzz"
+      } else{
+        Write-Output $one
+      }
+}
+
+#!markdown
+
+# FizzBuzz
+
+Write a program that prints on screen the numbers from 1 to 100. But for multiples of three print "Fizz" instead of the number and for the multiples of five print "Buzz". For numbers which are multiples of both three and five print "FizzBuzz".
+
+BTW - this is a very well-known programming challenge. It appears very simple (and it is), but it has been known to defeat many people applying for programming jobs!
+
+## Tips
+% is the modulus operator - it shows the remainder of a division, so 10 % 5 = 0, and 11 % 5 = 1
+
+If a % b = 0, that means that a is a multiple of b
+
+Therefore, 12 % 3 = 0 means that 12 is a multiple of 3
+
+#!pwsh
+
+for ($x = 1; $x -le 100; $x++) {
+    $Output = ""
+  
+    if (($x % 3 -eq 0) -and ($x % 5 -eq 0)) { $Output += "FizzBuzz" } 
+    elseif ($x % 3 -eq 0) { $Output += "Fizz" }
+    elseif ($x % 5 -eq 0) { $Output += "Buzz" }
+    elseif ($Output -eq "") { $Output = $x }
+  
+    Write-Output $Output
+}
