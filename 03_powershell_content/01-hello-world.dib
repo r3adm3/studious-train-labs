@@ -22,6 +22,7 @@ Write your first PowerShell program! It outputs a string "Hello World" to the co
 #!pwsh
 
 "Hello World"
+"Caroline"
 
 #!markdown
 
@@ -53,6 +54,9 @@ You may have noticed that the word "Hello" was missing from the last code block.
 #!pwsh
 
 "Hello " + $aFriend + "!"
+$lovely = "Carolina" + "!!"
+
+"Caroline " + $lovely + "!"
 
 #!markdown
 
