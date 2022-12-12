@@ -104,9 +104,21 @@ Now it's your turn to play around with what you've learned. Try these exercises:
 
 #!pwsh
 
-"Playground"
-"supercalifragilisticexpialidocious"
-"       friendship bracelet     "
+$alice = "Alice"
+$bob = "Bob"
+$jordan = "Jordan"
+
+$alice.Length
+$bob.ToUpper()
+$jordan.ToLower()
+
+#"Playground"
+$word = "supercalifragilisticexpialidocious"
+$word.Length
+
+$friendship = "       friendship bracelet     "
+$friendship = $friendship.Trim()
+$friendship
 
 #!markdown
 
