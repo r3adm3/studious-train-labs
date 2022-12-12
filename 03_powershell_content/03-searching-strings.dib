@@ -18,10 +18,15 @@ The `Contains` operator returns a *boolean*. That's a type represented by the ke
 
 #!pwsh
 
-$songLyrics = "You say goodbye, and I say hello"
+$songLyrics = "You say goodbye , and I say hello"
 
-$songLyrics -contains "goodbye"
-$songLyrics -contains "greetings"
+#$songLyrics -contains "goodbye"
+#$songLyrics -contains "greetings"
+
+#$songLyrics -contains "You "
+
+$songLyricsArray = $songLyrics.Split()
+$songLyricsArray -contains "goodbye"
 
 #!markdown
 
@@ -37,6 +42,8 @@ $songLyrics -contains "greetings"
 #!pwsh
 
 $songLyrics = "You say goodbye, and I say hello"
+
+$songLyrics.StartsWith("You")
 
 #!markdown
 
@@ -63,6 +70,11 @@ $line3 = "Oh, no"
 $line4 = "You say goodbye and I say hello"
 $line5 = "Hello, hello"
 $line6 = "I don't know why you say goodbye, I say hello"
+
+#!pwsh
+
+$line1.Split() -contains "hello"
+$line6.Split() -contains "hello"
 
 #!markdown
 
