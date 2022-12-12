@@ -55,7 +55,7 @@ Doubles are another form of numbers. They can hold and answer in floating point.
 $a = 7
 $b = 4
 $c = 3
-[double]$d = ($a + $b) / $c
+[float]$d = ($a + $b) / $c
 $e = ($a + $b) % $c
 "quotient: $d"
 "remainder: $e"
@@ -112,6 +112,19 @@ Play around with what you've learned! Here's some starting ideas:
 #!pwsh
 
 "Playground"
+
+$miles = 92955828
+$inches = 63360
+$centimeters = 160934
+
+$distanceInches = $miles * $inches
+$distanceInches
+
+$distanceCentimeters = $miles * $centimeters
+$distanceCentimeters
+
+$max = [int]::MaxValue
+$max
 
 #!markdown
 
