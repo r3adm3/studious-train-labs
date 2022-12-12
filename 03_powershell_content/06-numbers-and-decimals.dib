@@ -45,6 +45,15 @@ Play around with what you've learned! Here's some starting ideas:
 >
 > Hint: You can write `[Math]::PI` as pi, instead of writing the answer out.
 
+#!pwsh
+
+$pi = [math]::PI
+$r = 2.5
+$rsquared = [math]::Pow($r,2)
+
+$area = $pi * $rsquared
+Write-Host "The area of the circle is $area."
+
 #!markdown
 
 # Other resources

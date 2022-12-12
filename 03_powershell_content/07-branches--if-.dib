@@ -46,7 +46,7 @@ Before, if the conditions of the `if` statement weren't met, the entire if state
 #!pwsh
 
 $a = 5
-$b = 3
+$b = 6
 if ($a + $b -gt  10) {
     "The answer is greater than 10"
 }
@@ -95,6 +95,21 @@ Play around with what you've learned! Here's some starting ideas:
 #!pwsh
 
 "Playground"
+
+$price = 8
+
+If (($price -lt 10) -and ($price -lt 5)) {
+        "It's less than £5. Buy it now!"
+}
+    else{
+        if ($price -lt 10) {
+        "It's less than £10. You should consider buying it."
+    } 
+    }
+
+If ($price -gt 10) {
+    "It over £10. Too expensive!"
+}
 
 #!markdown
 

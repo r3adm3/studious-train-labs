@@ -117,14 +117,27 @@ $miles = 92955828
 $inches = 63360
 $centimeters = 160934
 
+# change from miles to inches
 $distanceInches = $miles * $inches
 $distanceInches
 
+#changing from mile to centimeters
 $distanceCentimeters = $miles * $centimeters
 $distanceCentimeters
 
-$max = [int]::MaxValue
-$max
+#!pwsh
+
+# print out mixed fraction 
+
+$a = 3
+$b = 2
+$c = [math]::Truncate($a / $b)
+$leftover = $a % $b
+
+#fraction 
+$mixedFraction = "$c and $leftover/$b"
+
+write-host "If we divide $a by $b you would get $mixedFraction in mixed fraction format"
 
 #!markdown
 
