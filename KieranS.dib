@@ -1,0 +1,3 @@
+#!pwsh
+
+$animals = @('dog', 'cat', 'horse')
