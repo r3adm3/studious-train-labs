@@ -9,7 +9,7 @@ Loops are a way to repeat an action multiple times. You can use `while` to do th
 
 $counter = 0
 
-while ($counter -lt 10) {
+while ($counter -lt 0) {
   "Hello World! The counter is $counter"
   $counter++
 }
@@ -28,7 +28,7 @@ $counter = 0
 do {
     "Hello World! The counter is $counter"
     $counter++
-} while ($counter -lt 10)
+} while ($counter -lt 0)
 
 #!markdown
 
@@ -47,7 +47,7 @@ In the `while` loop, nothing is printed out, but in the `do` loop, you get one p
 
 #!pwsh
 
-for ($counter = 0; $counter -lt 10; $counter++) {
+for ($counter = 1; $counter -lt 10; $counter++) {
     "Hello World! The counter is $counter"
 }
 
@@ -78,6 +78,32 @@ Play around with what you've learned! Here's some starting ideas:
 #!pwsh
 
 "Playground"
+
+#counting down from 10
+for ($i=10; $i -gt -1; $i++){
+    "counting down: $i"
+}
+
+#!pwsh
+
+#counting forward by 2
+for ($i=0; $i -lt 10; $i = $i + 2){
+    "counting $i"
+}
+
+#!pwsh
+
+#counting frmo 7 to 22
+for ($i=7; $i -lt 23; $i++) {
+    "counting $i"
+}
+
+#!pwsh
+
+# counting down from 22 by 2 down to 7
+for ($i=22; $i -gt 6; $i = $i -2) {
+    "counding down: $i"
+}
 
 #!markdown
 

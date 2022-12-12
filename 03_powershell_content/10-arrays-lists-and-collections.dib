@@ -58,6 +58,7 @@ You can add names to lists pretty easily. Lists have the method `Add()`, which t
 [System.Collections.ArrayList]$names = "<name>", "Ana", "Felipe" 
 
 $null = $names.Add('Sophia')
+$null = $names.Add('Susanna')
 
 foreach ($name in $names) {
     "Hello $($name.ToUpper())!"
@@ -80,6 +81,7 @@ You can also remove names. Try that out:
 [System.Collections.ArrayList]$names = "<name>", "Ana", "Felipe" 
 
 $null = $names.Remove("<name>")
+$null = $names.Remove('Sophia')
 
 for($i = 0; $i -lt $names.Count; $i++) {
     $name = $names[$i]
@@ -127,6 +129,18 @@ Play around with what you've learned! Here's some starting ideas:
 #!pwsh
 
 "Playground"
+
+[System.Collections.ArrayList]$groceries = "eggs", "ham", "cheese", "cereal", "milk", "chocolate"
+
+$null = $groceries.Add("toothpaste")
+$null = $groceries.Remove("cheese")
+
+foreach ($grocery in $groceries) {
+    Write-Host "buy $grocery!"
+}
+
+#3rd item on list
+Write-Host "The 3rd item on the grocery list is $($groceries[2])"
 
 #!markdown
 

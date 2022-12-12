@@ -84,6 +84,23 @@ Play around with what you've learned! Here's some starting ideas:
 
 "Playground"
 
+$groceries = "eggs", "ham", "cheese", "cereal", "milk", "carrots"
+
+
+$sortedList = $groceries |Sort-Object
+
+$grocery = "carrots"
+$index = $groceries.IndexOf($grocery) 
+
+Write-host "The index number $($groceries[$index]) is $index."
+''
+
+"Pre Sorting:"
+$groceries
+''
+"Post Sorting:"
+$sortedList
+
 #!markdown
 
 # Other resources

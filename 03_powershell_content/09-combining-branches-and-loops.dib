@@ -12,6 +12,15 @@ First, try on your own in this notebook below, or in Visual Studio, or in Visual
 
 "Challenge"
 
+$sum = 0
+
+For($i=0; $i -lt 21; $i++) {
+    If (($i % 3) -eq 0) {
+ $sum += $i
+ }
+}
+$sum
+
 #!markdown
 
 ## Tips and tricks
