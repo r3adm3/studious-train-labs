@@ -15,7 +15,6 @@ $presents = "car", "ring", "computer", "phone"
 Wrap-Gift($presents)
 
 
-
 #region - using functions I could seperate this up and have 3 seperate functions as follows
 
 # function Wrap-Middle($present) {
