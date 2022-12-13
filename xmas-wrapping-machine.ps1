@@ -11,7 +11,6 @@ function Wrap-Gift($presents) {
     Write-Output "`n"
   }
 }
-
 $presents = "car", "ring", "computer", "phone"
 Wrap-Gift($presents)
 
@@ -38,4 +37,8 @@ Wrap-Gift($presents)
 #     Write-Output "`n"
 #   }
 # }
+
+# $presents = "car", "ring", "computer", "phone"
+# Wrap-Gift($presents)
+
 #endregion
