@@ -113,6 +113,14 @@ Play around with what you've learned! Here's some starting ideas:
 
 "Playground"
 
+#2147483647 > 238,855
+#2147483647 > 92955828  - No need for the double in this equation
+
+$a = 2
+$whole_number = $b / $a
+$remainder = $b % $a
+write-host ($b / $a)
+
 #!markdown
 
 # Other resources

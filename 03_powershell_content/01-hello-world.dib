@@ -21,7 +21,7 @@ Write your first PowerShell program! It outputs a string "Hello World" to the co
 
 #!pwsh
 
-"Hello World"
+Write-Output "Hello World"
 
 #!markdown
 
@@ -39,7 +39,7 @@ A **variable** is a symbol you can use to run the same code with different value
 
 #!pwsh
 
-$aFriend = "Jayme"
+$aFriend = "Kieran"
 $aFriend
 
 #!markdown
@@ -74,7 +74,18 @@ Try out printing words and variables! Here are some prompts to try:
 
 #!pwsh
 
-'Playground'
+Write-host 'Live, Laugh, Love'
+
+$FavFood = "Chicken nuggets"
+$FavFood
+
+Write-Host "I love food, my favourite is $FavFood"
+
+$a = "Play"
+$b = "Football"
+$c = "Having fun!"
+
+Write-host "I $a $b, when I play I am $c"
 
 #!markdown
 

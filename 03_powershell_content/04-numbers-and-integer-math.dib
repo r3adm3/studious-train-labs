@@ -64,6 +64,8 @@ $d = $a + $b * $c
 
 $d
 
+22
+
 #!markdown
 
 ## Using parenthesis
@@ -83,7 +85,7 @@ You can make math as long and complicated as you want.
 
 #!pwsh
 
-$d = ($a + $b) - 6 * $c + (12 * 4) / 3 + 12
+$d = ($a + $b) - 6 * $c + (12 * 4) / 3 + 12 
 $d
 
 #!markdown
@@ -114,6 +116,22 @@ Play around with what you've learned! Here's some starting ideas:
 
 #!pwsh
 
+$a = 18181
+$b = 201801
+$c = $a * $b
+$c
+
+$d = 171
+$e = ($a / $d) * $b
+$e
+
+# Integers are whole numbers that do not have a fractional part, so they do not need to be rounded.
+# However, if you are working with numbers that have decimal values, there are several different methods for rounding.
+# The most common is called rounding to the nearest integer, in which numbers with a decimal value of 0.5 or greater are rounded up to the next highest integer, and numbers with a decimal value less than 0.5 are rounded down to the next lowest integer. 
+# So, for example, if you were rounding the number 2.6, it would be rounded up to 3, but if you were rounding the number 2.4, it would be rounded down to 2.
+
+#In short, the order of operations is a set of rules that tell you the sequence in which operations should be performed in a math problem to get the correct answer.
+#When using parentheses in a math problem, the operations inside the parentheses should be performed first, before any other operations in the problem.
 "Playground"
 
 #!markdown

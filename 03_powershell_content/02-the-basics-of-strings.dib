@@ -18,8 +18,8 @@ A string is a sequence of characters. A handy metaphor is a friendship bracelet,
 
 #!pwsh
 
-$firstFriend = "Maria"
-$secondFriend = "Sophia"
+$firstFriend = "Kieran"
+$secondFriend = "Declan"
 
 "My friends are ${firstFriend} and ${secondFriend}"
 
@@ -72,7 +72,7 @@ You can also replace substrings with other values. For example, in the code belo
 
 $sayHello = "Hello World!";
 $sayHello
-$sayHello = $sayHello.Replace("Hello", "Greetings");
+$sayHello = $sayHello.Replace("Hello", "Sorry");
 $sayHello
 
 #!markdown
@@ -84,8 +84,8 @@ Sometimes you need your strings to be all UPPERCASE or all lowercase. `ToUpper` 
 
 #!pwsh
 
-"WhiSPer".ToUpper()
-"sHoUt".ToLower()
+"WhiSPer".ToLower()
+"sHoUt".ToUpper()
 
 #!markdown
 
@@ -104,9 +104,22 @@ Now it's your turn to play around with what you've learned. Try these exercises:
 
 #!pwsh
 
-"Playground"
-"supercalifragilisticexpialidocious"
-"       friendship bracelet     "
+$person1 = "Johnny" 
+$person2 = "Janet"
+$person3 = "Boab"
+$A = "supercalifragilisticexpialidocious"
+
+
+($person1).Length
+($person2).ToUpper()
+($person3).ToLower()
+($A).Length
+
+$greeting = "       friendship bracelet     "
+$greeting
+
+$trimmedGreeting = $greeting.TrimStart()
+$trimmedGreeting
 
 #!markdown
 
