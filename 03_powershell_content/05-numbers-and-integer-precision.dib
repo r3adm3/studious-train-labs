@@ -1,3 +1,7 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
 #!markdown
 
 # Numbers and Integer Precision
@@ -45,9 +49,9 @@ That's still a pretty big range!
 
 That number, which should be really big, causes PowerShell to error.
 
-## Doubles: Precision and Size
+## Floats and Doubles: Precision and Size
 
-Doubles are another form of numbers. They can hold and answer in floating point.
+Floating point numbers are another form of numbers. They can hold and answer in floating point. Doubles do contain double capacity to store floating point numbers than floats.
 > Repeat the same code from the beginning, and see the difference a double makes.
 
 #!pwsh
@@ -78,6 +82,9 @@ $d
 
 #!pwsh
 
+$max = [float]::MaxValue
+$min = [float]::MinValue;
+"The range of float is $min to $max"
 $max = [double]::MaxValue
 $min = [double]::MinValue;
 "The range of double is $min to $max"
