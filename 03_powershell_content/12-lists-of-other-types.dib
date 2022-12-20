@@ -1,3 +1,7 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
 #!markdown
 
 # Lists of Other Types
@@ -6,15 +10,17 @@ You've been practicing lists of strings, but you can make a list of anything! He
 
 ## Fibonacci
 
-Fibonacci is a cool number sequence. It adds up the last two numbers up to make the next number. You start with 1 and 1
+Fibonacci is a cool number sequence. It adds up the last two numbers up to make the next number. You start with 0 and 1
 
-1 + 1 = 2  (1, 1, 2)
+0 + 1 = 1  (0, 1, 1)
 
-1 + 2 = 3  (1, 1, 2, 3)
+1 + 1 = 2  (0, 1, 1, 2)
 
-2 + 3 = 5  (1, 1, 2, 3, 5)
+1 + 2 = 3  (0, 1, 1, 2, 3)
 
-3 + 5 = 8  (1, 1, 2, 3, 5, 8)
+2 + 3 = 5  (0, 1, 1, 2, 3, 5)
+
+3 + 5 = 8  (0, 1, 1, 2, 3, 5, 8)
 
 and so on. There are lots of stuff in nature that follow this number sequence, and has lots of cool stuff if you want to look it up!
 
@@ -26,7 +32,7 @@ gcm
 
 #!pwsh
 
-$fibonacciNumbers = 1, 1
+$fibonacciNumbers = 0, 1
 
 $fibonacciNumbers
 
@@ -38,7 +44,7 @@ Now, you don't want just 1,1 in it! You want more of the sequence. In this code,
 
 #!pwsh
 
-[System.Collections.ArrayList]$fibonacciNumbers = 1, 1 # Starting the list off with the basics
+[System.Collections.ArrayList]$fibonacciNumbers = 0, 1 # Starting the list off with the basics
 
 $previous = $fibonacciNumbers[$fibonacciNumbers.Count - 1] # Take the last number in the list
 $previous2 = $fibonacciNumbers[$fibonacciNumbers.Count - 2] # Take the second to last number in the list
