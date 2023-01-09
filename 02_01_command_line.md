@@ -15,8 +15,10 @@ Command line excercises
 8. Move `newfsutilfile.txt` to `win`
 9. cd into `win` folder
 10. cd all the way up to `C:` using `CD ..`
+    1. cd c: 
 11. cd all the way back to the `win` folder
 12. create a new folder called help
+    1.  mkdir help
 13. run the help command and export the output to a text file called `help.txt`  (use '> filename' to export) 
     1. `help > help.txt`
 14. go to the `C:\ directory`
@@ -26,8 +28,10 @@ Command line excercises
 17. cd to your profile and create a dir called EnglandWinAgain
     1. `cd C:\Users\studentadmin` and `mkdir EnglandWinAgain`
 18. go into it
+    1.  cd EnglandWinAgain
 19. run ipconfig to screen
 20. run ipconfig and output to a file
+    1.  ipconfig >ipconfig.txt
 21. ping the computer's own IP address
 22. ping the default gateway
 23. ping google.com
