@@ -1,3 +1,7 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
 #!markdown
 
 # The Basics of Strings
@@ -104,9 +108,17 @@ Now it's your turn to play around with what you've learned. Try these exercises:
 
 #!pwsh
 
-"Playground"
-"supercalifragilisticexpialidocious"
-"       friendship bracelet     "
+$person1 = "Lee"
+$person2 = "Rachel"
+$person3 = "Ben"
+
+$person1.length
+$person2.ToUpper()
+$person3.ToLower()
+
+("supercalifragilisticexpialidocious").Length
+(" friendship bracelet ").length  
+(" friendship bracelet ").trim().length #trim does not take out the center space and the reduction is 2. from 21 to 19 characters
 
 #!markdown
 

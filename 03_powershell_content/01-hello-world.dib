@@ -1,3 +1,7 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
 #!markdown
 
 # Hello World
@@ -74,7 +78,12 @@ Try out printing words and variables! Here are some prompts to try:
 
 #!pwsh
 
-'Playground'
+Write-Host "Whats another pull between friends!"
+$steak = "steak"
+$mushrooms = "mushrooms"
+$eggs = "eggs"
+
+Write-Host "once upon a time there was a person called Lee. This person had a special place in his heart for a special simple dish $steak and $mushrooms. now for lunch he also had a quick and easy meal using $eggs, boiled fried or even scrambled!"
 
 #!markdown
 

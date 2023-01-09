@@ -1,9 +1,9 @@
 
 $jeffs_files = Get-ChildItem -File -Path $(Get-Location).Path
 
-foreach($file in $jeffs_files){
+foreach ($file in $jeffs_files) {
 
-    Rename-Item -path $file.Name -NewName $file.Name.Replace("testrename","")
+    Rename-Item -Path $file.Name -NewName $file.Name.Replace("testrename", "")
     
     
     
