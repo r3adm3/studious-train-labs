@@ -18,8 +18,8 @@ A string is a sequence of characters. A handy metaphor is a friendship bracelet,
 
 #!pwsh
 
-$firstFriend = "Maria"
-$secondFriend = "Sophia"
+$firstFriend = "Roxie"
+$secondFriend = "Milo"
 
 "My friends are ${firstFriend} and ${secondFriend}"
 
