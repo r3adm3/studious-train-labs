@@ -1,4 +1,4 @@
-#Networking practicals
+# Networking practicals
 
 1. Use ipconfig to read your machine network setup
    1. Find your IP address
