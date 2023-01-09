@@ -1,3 +1,7 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
 #!markdown
 
 # Lists of Other Types
@@ -67,6 +71,18 @@ We've given you a base of code that deals with Fibonacci. Can you make a list th
 #!pwsh
 
 "Challenge"
+
+[System.Collections.ArrayList]$fibonacciNumbers = 1, 1 # Starting the list off with the basics
+
+for ($i=0; $i -lt 18; $i++) {
+$previous = $fibonacciNumbers[$fibonacciNumbers.Count - 1] # Take the last number in the list
+$previous2 = $fibonacciNumbers[$fibonacciNumbers.Count - 2] # Take the second to last number in the list
+
+# Add the previous numbers together, and attach the sum to the end of the list
+$null = $fibonacciNumbers.Add($previous + $previous2) 
+}
+$fibonacciNumbers
+    
 
 #!markdown
 
