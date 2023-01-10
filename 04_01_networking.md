@@ -2,11 +2,14 @@
 
 1. Use ipconfig to read your machine network setup
    1. Find your IP address
-      1.  192.168.0.26
+      1.  ipconfig 
+      2.  10.0.1.17
    2. Find your default gateway address
-      1. 192.168.0.1
+      1. ipconfig
+      2. 10.0.1.1
    3. Find your mac address (try `/all`)
-      1. 34-E6-D7-85-F9-1A
+      1. ipconfig /all 
+      2. 60-45-BD-D2-14-95
 2. Use ping to test your connectivity to google.com
       1. ping google.com
 3. Ping google with custom ping size. What is the maximum size google will respond to?
