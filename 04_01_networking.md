@@ -16,6 +16,7 @@ Approximate round trip times in milli-seconds:
 
 2. Ping google with custom ping size. What is the maximum size google will respond to????
       5.1 ping www.google.com -n
+      Ping size was 32 bytes
 3. Ping google with custom ping size and set the number of pings to be 100
       6.1 ping www.google.com -100
       Ping statistics for 142.250.187.196:
@@ -43,6 +44,11 @@ over a maximum of 30 hops:
 Trace complete.
 
 5. For 15 to 32 ping all the addresses in the range of 10.0.1.X
+      5.1 Pinging 10.0.1 between 15 to 32
+             $ip = "10.0.1"
+>> for ($i = 15; $i -le 32; $i++) {
+>>     ping -n 1 "$IP.$i"
+>> }
 6. Install `psping` and do the ping tasks with `psping` instead
 7.  Install `nmap` and scan ports of a public server of your choice
 8.  Install `nslookup` and translate 5 of your favourite URL
