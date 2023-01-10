@@ -10,5 +10,5 @@
 5. Trace your path to google.com - TRACERT google.com
 6. For 15 to 32 ping all the addresses in the range of 10.0.1.X - Ping -n 1
 7. Install `psping` and do the ping tasks with `psping` instead - Downloaded PSPing - Created a directory - Moved into the folder 'PSTools' then pinged my IP address 
-8. Install `nmap` and scan ports of a public server of your choice
+8. Install `nmap` and scan ports of a public server of your choice - Downloaded 'nmap' - Created a folder 'nap' and ran www.google.com. Received: Scanning www.google.com (142.250 187.196) [4 ports] Completed Ping Scan at 11:25, 0.03s elapsed (1 total hosts)
 9. Install `nslookup` and translate 5 of your favourite URL
