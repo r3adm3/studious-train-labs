@@ -23,7 +23,12 @@
 5. Trace your path to google.com
       // tracert google.com
 6. For 15 to 32 ping all the addresses in the range of 10.0.1.X
-      //
+      // $ip = "10.0.1"
+      
+        for ($i = 15; $i -le 32; $i++) {
+        ping -c 1 "$IP.$i"
+        } 
+        
 7. Install `psping` and do the ping tasks with `psping` instead
       // psping google.com
       // psping -l 32 -n 100 google.com
