@@ -4,7 +4,7 @@
    1. Find your IP address - IPCONFIG - 10.0.1.19
    2. Find your default gateway address - IPCONFIG - 10.0.1.1
    3. Find your mac address (try `/all`) - IPCONFIG/ALL -  60-45-BD-D1-F4-74
-2. Use ping to test your connectivity to google.com
+2. Use ping to test your connectivity to google.com - PING www.google.com
 3. Ping google with custom ping size. What is the maximum size google will respond to?
 4. Ping google with custom ping size and set the number of pings to be 100
 5. Trace your path to google.com
