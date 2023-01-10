@@ -39,7 +39,7 @@ A **variable** is a symbol you can use to run the same code with different value
 
 #!pwsh
 
-$aFriend = "Jayme"
+$aFriend = "Una"
 $aFriend
 
 #!markdown
