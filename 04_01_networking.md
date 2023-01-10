@@ -1,13 +1,13 @@
 # Networking practicals
 
 1. Use ipconfig to read your machine network setup
-   1. Find your IP address
-   2. Find your default gateway address
-   3. Find your mac address (try `/all`)
-2. Use ping to test your connectivity to google.com
-3. Ping google with custom ping size. What is the maximum size google will respond to?
-4. Ping google with custom ping size and set the number of pings to be 100
-5. Trace your path to google.com
+   1. Find your IP address - type in ipconfig via CMD
+   2. Find your default gateway address - this can be found by typing ipconfig or ipconfig/all via CMD 
+   3. Find your mac address (try `/all`) ipconfig/all under physical add
+2. Use ping to test your connectivity to google.com - ping google.com
+3. Ping google with custom ping size. What is the maximum size google will respond to?ping google.com -l 1000 via CMD
+4. Ping google with custom ping size and set the number of pings to be 100 - ping google.com -l 1000 -n 100 via CMD
+5. Trace your path to google.com - type tracert google.com in CMD
 6. For 15 to 32 ping all the addresses in the range of 10.0.1.X
 7. Install `psping` and do the ping tasks with `psping` instead
 8. Install `nmap` and scan ports of a public server of your choice
