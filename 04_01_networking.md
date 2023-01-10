@@ -2,6 +2,11 @@
 
 1. Use ipconfig to read your machine network setup
    1. Find your IP address
+
+   `ipconfig`
+   
+   `10.0.1.32`
+
    2. Find your default gateway address
    3. Find your mac address (try `/all`)
 2. Use ping to test your connectivity to google.com
