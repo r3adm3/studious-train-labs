@@ -26,3 +26,43 @@ Therefore, 12 % 3 = 0 means that 12 is a multiple of 3
 #!pwsh
 
 $variable = 0
+
+#!pwsh
+
+#Task 1 - print out multiples of 3 and 5
+
+for($i=1; $i -le 100; $i++) {
+    
+    if($i % 3 -eq 0) {
+        $i
+    }
+
+    if($i % 5 -eq 0) {
+        $i
+    }
+}
+
+#!pwsh
+
+#Fizzbuzz
+
+for($i=1; $i -le 100; $i++) {
+    
+    if(($i % 3 -eq 0) -and ($i % 5 -eq 0)) {
+        Write-Host "FizzBuzz"
+        continue
+    }
+    if($i % 3 -eq 0) {
+        Write-Host "Fizz"
+        continue
+    }
+
+    if($i % 5 -eq 0) {
+        Write-Host "Buzz"
+        continue
+    }
+
+    else{
+        $i
+    }
+}
