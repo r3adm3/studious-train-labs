@@ -15,7 +15,7 @@ You work in a company that has:
 [useful tool](https://www.davidc.net/sites/default/subnets/subnets.html)
 
 Given class C private IP address range:
-1. Can you suggest network solution that separates different departments in separate subnetworks?
+1. Can you suggest network solution that separates different departments in separate subnetworks? 819
 2. Can make the subnetworks extra efficient in terms of using as few IP addresses as possible?
 3. Can you extend the network from step 2. assuming the company plans to extend significantly it's website business which will mean hiring about 30 developers and contracting two more external companies.
 4. Can you change the IP addresses to use class B private network range?
