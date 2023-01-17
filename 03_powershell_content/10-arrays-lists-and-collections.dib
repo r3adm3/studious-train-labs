@@ -1,3 +1,7 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
 #!markdown
 
 # Arrays, Lists, and Collections
@@ -19,7 +23,7 @@ foreach ($name in $names) {
 
 ## So what does that code mean?
 
-- In the `$names` variable you're making a list of strings.
+- In the `$names` variable you're making a list of strings in the form of array.
 - **foreach**: This is another for loop! It goes through every item in a list.
 - **name in names**: This is a style that a lot of people prefer. `$names` is the whole list that contains plural names. `$name` is an individual item in `$names`.
 
@@ -37,8 +41,6 @@ These are really just two different styles of writing the same code. Feel free t
 
 #!pwsh
 
-$names = "<name>", "Ana", "Felipe" 
-
 for($i = 0; $i -lt $names.Count; $i++) {
     $name = $names[$i]
     "Hello $($name.ToUpper())!"
@@ -49,6 +51,8 @@ for($i = 0; $i -lt $names.Count; $i++) {
 ## Add
 
 You can add names to lists pretty easily. Lists have the method `Add()`, which tacks on a new item to the end of the list.
+
+To be able to add to a list we need to change the type of collection from *Array* to *List*. The reason is that arrays are not re-sizeable. Using arrays we would need to create a new array with different size and copy the elements to it. *ArrayList* is a particular implementation of a *List* which offers addition with automatic re-sizing under the hood.
 > Run the code.
 >
 > Then try adding your own name instead.
@@ -76,8 +80,6 @@ You can also remove names. Try that out:
 > What happens when you try to remove something that isn't there?
 
 #!pwsh
-
-[System.Collections.ArrayList]$names = "<name>", "Ana", "Felipe" 
 
 $null = $names.Remove("<name>")
 

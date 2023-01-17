@@ -1,27 +1,32 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
 #!markdown
 
 # Searching Strings
 
 #!markdown
 
-## Contains
+## Like
 
-Does your string contain another string within it? You can use `Contains` to find out!
-The `Contains` operator returns a *boolean*. That's a type represented by the keyword `bool` that can hold two values: `true` or `false`. In this case, the operator returns `true` when sought string is found, and `false` when it's not found.
+Does your string contain another string within it? You can use `like` to find out!
+The `like` operator returns a *boolean*. That's a type represented by the keyword `bool` that can hold two values: `true` or `false`. In this case, the operator returns `true` when sought string is found, and `false` when it's not found. Use wildcard operator `*` to define *any characters* to be searched.
 > Run the following code.
 >
 > What else would or wouldn't be contained?
 >
 > Does case matter?
 >
-> Can you store the return value of the `Contains` operator? Remember the type of the result is a `bool`.
+> Can you store the return value of the `like` operator? Remember the type of the result is a `bool`.
 
 #!pwsh
 
 $songLyrics = "You say goodbye, and I say hello"
 
-$songLyrics -contains "goodbye"
-$songLyrics -contains "greetings"
+$songLyrics -like "*goodbye*"
+$songLyrics -like "*greetings*"
+$songLyrics -like "You*hello"
 
 #!markdown
 
@@ -37,6 +42,7 @@ $songLyrics -contains "greetings"
 #!pwsh
 
 $songLyrics = "You say goodbye, and I say hello"
+$songLyrics.StartsWith("Y") # example
 
 #!markdown
 
