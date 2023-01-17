@@ -10,7 +10,7 @@ You work in a company that has:
    - External contractors - 6 groups with maximum of 50
 - Backend systems - 194
 - Backend databases - 34
-- File sharing servers - 14
+- File sharing servers - 14 .
 
 [useful tool](https://www.davidc.net/sites/default/subnets/subnets.html)
 
