@@ -61,6 +61,7 @@ Object properties store information about the object. For example, FileInfo obje
 # Change the path to one on your own machimne
 $myfile = "C:\Users\studentadmin\Command\studious-train-labs\03_powershell_content"
 $myfileinfo = Get-ChildItem -path $myfile
+$myfileinfo | Select-Object *
 
 #!pwsh
 
