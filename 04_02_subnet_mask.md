@@ -22,3 +22,5 @@ Subnet	       IP Range	                  Mask
 3. Can you extend the network from step 2. assuming the company plans to extend significantly it's website business which will mean hiring about 30 developers and contracting two more external companies.
 Work out size requirements from the additional external companies. add this to the extra developers and the initial 819. Subnet to allow IP range. 
 4. Can you change the IP addresses to use class B private network range
+Subnet	      IP Range	                    Hosts
+172.16.0.0/24	172.0.0.1 - 172.115.255.254	254
