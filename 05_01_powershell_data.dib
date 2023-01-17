@@ -60,8 +60,17 @@ $myfileinfo = Get-ChildItem -path $myfile
 
 #!pwsh
 
+$myfile = "C:\Users\studentadmin\source\engreskill\Sourcetwo\studious-train-labs\studious-train-labs"
+$myfileinfo = Get-ChildItem -path $myfile
+
+#!pwsh
+
 # Question 2
 # Get the members of the $myfileinfo object
+
+#!pwsh
+
+$myfileinfo |gm
 
 #!pwsh
 
@@ -71,8 +80,16 @@ Get-Member -MemberType Property
 
 #!pwsh
 
+$myfileinfo | gm -MemberType Property
+
+#!pwsh
+
 # Question 4
 # Get the method members of the $myfileinfo object, the clue is in the question above
+
+#!pwsh
+
+$myfileinfo | gm -MemberType Method
 
 #!pwsh
 
@@ -84,11 +101,36 @@ $myvar2 = $myfile # .value2
 
 #!pwsh
 
+$myfileinfo | gm -MemberType Property length
+$myvar1 = $myfileinfo | gm -MemberType Property length
+$myvar1
+
+#!pwsh
+
+$myfileinfo | gm -MemberType Property attributes
+$myvar2= $myfileinfo | gm -MemberType Property attributes
+$myvar2
+
+#!pwsh
+
 # Question 6
 # # Use Get-Member to display information about the properties and methods associated with each of your 2 variables
 
 $myvar1 
 $myvar2
+
+#!pwsh
+
+$myvar1 |gm
+
+#!pwsh
+
+$myvar2 |gm
+
+#!pwsh
+
+$myvar1 | gm -MemberType Property
+$myvar2 | gm -MemberType Property
 
 #!pwsh
 
@@ -98,5 +140,15 @@ $myvar2
 
 #!pwsh
 
+$myfileinfo |Get-ChildItem | Get-Location
+
+#!pwsh
+
 # Question 8
 # Compare the FileInfo object representing you location with that of the file you queried earlier. Are they different due to the fact one is a folder and the other a file?
+
+#!pwsh
+
+$myfileinfo |Get-ChildItem | Get-Location
+$filelocation = $myfileinfo |Get-ChildItem | Get-Location
+$filelocation | gm
