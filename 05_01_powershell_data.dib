@@ -55,7 +55,7 @@ Object properties store information about the object. For example, FileInfo obje
 
 # Question 1
 # Change the path to one on your own machimne
-$myfile = "C:\Users\jmgadmin\arstechnica\lbginteractive\Commands and Code\PowerShell\Datasets\Pet data\pet-data.csv"
+$myfile = "C:\Users\studentadmin\Documents\The Office\Jim.jpg"
 $myfileinfo = Get-ChildItem -path $myfile
 
 #!pwsh
@@ -63,32 +63,41 @@ $myfileinfo = Get-ChildItem -path $myfile
 # Question 2
 # Get the members of the $myfileinfo object
 
+$myfileinfo | gm
+
 #!pwsh
 
 # Question 3
 # Get the property members of the $myfileinfo object, hint below
-Get-Member -MemberType Property
+# Get-Member -MemberType Property
+
+$myfileinfo | gm -MemberType Property
 
 #!pwsh
 
 # Question 4
 # Get the method members of the $myfileinfo object, the clue is in the question above
 
+$myfileinfo | gm -MemberType  Method
+
 #!pwsh
 
 # Question 5
 # Create 2 variables and assign to each the value of any property of your FileInfo object
 
-$myvar1 = $myfile # .value1
-$myvar2 = $myfile # .value2
+#$myvar1 = $myfileinfo .value1
+#$myvar2 = $myfileinfo  .value2
+
+$myvar1 = $myfileinfo.Exists
+$myvar2 = $myfileinfo.LastAccessTime
 
 #!pwsh
 
 # Question 6
 # # Use Get-Member to display information about the properties and methods associated with each of your 2 variables
 
-$myvar1 
-$myvar2
+$myvar1 | gm
+$myvar2 | gm
 
 #!pwsh
 
@@ -96,7 +105,11 @@ $myvar2
 # Use Get-ChildItem to retrieve a FileInfo Object of your current PowerShell path (use Get-Location)
 # Get-Location returns a folder object
 
+Get-Location | Get-ChildItem | gm
+
 #!pwsh
 
 # Question 8
 # Compare the FileInfo object representing you location with that of the file you queried earlier. Are they different due to the fact one is a folder and the other a file?
+
+#Yes, boring answer but v hard to compare list using vs code. Could I figure it out by exporting to a txt file? Yes, but we are due back in 2 minutes so this will have to do. (:
