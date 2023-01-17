@@ -24,10 +24,10 @@ Given class C private IP address range:
       > | 192.10.0.0/24 | 192.0.0.1 - 192.09.255.254 | 255.255.255.10 |
 
 2. Can make the subnetworks extra efficient in terms of using as few IP addresses as possible?
-   > 1. lower the ip range to the total amount needed (819)
+   1. > Lower the ip range to the total amount needed (819)
 3. Can you extend the network from step 2. assuming the company plans to extend significantly it's website business which will mean hiring about 30 developers and contracting two more external companies.
-   > 1. work out size requirements from the additional external companies. add this to the extra developers and the initial 819 from original requirements. increment subnet to allow IP range to accomidate for this need.
+   1. > Work out size requirements from the additional external companies. add this to the extra developers and the initial 819 from original requirements. increment subnet to allow IP range to accomidate for this need.
 4. Can you change the IP addresses to use class B private network range?
-   > 1. | Subnet        | IP Range                    | Hosts |
-   >    | ------------- | --------------------------- | ----- |
-   >    | 172.16.0.0/24 | 172.0.0.1 - 172.115.255.254 | 254   |
+   1. > | Subnet        | IP Range                    | Hosts |
+      > | ------------- | --------------------------- | ----- |
+      > | 172.16.0.0/24 | 172.0.0.1 - 172.115.255.254 | 254   |
