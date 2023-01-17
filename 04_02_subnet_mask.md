@@ -16,6 +16,8 @@ You work in a company that has:
 
 Given class C private IP address range:
 1. Can you suggest network solution that separates different departments in separate subnetworks?
+Subnet	       IP Range	                  Mask
+192.10.0.0/24	192.0.0.1 - 192.09.255.254	255.255.255.10
 2. Can make the subnetworks extra efficient in terms of using as few IP addresses as possible?
 3. Can you extend the network from step 2. assuming the company plans to extend significantly it's website business which will mean hiring about 30 developers and contracting two more external companies.
-4. Can you change the IP addresses to use class B private network range?
+4. Can you change the IP addresses to use class B private network range
