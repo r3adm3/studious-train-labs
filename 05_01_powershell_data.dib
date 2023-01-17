@@ -55,46 +55,53 @@ Object properties store information about the object. For example, FileInfo obje
 
 # Question 1
 # Change the path to one on your own machimne
-$myfile = "C:\Users\jmgadmin\arstechnica\lbginteractive\Commands and Code\PowerShell\Datasets\Pet data\pet-data.csv"
+$myfile = "C:\Users\studentadmin\WorkStuff\PolygotKieran\studious-train-labs\Text.txt"
 $myfileinfo = Get-ChildItem -path $myfile
 
 #!pwsh
 
 # Question 2
 # Get the members of the $myfileinfo object
+$myfile | Get-Member
 
 #!pwsh
 
 # Question 3
 # Get the property members of the $myfileinfo object, hint below
-Get-Member -MemberType Property
+
+Get-ChildItem $myfile | Get-Member -MemberType Property
 
 #!pwsh
 
 # Question 4
 # Get the method members of the $myfileinfo object, the clue is in the question above
 
+Get-ChildItem $myfile | Get-Member -MemberType Method
+
 #!pwsh
 
 # Question 5
 # Create 2 variables and assign to each the value of any property of your FileInfo object
 
-$myvar1 = $myfile # .value1
-$myvar2 = $myfile # .value2
+$file = Get-Item "$myfile"
+$myvar1 = $myfile.Count
+$myvar2 = $myfile.Length
 
 #!pwsh
 
 # Question 6
 # # Use Get-Member to display information about the properties and methods associated with each of your 2 variables
 
-$myvar1 
-$myvar2
+Get-Member -InputObject $myvar1
+Get-Member -InputObject $myvar2
 
 #!pwsh
 
 # Question 7
 # Use Get-ChildItem to retrieve a FileInfo Object of your current PowerShell path (use Get-Location)
 # Get-Location returns a folder object
+
+Get-Location | Get-ChildItem
 
 #!pwsh
 
