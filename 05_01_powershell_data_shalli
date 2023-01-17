@@ -40,8 +40,8 @@ Object properties store information about the object. For example, FileInfo obje
 
 1. Use Get-ChildItem to retrieve a FileInfo Object of a particular file
    1. $myfilelocation = "C:\Users\studentadmin\gitWorkExamples\studious-train-labs\04_02_subnet_mask.md"  
-   2. $myfileinfo = Get-ChildItem -path $myfilelocation
-   3. $myfileinfo
+   $myfileinfo = Get-ChildItem -path $myfilelocation
+   $myfileinfo
 2. Use Get-Member to display information about the properties and methods associated with the FileInfo object
    1. $myfileinfo | Get-Member
 3. Use Get-Member to retrieve only the properties of a FileInfo object
