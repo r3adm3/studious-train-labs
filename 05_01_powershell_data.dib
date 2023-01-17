@@ -48,9 +48,10 @@ Object properties store information about the object. For example, FileInfo obje
 8. Compare the FileInfo object representing you location with that of the file you queried earlier. Arethey different due to the fact one is a folder and the other a file?
 
 #!markdown
-
-#### Examples and Hints
-
+1 Get-ChildItem -Path D:\Temp\style.css     $myfile = "C:Users\cameron\blah
+2 Get-ChildItem $PSHOME\pwsh.exe | Get-Member 
+3 Get-ChildItem $PSHOME\pwsh.exe | Get-Member -properties
+4.
 #!pwsh
 
 # Question 1
