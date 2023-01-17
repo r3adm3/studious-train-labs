@@ -107,3 +107,7 @@ Get-Location | Get-ChildItem
 
 # Question 8
 # Compare the FileInfo object representing you location with that of the file you queried earlier. Are they different due to the fact one is a folder and the other a file?
+
+$myfileinfo |Get-ChildItem | Get-Location
+$filelocation = $myfileinfo |Get-ChildItem | Get-Location
+$filelocation | gm
