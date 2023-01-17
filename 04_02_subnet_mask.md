@@ -38,3 +38,12 @@ Subnet address | Range of addresses | Useable IPs | Hosts | Label
 172.16.4.176/28 | 172.16.4.176 - 172.16.4.191 | 172.16.4.177 - 172.16.4.190 | 14	 | Databases for webservers
 172.16.4.192/26 | 172.16.4.192 - 172.16.4.255 | 172.16.4.193 - 172.16.4.254 | 62	| External contractors 7
 172.16.5.0/26 | 172.16.5.0 - 172.16.5.63 | 172.16.5.1 - 172.16.5.62 | 62 | External contractors 8
+
+Now this table does not fully answer question 3. To answer number 3 completely I would ask whoever requested the extension following questions:
+1. Will we need more webservers?
+2. Will we need more databases for webservers?
+3. Will we need more backend systems?
+4. Will we need more Backend databases?
+5. Will we need more File sharing servers?
+
+If no answers are given or uncertanity remains I would go and preemptively increase size of some subnetworks which are close to running out of available IP addresses.
