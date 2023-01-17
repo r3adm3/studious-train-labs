@@ -66,6 +66,7 @@ $myfileinfo = Get-ChildItem -path $myfile
 
 # Question 2
 # Get the members of the $myfileinfo object
+$myfileinfo | gm
 
 #!pwsh
 
