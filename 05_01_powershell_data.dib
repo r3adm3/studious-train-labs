@@ -85,6 +85,8 @@ $myfileinfo | Get-Member -MemberType Property
 # Question 5
 # Create 2 variables and assign to each the value of any property of your FileInfo object
 
+$myfileinfo.Directory
+
 $myvar1 = $myfile # .value1
 $myvar2 = $myfile # .value2
 
@@ -92,6 +94,9 @@ $myvar2 = $myfile # .value2
 
 # Question 6
 # # Use Get-Member to display information about the properties and methods associated with each of your 2 variables
+
+$myvar2 | gm
+
 
 $myvar1 
 $myvar2
@@ -101,6 +106,8 @@ $myvar2
 # Question 7
 # Use Get-ChildItem to retrieve a FileInfo Object of your current PowerShell path (use Get-Location)
 # Get-Location returns a folder object
+
+Get-Location | Get-Item | gm
 
 #!pwsh
 
