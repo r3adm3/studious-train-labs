@@ -51,18 +51,18 @@ Department| Subnet address | Range of addresses | Useable IPs | Hosts
 **Backend systems - 194** | 172.16.0.0/24 | 172.16.0.0 - 172.16.0.255 | 172.16.0.1 - 172.16.0.254 | 254
 **Accountants - 135** | 172.16.1.0/24 | 172.16.1.0 - 172.16.1.255 | 	172.16.1.1 - 172.16.1.254 | 254 
 **Developers - 67** | 172.16.2.0/25 | 	172.16.2.0 - 172.16.2.127 | 172.16.2.1 - 172.16.2.126 | 126 
-**External contractors - group 1** | B1 | C1|  |  
-**External contractors - group 2** | B1 | C1|  |  
-**External contractors - group 3** | B1 | C1|  |  
-**External contractors - group 4** | B1 | C1|  |  
-**External contractors - group 5** | B1 | C1|  |  
-**External contractors - group 6** | B1 | C1|  |  
-**External contractors - group 7** | B1 | C1|  |  
-**External contractors - group 8** | B1 | C1|  |   
-**Management - 43** | B1 | C1|  |  
-**Backend databases - 34** | B1 | C1|  |
-**Webservers - 21** | B1 | C1|  |  
-**File sharing servers - 14** | B1 | C1|  |  
-**Databases for webservers - 11** | B1 | C1|  |
+**External contractors - group 1** | 172.16.2.128/26 | 172.16.2.128 - 172.16.2.191 | 172.16.2.129 - 172.16.2.190 | 62 
+**External contractors - group 2** | 172.16.2.192/26 | 172.16.2.192 - 172.16.2.255 | 172.16.2.193 - 172.16.2.254 | 62 
+**External contractors - group 3** | 172.16.3.0/26 | 172.16.3.0 - 172.16.3.63 | 172.16.3.1 - 172.16.3.62 | 62 
+**External contractors - group 4** | 172.16.3.64/26 | 172.16.3.64 - 172.16.3.127 | 172.16.3.65 - 172.16.3.126 | 62 
+**External contractors - group 5** | 172.16.3.128/26 | 172.16.3.128 - 172.16.3.191 | 172.16.3.129 - 172.16.3.190 | 62 
+**External contractors - group 6** | 172.16.3.192/26 | 172.16.3.192 - 172.16.3.255 | 172.16.3.193 - 172.16.3.254 | 62 
+**External contractors - group 7** | 172.16.4.0/26 | 172.16.4.0 - 172.16.4.63 | 172.16.4.1 - 172.16.4.62 | 62 
+**External contractors - group 8** | 172.16.4.64/26 | 172.16.4.64 - 172.16.4.127 | 172.16.4.65 - 172.16.4.126 | 62  
+**Management - 43** | 172.16.4.128/26 | 172.16.4.128 - 172.16.4.191 | 172.16.4.129 - 172.16.4.190 | 62 
+**Backend databases - 34** | 172.16.4.192/26 | 172.16.4.192 - 172.16.4.255 | 172.16.4.193 - 172.16.4.254 | 62
+**Webservers - 21** | 172.16.5.0/27 | 172.16.5.0 - 172.16.5.31 | 172.16.5.1 - 172.16.5.30 | 30  
+**File sharing servers - 14** | 172.16.5.32/28 | 172.16.5.32 - 172.16.5.47 | 172.16.5.33 - 172.16.5.46 | 14 
+**Databases for webservers - 11** | 172.16.5.48/28 | 172.16.5.48 - 172.16.5.63 | 172.16.5.49 - 172.16.5.62 | 14
 
 
