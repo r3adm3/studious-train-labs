@@ -1,0 +1,139 @@
+#!markdown
+
+# Working with Data
+
+## Introduction
+
+Working with data is an essential skill for nearly all IT professionals, not just developers. As IT environments continue to grow, becomimg ever more complex as they do, managing them becomes more challenging. In most organisations, the days of building individual PCs and severs, or creating user accounts manually are long gone. IT operations are most often executed en masse using scripts that perform tasks on large numbers of objects. Therefore managing and maintaining the IT environment is largely a matter of managing and manipulating the data that represents it.
+
+It's difficult to predict how and in what direction your LBG IT will progress. However, it is a certainty that you will work with large volumes of data which are too large and complex to work with manually. PowerShell has great data handling capabilities. It provides built in commands for importing, converting,processing and exporting large volumes of data quickly and easily. Knowing how to process data will beofhuge benefit in your career, and doing so with PowerShell is one of the easiest ways to learn, allowing you to quickly become profficient and effective.
+
+### PowerShell Data Handling Internals
+
+As we already know, PowerShell stores data records as objects in memory. However, individual objects are limited in their capability to handle large volumes of data. For this reason we use collections, which combine multiple objects into a single entity that can be managed efficiently.
+
+
+#### PowerShell Objects
+
+##### Intro and Definition 
+
+Every action you take in PowerShell occurs within the context of objects. As data moves from one command to the next, it moves as one or more identifiable objects. An object, then, is a collection of data that represents an item. An object is made up of three types of data: the objects type, its methods, and its properties.
+
+When working with objects, you can use their methods and properties in commands to take action and manage data.
+
+You can discover an objects properties and methods using Get-Member or the psobject intrinsic member.
+
+##### Types
+
+The object type tells what kind of object it is. For example, an object that represents a file is a FileInfo object.
+
+##### Methods
+
+The object methods are actions that you can perform on the object. For example, FileInfo objects have a CopyTo method that you can use to copy the file.
+
+##### Properties
+Object properties store information about the object. For example, FileInfo objects have a LastWriteTime property that stores the date and time that the file was most recently accessed.
+
+#!markdown
+
+#### Practical Exercise
+
+1. Use Get-ChildItem to retrieve a FileInfo Object of a particular file 
+    C:\Users\studentadmin\labs\studious-train-labs\03_powershell_content
+
+    $myfile = "C:\Users\studentadmin\labs\studious-train-labs\03_powershell_content\Powershell exercise.md"
+$myfileinfo = Get-ChildItem -path $myfile
+$myfile
+
+2. Use Get-Member to display information about the properties and methods associated with the FileInfo object
+
+$myfile | get-member
+
+
+3. Use Get-Member to retrieve only the properties of a FileInfo object
+
+$myfile | get-member -MemberType Property
+
+
+4. Use Get-Member to retrieve only the methods associated with a FileInfo object
+
+PS C:\Users\studentadmin> $myfile | get-member -MemberType Method
+
+
+5. Create 2 variables and assign to each the value of any property of your FileInfo object
+
+S C:\Users\studentadmin> $myvar1 = $myfileinfo.name
+PS C:\Users\studentadmin> $myvar1
+Powershell exercise.md
+
+PS C:\Users\studentadmin> $myvar2 = $myfileinfo.length
+PS C:\Users\studentadmin> $myvar2
+4812
+
+
+6. use Get-Member to display information about the properties and methods associated with each of your 2 variables
+
+1. $myvar1 | Get-Member -MemberType Property
+      $myvar1 | Get-Member -MemberType Method
+   2. $myvar2 | Get-Member -MemberType Property
+      $myvar2 | Get-Member -MemberType Method
+
+7. Use Get-ChildItem to retrieve a FileInfo Object of your current PowerShell path (use Get-Location)
+
+Get-Location | Get-ChildItem
+
+8. Compare the FileInfo object representing you location with that of the file you queried earlier. Arethey different due to the fact one is a folder and the other a file?
+
+#!markdown
+
+#### Examples and Hints
+
+#!pwsh
+
+# Question 1
+# Change the path to one on your own machimne
+$myfile = "C:\Users\jmgadmin\arstechnica\lbginteractive\Commands and Code\PowerShell\Datasets\Pet data\pet-data.csv"
+$myfileinfo = Get-ChildItem -path $myfile
+
+#!pwsh
+
+# Question 2
+# Get the members of the $myfileinfo object
+
+#!pwsh
+
+# Question 3
+# Get the property members of the $myfileinfo object, hint below
+Get-Member -MemberType Property
+
+#!pwsh
+
+# Question 4
+# Get the method members of the $myfileinfo object, the clue is in the question above
+
+#!pwsh
+
+# Question 5
+# Create 2 variables and assign to each the value of any property of your FileInfo object
+
+$myvar1 = $myfile # .value1
+$myvar2 = $myfile # .value2
+
+#!pwsh
+
+# Question 6
+# # Use Get-Member to display information about the properties and methods associated with each of your 2 variables
+
+$myvar1 
+$myvar2
+
+#!pwsh
+
+# Question 7
+# Use Get-ChildItem to retrieve a FileInfo Object of your current PowerShell path (use Get-Location)
+# Get-Location returns a folder object
+
+#!pwsh
+
+# Question 8
+# Compare the FileInfo object representing you location with that of the file you queried earlier. Are they different due to the fact one is a folder and the other a file?
