@@ -41,6 +41,7 @@ Object properties store information about the object. For example, FileInfo obje
 1. Use Get-ChildItem to retrieve a FileInfo Object of a particular file
    1. $myfilelocation = "C:\Users\studentadmin\gitWorkExamples\studious-train-labs\04_02_subnet_mask.md"  
    2. $myfileinfo = Get-ChildItem -path $myfilelocation
+   3. $myfileinfo
 2. Use Get-Member to display information about the properties and methods associated with the FileInfo object
    1. $myfileinfo | Get-Member
 3. Use Get-Member to retrieve only the properties of a FileInfo object
@@ -48,11 +49,20 @@ Object properties store information about the object. For example, FileInfo obje
 4. Use Get-Member to retrieve only the methods associated with a FileInfo object
    1. $myfileinfo | Get-Member -MemberType Method
 5. Create 2 variables and assign to each the value of any property of your FileInfo object
-   1. 
-   2. 
+   1. $myvar1 = $myfileinfo.name
+       $myvar1
+   2. $myvar2 = $myfileinfo.length
+       $myvar2
 6. use Get-Member to display information about the properties and methods associated with each of your 2 variables
+   1. $myvar1 | Get-Member -MemberType Property
+      $myvar1 | Get-Member -MemberType Method  
+   2. $myvar2 | Get-Member -MemberType Property
+      $myvar2 | Get-Member -MemberType Method
 7. Use Get-ChildItem to retrieve a FileInfo Object of your current PowerShell path (use Get-Location)
-8. Compare the FileInfo object representing you location with that of the file you queried earlier. Arethey different due to the fact one is a folder and the other a file?
+   1. Get-Location | Get-ChildItem | Get-Member
+   2. Get-Location | Get-Item | | Get-Member
+8. Compare the FileInfo object representing you location with that of the file you queried earlier. Are they different due to the fact one is a folder and the other a file?
+   1. 
 
 #!markdown
 
