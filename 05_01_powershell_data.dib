@@ -1,3 +1,7 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
 #!markdown
 
 # Working with Data
@@ -55,7 +59,7 @@ Object properties store information about the object. For example, FileInfo obje
 
 # Question 1
 # Change the path to one on your own machimne
-$myfile = "C:\Users\jmgadmin\arstechnica\lbginteractive\Commands and Code\PowerShell\Datasets\Pet data\pet-data.csv"
+$myfile = "C:\Users\studentadmin\Command\studious-train-labs\03_powershell_content"
 $myfileinfo = Get-ChildItem -path $myfile
 
 #!pwsh
