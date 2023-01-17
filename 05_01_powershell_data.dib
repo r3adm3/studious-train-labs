@@ -73,7 +73,7 @@ $myfileinfo | gm
 
 # Question 3
 # Get the property members of the $myfileinfo object, hint below
-$myfileinfo | Get-ItemProperty
+$myfileinfo | Get-Member -MemberType Property
 
 #!pwsh
 
