@@ -64,6 +64,10 @@ $myfileinfo | gm -MemberType Property
 
 $myfileinfo | gm -MemberType Method
 
+#!pwsh
+
+test 1233
+
 #!markdown
 
 #### Practical Exercise
