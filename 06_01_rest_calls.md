@@ -11,6 +11,34 @@ Options 1. and 2. are similar but not identical. For basic use cases they are in
 
 Some tasks for practicing:
 1. Invoke following endpoint and observe the data it returns using both *curl* and *Invoke-RestMethod*. Endpoint: `https://catfact.ninja/fact`
+    curl returns the information as what appears to be a string but Invoke-RestMethod returns the information as a PowerShell object.
+
 2. Invoke slightly more complex endpoint `https://www.boredapi.com/api/activity` and access only a single part of the response (for instance `type`)
+    Can save Invoke-RestMethod response as a variable such as $response,
+
+    Using $response.type (or $response.activity e.c.t) will give the part of the response we asked for.
+
 3. Create a powershell script and call endpoint `https://catfact.ninja/fact` 10 times. Store the results in an arraylist. Print the arraylist.
+
+$catFactsCURL = @()
+for($i=0; $i -le 10; $i++){
+
+$response = curl https://catfact.ninja/fact
+
+$catFactsCURL+=($response)
+}
+
+$catFactsCURL
+
 4. Create a powershell script and call endpoint `https://www.boredapi.com/api/activity` 10 times. Transform each response to an object and store each object in arraylist.
+
+$BoredAPI = @()
+for($i=0; $i -le 10; $i++){
+
+$response = Invoke-RestMethod https://www.boredapi.com/api/activity
+
+$BoredAPI+=([PSCustomObject]@{ activity = $response.activity; type = $response.type;  participants = $response.participants; price = $response.price; link = $response.link; key = $response.key; accessibility = $response.accessibility})
+}
+
+$BoredAPI
+
