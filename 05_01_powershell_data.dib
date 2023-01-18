@@ -52,6 +52,7 @@ Object properties store information about the object. For example, FileInfo obje
 2 Get-ChildItem $PSHOME\pwsh.exe | Get-Member 
 3 Get-ChildItem $PSHOME\pwsh.exe | Get-Member -properties
 4.
+$myfileinfo.Director
 #!pwsh
 #!pwsh
 
