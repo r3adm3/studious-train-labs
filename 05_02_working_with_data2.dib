@@ -1,3 +1,7 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
 #!markdown
 
 # Collections and Data
@@ -45,6 +49,9 @@ $myarray = 22,5,10,8,12,9,80
 [int32[]]$myarray = 22,5,10,8,12,9,80
 #>
 
+$myarray = 22,5,10,8,12,9,80
+$myarray
+
 #!markdown
 
 Array values are accessed by the element number, or index:
@@ -64,6 +71,9 @@ $myarray[4]
 
 $myarray[2..6]
 #>
+
+$myarray[4]
+$myarray[2..6]
 
 #!markdown
 
@@ -113,6 +123,8 @@ $petsArray+=([PSCustomObject]@{ Species = 'horse'; Name = 'Brian'; Age = '5'; Ty
 $petsArray+=([PSCustomObject]@{ Species = 'dog'; Name = 'Maxwell'; Age = '3'; Type = 'mammal' })
 $petsArray+=([PSCustomObject]@{ Species = 'dog'; Name = 'Henry'; Age = '6'; Type = 'mammal' })
 $petsArray+=([PSCustomObject]@{ Species = 'rabbit'; Name = 'Snoopy'; Age = '4'; Type = 'mammal' })
+
+$petsArray
 
 #!markdown
 
@@ -397,7 +409,7 @@ What this means is that every time you have to add an element to an array, Power
 * create a new array that is one element longer than the existing one
 * populate the last element of the array with the new object instance that you wish to add to it
 
-This is OK in most instances, but it is **incredibly** inneficient and can have a huge impact on performance when working with large datasets. We will lok at how to improve efficiency and performance in the next Polyglot file. 
+This is OK in most instances, but it is **incredibly** inneficient and can have a huge impact on performance when working with large datasets. We will look at how to improve efficiency and performance in the next Polyglot file. 
 
 Now, let's apply the techniques that we used above to access elements of the *'$petsArray'* array:
 
@@ -411,7 +423,7 @@ Next we will import the data from a csv into an array. We do this in the next co
 
 #!pwsh
 
-$myPetsArrayfromCSV = Import-Csv -Path "C:\Users\jmgadmin\arstechnica\lbginteractive\Commands and Code\PowerShell\Datasets\Pet data\newpets\Pet data\pet-data.csv"
+$myPetsArrayfromCSV = Import-Csv -Path "C:\Users\studentadmin\source\studious-train-labs\05_02_pet_data.csv"
 $myPetsArrayfromCSV | gm
 $myPetsArrayfromCSV
 
