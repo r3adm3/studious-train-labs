@@ -15,7 +15,7 @@ Some tasks for practicing:
 
 curl https://catfact.ninja/fact - {"fact":"There are more than 500 million domestic cats in the world, with approximately 40 recognized breeds.","length":100}
 
-Invoke-RestMethod -Uri https://catfact.ninja/fact - Florence Nightingale owned more than 60 cats in her lifetime.     61
+Invoke-RestMethod https://catfact.ninja/fact - Florence Nightingale owned more than 60 cats in her lifetime.     61
 
 
 2. Invoke slightly more complex endpoint `https://www.boredapi.com/api/activity` and access only a single part of the response (for instance `type`)
