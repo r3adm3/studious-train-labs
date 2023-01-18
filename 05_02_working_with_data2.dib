@@ -120,7 +120,7 @@ We can then use the array as we would any array. Read then run the following cod
 
 #!pwsh
 
-$petsArray[2]
+$petsArray[3]
 
 #!pwsh
 
@@ -411,7 +411,7 @@ Next we will import the data from a csv into an array. We do this in the next co
 
 #!pwsh
 
-$myPetsArrayfromCSV = Import-Csv -Path "C:\Users\jmgadmin\arstechnica\lbginteractive\Commands and Code\PowerShell\Datasets\Pet data\newpets\Pet data\pet-data.csv"
+$myPetsArrayfromCSV = Import-Csv -Path "C:\Users\studentadmin\source\engreskill\Sourcetwo\studious-train-labs\studious-train-labs\05_02_pet_data.csv"
 $myPetsArrayfromCSV | gm
 $myPetsArrayfromCSV
 
