@@ -115,12 +115,13 @@ Then we add 5 PSCustomObjects to the array:
 
 #!pwsh
 
-$petsArray = @()
-$petsArray+=([PSCustomObject]@{ Species = 'cat'; Name = 'Derek'; Age = '7'; Type = 'mammal' })
-$petsArray+=([PSCustomObject]@{ Species = 'horse'; Name = 'Brian'; Age = '5'; Type = 'mammal' })
-$petsArray+=([PSCustomObject]@{ Species = 'dog'; Name = 'Maxwell'; Age = '3'; Type = 'mammal' })
-$petsArray+=([PSCustomObject]@{ Species = 'dog'; Name = 'Henry'; Age = '6'; Type = 'mammal' })
-$petsArray+=([PSCustomObject]@{ Species = 'rabbit'; Name = 'Snoopy'; Age = '4'; Type = 'mammal' })
+$AnimalArray = @()
+$AnimalArray+=([PSCustomObject]@{ Species = 'cat'; Name = 'Derek'; Age = '7'; Type = 'mammal' })
+$AnimalArray+=([PSCustomObject]@{ Species = 'horse'; Name = 'Brian'; Age = '5'; Type = 'mammal' })
+$AnimalArray+=([PSCustomObject]@{ Species = 'dog'; Name = 'Maxwell'; Age = '3'; Type = 'mammal' })
+$AnimalArray+=([PSCustomObject]@{ Species = 'dog'; Name = 'Henry'; Age = '6'; Type = 'mammal' })
+$AnimalArray+=([PSCustomObject]@{ Species = 'rabbit'; Name = 'Snoopy'; Age = '4'; Type = 'mammal' })
+$AnimalArray
 
 #!markdown
 
