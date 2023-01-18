@@ -424,12 +424,18 @@ $myPetsArrayfromCSV = Import-Csv -Path "C:\Users\jmgadmin\arstechnica\lbginterac
 $myPetsArrayfromCSV | gm
 $myPetsArrayfromCSV
 
+#!markdown
+
+#### Exercises for Array Handling
+
+1. Loop through the pets array with a foreach loop and write each name and age to screen
+
 #!pwsh
 
-$petsArrayList = @("Name: Snoopy Age: 4","Name: Tigger Age: 7","Name: Bob Age: 19","Name: Roger Age: 3")
-foreach ($petsArrayList in $petsArrayList) {
-  $petsArrayList;
- }
+foreach($pet in $petsArray){
+$pet.Name
+$pet.Age
+}
 
 #!markdown
 
