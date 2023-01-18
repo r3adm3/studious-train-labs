@@ -1,3 +1,7 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","aliases":[]},{"name":"vscode","languageName":null,"aliases":["frontend"]}]}}
+
 #!markdown
 
 # Collections and Data
@@ -403,7 +407,7 @@ Now, let's apply the techniques that we used above to access elements of the *'$
 
 #!pwsh
 
-$petsArray
+$petsArray[12]
 
 #!markdown
 
@@ -411,7 +415,7 @@ Next we will import the data from a csv into an array. We do this in the next co
 
 #!pwsh
 
-$myPetsArrayfromCSV = Import-Csv -Path "C:\Users\jmgadmin\arstechnica\lbginteractive\Commands and Code\PowerShell\Datasets\Pet data\newpets\Pet data\pet-data.csv"
+$myPetsArrayfromCSV = Import-Csv -Path "C:\Users\lnewt\engineering_course\powershell\playground\studious-train-labs\05_02_pet_data.csv"
 $myPetsArrayfromCSV | gm
 $myPetsArrayfromCSV
 

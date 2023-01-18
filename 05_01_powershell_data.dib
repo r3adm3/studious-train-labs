@@ -1,3 +1,7 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","languageName":"C#","aliases":["c#","C#"]},{"name":"vscode","aliases":["frontend"],"languageName":null},{"name":".NET","aliases":[],"languageName":null},{"name":"fsharp","languageName":"F#","aliases":["f#","F#"]},{"name":"html","languageName":"HTML","aliases":[]},{"name":"http","languageName":"HTTP","aliases":[]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"kql","languageName":"KQL","aliases":[]},{"name":"mermaid","languageName":"Mermaid","aliases":[]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"sql","languageName":"SQL","aliases":[]},{"name":"value","aliases":[],"languageName":null},{"name":"webview","aliases":[]}]}}
+
 #!markdown
 
 # Working with Data
@@ -55,32 +59,40 @@ Object properties store information about the object. For example, FileInfo obje
 
 # Question 1
 # Change the path to one on your own machimne
-$myfile = "C:\Users\jmgadmin\arstechnica\lbginteractive\Commands and Code\PowerShell\Datasets\Pet data\pet-data.csv"
-$myfileinfo = Get-ChildItem -path $myfile
+$myfile = "C:\Users\lnewt\engineering_course\powershell\playground\data.csv"
+$fileinfo = Get-ChildItem -path $myfile
+$fileinfo
 
 #!pwsh
 
 # Question 2
 # Get the members of the $myfileinfo object
+$extension = $myFileInfo.Extension
+$extension
 
 #!pwsh
 
 # Question 3
 # Get the property members of the $myfileinfo object, hint below
-Get-Member -MemberType Property
+$fileinfo = Get-ChildItem -path $myfile
+$fileinfo | Get-Member -MemberType Property
 
 #!pwsh
 
 # Question 4
 # Get the method members of the $myfileinfo object, the clue is in the question above
+$fileinfo | Get-Member ? 
 
 #!pwsh
 
 # Question 5
 # Create 2 variables and assign to each the value of any property of your FileInfo object
-
-$myvar1 = $myfile # .value1
-$myvar2 = $myfile # .value2
+$myfile = "C:\Users\lnewt\engineering_course\powershell\playground\data.csv"
+$fileinfo = Get-ChildItem -path $myfile
+$directory = $fileinfo.Directory
+$fullname = $fileinfo.fullName
+$directory
+$fullname
 
 #!pwsh
 
@@ -95,8 +107,10 @@ $myvar2
 # Question 7
 # Use Get-ChildItem to retrieve a FileInfo Object of your current PowerShell path (use Get-Location)
 # Get-Location returns a folder object
+Get-Location | Get-ChildItem 
 
 #!pwsh
 
 # Question 8
 # Compare the FileInfo object representing you location with that of the file you queried earlier. Are they different due to the fact one is a folder and the other a file?
+Get-Location | Get-ChildItem | get-member
