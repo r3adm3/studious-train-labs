@@ -24,15 +24,20 @@ Invoke-RestMethod -Uri https://catfact.ninja/fact
 
 3. Create a powershell script and call endpoint `https://catfact.ninja/fact` 10 times. Store the results in an arraylist. Print the arraylist.
 
-# Create an empty array to store the cat facts
+#Create an empty array to store the cat facts
+
 $cat = @()
 
-# Call the endpoint 10 times
+#Call the endpoint 10 times
+
 for ($i = 0; $i -lt 10; $i++) {
-    # Use Invoke-RestMethod to call the endpoint and store the result in a variable
+
+    #Use Invoke-RestMethod to call the endpoint and store the result in a variable
+    
     $catFact = Invoke-RestMethod -Uri https://catfact.ninja/fact
 
-    # Add the cat fact to the array
+    #Add the cat fact to the array
+    
     $cat += $catFact.fact
 }
 
@@ -41,15 +46,20 @@ $cat
 4. Create a powershell script and call endpoint `https://www.boredapi.com/api/activity` 10 times. Transform each response to an object and store each object in arraylist.
 
 
-# Create an array to store the activities
+#Create an array to store the activities
+
 $activities = @()
 
-# Call the endpoint 10 times
+#Call the endpoint 10 times
+
 for ($i = 0; $i -lt 10; $i++) {
-    # Use Invoke-RestMethod to call the endpoint and store the result in a variable
+
+    #Use Invoke-RestMethod to call the endpoint and store the result in a variable
+    
     $activity = Invoke-RestMethod -Uri https://www.boredapi.com/api/activity
 
-    # Convert the result to a PSObject and add the object to the array
+    #Convert the result to a PSObject and add the object to the array
+    
     $activities += [PSCustomObject]$activity
 }
 
