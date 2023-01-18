@@ -17,5 +17,7 @@ fact                                                          length
 ----                                                          ------
 Florence Nightingale owned more than 60 cats in her lifetime.     61
 2. Invoke slightly more complex endpoint `https://www.boredapi.com/api/activity` and access only a single part of the response (for instance `type`)
+"type":"social",
+type          : education
 3. Create a powershell script and call endpoint `https://catfact.ninja/fact` 10 times. Store the results in an arraylist. Print the arraylist.
 4. Create a powershell script and call endpoint `https://www.boredapi.com/api/activity` 10 times. Transform each response to an object and store each object in arraylist.
