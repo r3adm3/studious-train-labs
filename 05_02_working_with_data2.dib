@@ -1,0 +1,423 @@
+#!markdown
+
+# Collections and Data
+
+## Introduction
+
+We've reviewed objects, but when dealing with data we need to work with multiple objects. Collections provide us with the ability to group objects together, enabling us to work with many thousands of objects at the same time.
+
+### Collection Types
+
+There are various types of collections provided by .Net / PowerShell. However, we only need to concentrate on two:
+
+* Arrays
+* ArrayLists
+
+These are very similar in functionality, yet they differ in some details of their implementation and behaviour.
+
+#### Arrays
+
+These are collections of objects, all of which are usually of the same type. Each item, or instance of an object, is called an element. Arrays are created from one long chunk of memory and their elements are stored contiguously. This means that elements are stored next to each other, and in order, based on the element's index.
+
+An index indicates where in the array that an element occurs, the number starts at 0 and continues to the end of the array. Given an array with 20 elements, and the fact that the index starts at 0, the index of the last element will be 19, not 20.
+
+An array can be created in several ways:
+
+We use an integer array example here, but the same applies to all arrays.
+
+* Creating an empty Array
+  * $myarray = @() - @() is the subversion operator
+* Creating and Populating an Array
+  * $myarray = @(22,5,10,8,12,9,80)
+  * $myarray = 22,5,10,8,12,9,80
+  * [int32[]]$myarray = 22,5,10,8,12,9,80
+
+#!markdown
+
+Use the above techniques for creating an array in the code cell below:
+
+#!pwsh
+
+<#
+$myarray = @()
+$myarray = @(22,5,10,8,12,9,80)
+$myarray = 22,5,10,8,12,9,80
+[int32[]]$myarray = 22,5,10,8,12,9,80
+#>
+
+#!markdown
+
+Array values are accessed by the element number, or index:
+
+$myarray[4]
+
+Or range:
+
+$myarray[2..6]
+
+Try these in the code cell below.
+
+#!pwsh
+
+<#
+$myarray[4]
+
+$myarray[2..6]
+#>
+
+#!markdown
+
+##### Arrays of Objects
+
+Arrays can contain elements of a simple type, like integers, or more complex (or compound types) types, otherwise known as objects.
+
+We don't have to rely on the objects built in to PowerShell(.Net) if we want to work with objects. We've already looked at built in object types with FileInfo. If we have multiple FileInfo objects, we can easily store and manipulate them in an array. 
+
+However, we are looking at data handling, especially the importation of data using PowerShell. In order to do this, we need to learn to work with custom objects. Remember that the definition of an object is a template of how that object can be represented in memory. An instance of an object is a representation of a real entity, an actual 'thing' in real life that we are describing via our template (object definition).
+
+##### Custom Objects
+
+We can create custom objects by using **'PSCustomObject'**. This tool provides us with a simple way to create structured data. In order to create a PSCustomObject, we start with the prefix *'[PSCustomObject]'*, followed by *'@{}'*. We create the properties that we use to describe the object within the curly brackets, e.g. *'{ Species = 'cat'; Name = 'Derek'; Age = '7'; Type = 'mammal' }'*.
+
+Putting this all together we can create an object representing a pet using the expression in the code cell below. Give it a whirl.
+
+#!pwsh
+
+$myPetObject = [PSCustomObject]@{ Species = 'cat'; Name = 'Derek'; Age = '7'; Type = 'mammal' }
+$myPetObject
+
+#!markdown
+
+Run the code below to view the details of Derek and the template he is described by.
+
+#!pwsh
+
+$myPetObject | gm
+$myPetObject
+$myPetObject.Name
+$myPetObject.Species
+$myPetObject.Type
+$myPetObject.Age
+
+#!markdown
+
+It's easy to create an array of custom objects, take a look at the code cells below. First we create an array using the sub operator **'@()'**.
+
+Then we add 5 PSCustomObjects to the array:
+
+#!pwsh
+
+$petsArray = @()
+$petsArray+=([PSCustomObject]@{ Species = 'cat'; Name = 'Derek'; Age = '7'; Type = 'mammal' })
+$petsArray+=([PSCustomObject]@{ Species = 'horse'; Name = 'Brian'; Age = '5'; Type = 'mammal' })
+$petsArray+=([PSCustomObject]@{ Species = 'dog'; Name = 'Maxwell'; Age = '3'; Type = 'mammal' })
+$petsArray+=([PSCustomObject]@{ Species = 'dog'; Name = 'Henry'; Age = '6'; Type = 'mammal' })
+$petsArray+=([PSCustomObject]@{ Species = 'rabbit'; Name = 'Snoopy'; Age = '4'; Type = 'mammal' })
+
+#!markdown
+
+We can then use the array as we would any array. Read then run the following code:
+
+#!pwsh
+
+$petsArray[2]
+
+#!pwsh
+
+$petsArray[1..3]
+
+#!pwsh
+
+$petsArray[1].Name
+$petsArray[1].Age
+
+#!pwsh
+
+$petsArray[1..3].Name
+
+#!markdown
+
+So let's import some data. We are going to use the pet data in the form introduced above. Run the following code:
+
+#!pwsh
+
+$petsArray = @()
+    $petsArray+= [PSCustomObject]@{ Species = 'cat'; Name = 'Derek'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'horse'; Name = 'Brian'; Age = '5'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Maxwell'; Age = '3'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Henry'; Age = '6'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'rabbit'; Name = 'Snoopy'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'rabbit'; Name = 'Peter'; Age = '1'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cat'; Name = 'Jeremy'; Age = '8'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'goldfish'; Name = 'Jaws'; Age = '1'; Type = 'fish' }
+    $petsArray+= [PSCustomObject]@{ Species = 'hamster'; Name = 'Janet'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Einstein'; Age = '12'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'chinchilla'; Name = 'Timothy'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'horse'; Name = 'Lucy'; Age = '13'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cat'; Name = 'Hilli'; Age = '14'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'hamster'; Name = 'Daisy'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'horse'; Name = 'Tigger'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Jim'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cat'; Name = 'Lawrence'; Age = '5'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'gerbil'; Name = 'Gerald'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Florence'; Age = '14'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'goldfish'; Name = 'Jaws II'; Age = '2'; Type = 'fish' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cat'; Name = 'Willhelm'; Age = '16'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'horse'; Name = 'Bob'; Age = '19'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'donkey'; Name = 'Gordon'; Age = '13'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'pig'; Name = 'Henry'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'otter'; Name = 'Bismarck'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'rabbit'; Name = 'Harry'; Age = '1'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cat'; Name = 'Dave'; Age = '1'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'badger'; Name = 'Barney'; Age = '3'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'rabbit'; Name = 'Roger'; Age = '3'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Sam'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Brookie'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'mole'; Name = 'Avogadro'; Age = '1'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'hamster'; Name = 'Herodotus'; Age = '1'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'tortoise'; Name = 'Socrates'; Age = '21'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'horse'; Name = 'Velazquez'; Age = '17'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Xerxes'; Age = '8'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'wookie'; Name = 'Chewie'; Age = '126'; Type = 'imaginary' }
+    $petsArray+= [PSCustomObject]@{ Species = 'Pony'; Name = 'Darius'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'Rabbit'; Name = 'Fandango'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'hamster'; Name = 'Peter'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'elephant'; Name = 'Eratosthenes'; Age = '28'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'Ewok'; Name = 'Sam'; Age = '14'; Type = 'imaginary' }
+    $petsArray+= [PSCustomObject]@{ Species = 'tortoise'; Name = 'Jim'; Age = '2'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Duncan'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Montgommery'; Age = '8'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'squirrel'; Name = 'stinky'; Age = '12'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'rabbit'; Name = 'Sam'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'ferret'; Name = 'Ferrero'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'hamster'; Name = 'Cheeky'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'horse'; Name = 'Hermann'; Age = '12'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'rat'; Name = 'Rattus'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'Squirrel'; Name = 'Squeaky'; Age = '3'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'alpaca'; Name = 'Alejandro'; Age = '14'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'tortoise'; Name = 'Dudley'; Age = '2'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'horse'; Name = 'Maxwell'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Dilbert'; Age = '8'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'wookie'; Name = 'Caesar'; Age = '89'; Type = 'imaginary' }
+    $petsArray+= [PSCustomObject]@{ Species = 'Pony'; Name = 'Picasso'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'ferret'; Name = 'Fandango'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Balthazaar'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'alpaca'; Name = 'Henry'; Age = '14'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'chinchilla'; Name = 'Henry'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'pig'; Name = 'Terrence'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Victoria'; Age = '8'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'wookie'; Name = 'Roger'; Age = '52'; Type = 'imaginary' }
+    $petsArray+= [PSCustomObject]@{ Species = 'badger'; Name = 'Barbarossa'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'goat'; Name = 'Derek'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'ferret'; Name = 'Cyrus'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dromedary'; Name = 'Democritus'; Age = '6'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Rodolfo'; Age = '14'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'donkey'; Name = 'Donkey'; Age = '12'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cat'; Name = 'Jezzabelle'; Age = '12'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cat'; Name = 'Kitty'; Age = '8'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'wookie'; Name = 'Chubster'; Age = '211'; Type = 'imaginary' }
+    $petsArray+= [PSCustomObject]@{ Species = 'chicken'; Name = 'Norman'; Age = '1'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'badger'; Name = 'Franklin'; Age = '3'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'parrot'; Name = 'Daryl'; Age = '4'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'newt'; Name = 'Bubbles'; Age = '3'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'frog'; Name = 'Jiggles'; Age = '2'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'viper'; Name = 'Petain'; Age = '4'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'viper'; Name = 'Darlan'; Age = '5'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dolphin'; Name = 'Jellicoe'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'duck'; Name = 'Donald'; Age = '2'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'rabbit'; Name = 'Feynman'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'rat'; Name = 'Joan'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'gerbil'; Name = 'Knuth'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'hamster'; Name = 'Geoff'; Age = '1'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'chinchilla'; Name = 'Watson'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'goat'; Name = 'Crick'; Age = '5'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'goose'; Name = 'Turing'; Age = '4'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'panda'; Name = 'Victoria'; Age = '8'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'goat'; Name = 'Nero'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'pig'; Name = 'Patrick'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'pig'; Name = 'Claudius'; Age = '5'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'chicken'; Name = 'Pompey'; Age = '2'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'duck'; Name = 'Cicero'; Age = '4'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'pangolin'; Name = 'Leonidis'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'chicken'; Name = 'Planck'; Age = '3'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'terrapin'; Name = 'Tammy'; Age = '5'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Digger'; Age = '9'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'hamster'; Name = 'Pythagoras'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'terrapin'; Name = 'Ferdinand'; Age = '16'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'duck'; Name = 'Honey'; Age = '8'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'duck'; Name = 'Dorothy'; Age = '6'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'pony'; Name = 'Richard'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Dostoyevsky'; Age = '12'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cat'; Name = 'Zeno'; Age = '11'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'duck'; Name = 'Dawkins'; Age = '14'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'pony'; Name = 'Newton'; Age = '13'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'frog'; Name = 'Troy'; Age = '3'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'parrot'; Name = 'Charles'; Age = '9'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'toad'; Name = 'Oliver'; Age = '4'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'hamster'; Name = 'Euler'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'parrot'; Name = 'Plato'; Age = '17'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'ewok'; Name = 'Pericles'; Age = '19'; Type = 'imaginary' }
+    $petsArray+= [PSCustomObject]@{ Species = 'ewok'; Name = 'Terrence'; Age = '12'; Type = 'imaginary' }
+    $petsArray+= [PSCustomObject]@{ Species = 'wookie'; Name = 'Themistocles'; Age = '98'; Type = 'imaginary' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Harpagus'; Age = '13'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'squirrel'; Name = 'Astiages'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'toad'; Name = 'Tickle'; Age = '5'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'toad'; Name = 'Tolstoy'; Age = '3'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'frog'; Name = 'Claude'; Age = '4'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cockatoo'; Name = 'Tiberius'; Age = '21'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'chicken'; Name = 'Virgil'; Age = '2'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'badger'; Name = 'Homer'; Age = '3'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'ferret'; Name = 'Archimedes'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'turtle'; Name = 'Tipple'; Age = '23'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'turtle'; Name = 'Tickle'; Age = '21'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'frog'; Name = 'Homer'; Age = '3'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'goose'; Name = 'Gauss'; Age = '6'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'goldfish'; Name = 'Jawws III'; Age = '3'; Type = 'fish' }
+    $petsArray+= [PSCustomObject]@{ Species = 'parrot'; Name = 'Leibniz'; Age = '17'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'terrapin'; Name = 'Alan'; Age = '15'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'panda'; Name = 'Claude'; Age = '12'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'sheep'; Name = 'Henckel'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'weasel'; Name = 'Eric'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'chipmunk'; Name = 'Tolstoy'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cat'; Name = 'Shroedinger'; Age = '12'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'sheep'; Name = 'Dolly'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'monkey'; Name = 'Naruto'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'rhino'; Name = 'Sudan'; Age = '22'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Diesel'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dugong'; Name = 'Dirac'; Age = '8'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'ferret'; Name = 'Feynman'; Age = '3'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'newt'; Name = 'Newton'; Age = '9'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'ewe'; Name = 'Euclid'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'rabbit'; Name = 'Reimann'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'hedgehog'; Name = 'Hardy'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'red squirrel'; Name = 'Stalin'; Age = '3'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'coelocanth'; Name = 'Darwin'; Age = '2'; Type = 'fish' }
+    $petsArray+= [PSCustomObject]@{ Species = 'red kite'; Name = 'Marx'; Age = '2'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'red squirrel'; Name = 'Lenin'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'red panda'; Name = 'Molotov'; Age = '5'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'ferret'; Name = 'Fermat'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'panda'; Name = 'Pascal'; Age = '5'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'newt'; Name = 'frank'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'deer'; Name = 'Descartes'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'red kite'; Name = 'Engels'; Age = '3'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'mouse'; Name = 'Michael'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'llama'; Name = 'Lavoisiere'; Age = '1'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'mink'; Name = 'Mendeleev'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'opossum'; Name = 'Oppenheimer'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'owl'; Name = 'Wisdom'; Age = '6'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'hamster'; Name = 'Hadrian'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'axolotl'; Name = 'Aidrian'; Age = '3'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'kodkod'; Name = 'Konrad'; Age = '5'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'axolotl'; Name = 'Thucydides'; Age = '2'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'capibara'; Name = 'Jim'; Age = '8'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'horned dragon'; Name = 'Herodotus'; Age = '2'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'horned dragon'; Name = 'Mephistopheles'; Age = '2'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'marmot'; Name = 'Scooby-Doo'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'hawk'; Name = 'Hawking'; Age = '4'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'clownfish'; Name = 'Boris'; Age = '56'; Type = 'fish' }
+    $petsArray+= [PSCustomObject]@{ Species = 'bearded dragon'; Name = 'Kesselring'; Age = '2'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'racoon'; Name = 'Michaelangelo'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Dobzhansky'; Age = '12'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Debussy'; Age = '14'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'parrot'; Name = 'Chomsky'; Age = '17'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'adder'; Name = 'Newton'; Age = '2'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Pavlov'; Age = '12'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'puff adder'; Name = 'Pdiddy'; Age = '4'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'python'; Name = 'Monty'; Age = '6'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'boa constrictor'; Name = 'Conrad'; Age = '2'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'python'; Name = 'Francesca'; Age = '2'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'penguin'; Name = 'Penrose'; Age = '3'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'penguin'; Name = 'Penfold'; Age = '5'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'penguin'; Name = 'Pingu'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'bearded dragon'; Name = 'Beardie'; Age = '2'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'salamander'; Name = 'Sal'; Age = '2'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'salamander'; Name = 'Salvador'; Age = '17'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'salamander'; Name = 'Salvatore'; Age = '8'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'salamander'; Name = 'Salvadore'; Age = '4'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'salamander'; Name = 'Patricia'; Age = '9'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'salamander'; Name = 'Patrick'; Age = '8'; Type = 'amphibian' }
+    $petsArray+= [PSCustomObject]@{ Species = 'capibara'; Name = 'Rufus'; Age = '3'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'arabian cobra'; Name = 'Lawrence'; Age = '5'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'condor'; Name = 'Andy'; Age = '9'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'rabbit'; Name = 'Hopper'; Age = '5'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'gnu'; Name = 'Knuth'; Age = '6'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'owl'; Name = 'Turing'; Age = '9'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'turtle'; Name = 'Turing'; Age = '34'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'rat'; Name = 'Ritchie'; Age = '1'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'badger'; Name = 'Bentley'; Age = '8'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'chipmunk'; Name = 'Thompson'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'kangaroo'; Name = 'Kernighan'; Age = '6'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'ocelot'; Name = 'Stoustroup'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'sloth'; Name = 'Dijkstra'; Age = '14'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dromedary'; Name = 'Hopper'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'capibara'; Name = 'Knuth'; Age = '9'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Snover'; Age = '11'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'alpaca'; Name = 'Turing'; Age = '5'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'pigeon'; Name = 'vonNeumann'; Age = '6'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'pika'; Name = 'Hopper'; Age = '1'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'antelope'; Name = 'Turing'; Age = '6'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'marmot'; Name = 'Knuth'; Age = '8'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'ferret'; Name = 'Kernighan'; Age = '3'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'antelope'; Name = 'Thompson'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dove'; Name = 'Bentley'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'sheep'; Name = 'Schneir'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'aardvark'; Name = 'Flowers'; Age = '6'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'pig'; Name = 'Babbage'; Age = '5'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'llama'; Name = 'Lovelace'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'pigeon'; Name = 'Cox'; Age = '13'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'parrot'; Name = 'Rivest'; Age = '14'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cockatoo'; Name = 'Adelman'; Age = '3'; Type = 'bird' }
+    $petsArray+= [PSCustomObject]@{ Species = 'pangolin'; Name = 'Shamir'; Age = '3'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'goat'; Name = 'Church'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'rabbit'; Name = 'Turing'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cat'; Name = 'Godel'; Age = '9'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'horse'; Name = 'Hilbert'; Age = '8'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'ocelot'; Name = 'Diffie'; Age = '11'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'alpaca'; Name = 'Hellman'; Age = '9'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'llama'; Name = 'Shannon'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cat'; Name = 'Bell'; Age = '9'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'chinchilla'; Name = 'Vint'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'loris'; Name = 'Berners-Lee'; Age = '3'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'cow'; Name = 'Cutler'; Age = '7'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'sheep'; Name = 'Flowers'; Age = '6'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'badger'; Name = 'Huffman'; Age = '4'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'dog'; Name = 'Lamarr'; Age = '11'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'gerbil'; Name = 'Newman'; Age = '2'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'penguin'; Name = 'Linus'; Age = '6'; Type = 'mammal' }
+    $petsArray+= [PSCustomObject]@{ Species = 'tortoise'; Name = 'Torvalds'; Age = '21'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'adder'; Name = 'Euler'; Age = '4'; Type = 'reptile' }
+    $petsArray+= [PSCustomObject]@{ Species = 'bat'; Name = 'Bob'; Age = '2'; Type = 'mammal' }
+
+#!markdown
+
+There is a very important point to note here. As explained earlier, an array has a definite size who's elements are contiguous in memory. Therefore, if we create an array with zero elements e.g. by using *'$myArray = @()'*, we cannot add any objects to it, because it has zero length, and therefore, zero capacity to add any elements to it.
+
+What this means is that every time you have to add an element to an array, PowerShell must:
+
+* create a new array that is one element longer than the existing one
+* populate the last element of the array with the new object instance that you wish to add to it
+
+This is OK in most instances, but it is **incredibly** inneficient and can have a huge impact on performance when working with large datasets. We will lok at how to improve efficiency and performance in the next Polyglot file. 
+
+Now, let's apply the techniques that we used above to access elements of the *'$petsArray'* array:
+
+#!pwsh
+
+$petsArray
+
+#!markdown
+
+Next we will import the data from a csv into an array. We do this in the next code cell. To do this yourself, replace the path I am using with your own for the pet-data-csv file.
+
+#!pwsh
+
+$myPetsArrayfromCSV = Import-Csv -Path "C:\Users\jmgadmin\arstechnica\lbginteractive\Commands and Code\PowerShell\Datasets\Pet data\newpets\Pet data\pet-data.csv"
+$myPetsArrayfromCSV | gm
+$myPetsArrayfromCSV
+
+#!markdown
+
+#### Useful Links
+https://www.varonis.com/blog/powershell-array
+https://adamtheautomator.com/powershell-array/
+https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays?view=powershell-7.3
