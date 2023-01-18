@@ -400,6 +400,8 @@ $petsArray = @()
     $petsArray+= [PSCustomObject]@{ Species = 'adder'; Name = 'Euler'; Age = '4'; Type = 'reptile' }
     $petsArray+= [PSCustomObject]@{ Species = 'bat'; Name = 'Bob'; Age = '2'; Type = 'mammal' }
 
+    $petsArray
+
 #!markdown
 
 There is a very important point to note here. As explained earlier, an array has a definite size who's elements are contiguous in memory. Therefore, if we create an array with zero elements e.g. by using *'$myArray = @()'*, we cannot add any objects to it, because it has zero length, and therefore, zero capacity to add any elements to it.
@@ -428,6 +430,49 @@ Next we will import the data from a csv into an array. We do this in the next co
 $myPetsArrayfromCSV = Import-Csv -Path "C:\Users\studentadmin\source\studious-train-labs\05_02_pet_data.csv"
 $myPetsArrayfromCSV | gm
 $myPetsArrayfromCSV
+
+#!pwsh
+
+# Loop through the pets array with a foreach loop and write each name and age to screen
+
+<# using a pipeline and writing out as a sentence:
+$petsArray | foreach {"The pet is called $($_.name) and is $($_.age) years old"} 
+#>
+
+foreach ($pet in $petsArray) {
+$pet.name
+$pet.Age
+}
+
+#!pwsh
+
+# Loop through the pets array with a for loop and write each name and age to screen
+
+$count = $petsArray.Count
+
+for ($i = 0; $i -lt $count; $i++) {
+    "The pet is called $($petsArray[$i].name) and is $($petsArray[$i].age) years old"
+}
+
+#!pwsh
+
+# Loop through the pets array with a while loop and write each name and age to screen
+
+#!pwsh
+
+# Select all items from the name that contain 'oo' in the name write to screen
+
+#!pwsh
+
+# Loop through all pets in the array and write to screen only this pets who are older than ten
+
+#!pwsh
+
+# Select all dogs and write to screen
+
+#!pwsh
+
+# Find the oldest animal in the array
 
 #!markdown
 
