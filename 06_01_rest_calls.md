@@ -11,13 +11,37 @@ Options 1. and 2. are similar but not identical. For basic use cases they are in
 
 Some tasks for practicing:
 1. Invoke following endpoint and observe the data it returns using both *curl* and *Invoke-RestMethod*. Endpoint: `https://catfact.ninja/fact`
-{"fact":"There are more than 500 million domestic cats in the world, with approximately 40 recognized breeds.","length":100}
 
-fact                                                          length
-----                                                          ------
-Florence Nightingale owned more than 60 cats in her lifetime.     61
+
+curl https://catfact.ninja/fact - {"fact":"There are more than 500 million domestic cats in the world, with approximately 40 recognized breeds.","length":100}
+
+Invoke-RestMethod -Uri https://catfact.ninja/fact - Florence Nightingale owned more than 60 cats in her lifetime.     61
+
+
 2. Invoke slightly more complex endpoint `https://www.boredapi.com/api/activity` and access only a single part of the response (for instance `type`)
-"type":"social",
-type          : education
+
+Curl https://www.boredapi.com/api/activity).type - "type":"social",
+
+Invoke-RestMethod https://www.boredapi.com/api/activity).type type: education
+
 3. Create a powershell script and call endpoint `https://catfact.ninja/fact` 10 times. Store the results in an arraylist. Print the arraylist.
+
+$cat = @()
+($i = 0; $i -lt 10; $i++) 
+$catFact = Invoke-RestMethod https://catfact.ninja/fact
+$cat += $catFact.fact
+}
+
+$cat
+
+$activities = @()
+
 4. Create a powershell script and call endpoint `https://www.boredapi.com/api/activity` 10 times. Transform each response to an object and store each object in arraylist.
+
+($i = 0; $i -lt 10; $i++) 
+$activity = Invoke-RestMethod https://www.boredapi.com/api/activity
+$activities += [PSCustomObject]$activity
+
+}
+
+$activities
