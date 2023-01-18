@@ -100,12 +100,12 @@ Run the code below to view the details of Derek and the template he is described
 
 #!pwsh
 
-$myPetObject | gm
-$myPetObject
-$myPetObject.Name
-$myPetObject.Species
-$myPetObject.Type
-$myPetObject.Age
+$myKloppObject | gm
+$myKloppObject
+$myKloppObject.Name
+$myKloppObject.Species
+$myKloppObject.Type
+$myKloppObject.Age
 
 #!markdown
 
