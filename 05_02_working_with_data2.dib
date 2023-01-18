@@ -424,6 +424,13 @@ $myPetsArrayfromCSV = Import-Csv -Path "C:\Users\jmgadmin\arstechnica\lbginterac
 $myPetsArrayfromCSV | gm
 $myPetsArrayfromCSV
 
+#!pwsh
+
+$petsArrayList = @("Name: Snoopy Age: 4","Name: Tigger Age: 7","Name: Bob Age: 19","Name: Roger Age: 3")
+foreach ($petsArrayList in $petsArrayList) {
+  $petsArrayList;
+ }
+
 #!markdown
 
 #### Useful Links
