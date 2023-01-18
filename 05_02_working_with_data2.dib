@@ -71,6 +71,7 @@ $myarray[4]
 
 $myarray[2..6]
 #>
+$myarray[2..6]
 
 #!markdown
 
