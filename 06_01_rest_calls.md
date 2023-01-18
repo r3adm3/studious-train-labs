@@ -26,8 +26,6 @@ fact | length |
 
 2. Invoke slightly more complex endpoint `https://www.boredapi.com/api/activity` and access only a single part of the response (for instance `type`)
 
-3. Create a powershell script and call endpoint `https://catfact.ninja/fact` 10 times. Store the results in an arraylist. Print the arraylist.
-
 ```
 #set variable
 $page = Invoke-RestMethod https://www.boredapi.com/api/activity
@@ -49,4 +47,28 @@ charity
 ```
 
 
+3. Create a powershell script and call endpoint `https://catfact.ninja/fact` 10 times. Store the results in an arraylist. Print the arraylist.
+
+```
+$newArrayList = New-Object System.Collections.ArrayList
+
+for ($i = 0; $i -lt 10; $i++) {
+    $entry = Invoke-RestMethod https://www.boredapi.com/api/activity
+    $null = $newArrayList.add($entry)    
+}
+
+$newArrayList
+```
+
 4. Create a powershell script and call endpoint `https://www.boredapi.com/api/activity` 10 times. Transform each response to an object and store each object in arraylist.
+
+```
+$newArrayList = New-Object System.Collections.ArrayList
+
+for ($i = 0; $i -lt 10; $i++) {
+    $entry = Invoke-RestMethod https://www.boredapi.com/api/activity
+    $null = $newArrayList.add($entry)    
+}
+
+$newArrayList
+```
