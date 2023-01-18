@@ -45,6 +45,9 @@ $myarray = 22,5,10,8,12,9,80
 [int32[]]$myarray = 22,5,10,8,12,9,80
 #>
 
+$myarray = 22,5,10,8,12,9,80
+$myarray
+
 #!markdown
 
 Array values are accessed by the element number, or index:
@@ -64,6 +67,8 @@ $myarray[4]
 
 $myarray[2..6]
 #>
+
+$myarray[2..6]
 
 #!markdown
 
@@ -411,7 +416,7 @@ Next we will import the data from a csv into an array. We do this in the next co
 
 #!pwsh
 
-$myPetsArrayfromCSV = Import-Csv -Path "C:\Users\jmgadmin\arstechnica\lbginteractive\Commands and Code\PowerShell\Datasets\Pet data\newpets\Pet data\pet-data.csv"
+$myPetsArrayfromCSV = Import-Csv -Path "C:\Users\studentadmin\Work\studious-train-labs\05_02_pet_data.csv"
 $myPetsArrayfromCSV | gm
 $myPetsArrayfromCSV
 
