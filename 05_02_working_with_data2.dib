@@ -91,8 +91,8 @@ Putting this all together we can create an object representing a pet using the e
 
 #!pwsh
 
-$myPetObject = [PSCustomObject]@{ Species = 'cat'; Name = 'Derek'; Age = '7'; Type = 'mammal' }
-$myPetObject
+$myKloppObject = [PSCustomObject]@{ Species = 'cat'; Name = 'Derek'; Age = '7'; Type = 'mammal' }
+$myKloppObject
 
 #!markdown
 
