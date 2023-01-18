@@ -415,7 +415,9 @@ Now, let's apply the techniques that we used above to access elements of the *'$
 
 #!pwsh
 
-$petsArray
+$petsArray[5..7].Type
+
+$petsArray[5..7]
 
 #!markdown
 
