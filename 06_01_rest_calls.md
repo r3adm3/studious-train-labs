@@ -12,14 +12,10 @@ Options 1. and 2. are similar but not identical. For basic use cases they are in
 Some tasks for practicing:
 1. Invoke following endpoint and observe the data it returns using both *curl* and *Invoke-RestMethod*. Endpoint: `https://catfact.ninja/fact`
 
- curl https://catfact.ninja/fact
-{"fact":"Cats' hearing is much more sensitive than humans and dogs.","length":58}
+curl https://catfact.ninja/fact
 
 Invoke-RestMethod -Uri https://catfact.ninja/fact
 
-fact
-----
-A cat's smell is their strongest sense, and they rely on this leading sense to identify people and objects; a feline's…
 
 2. Invoke slightly more complex endpoint `https://www.boredapi.com/api/activity` and access only a single part of the response (for instance `type`)
 
