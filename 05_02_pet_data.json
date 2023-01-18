@@ -1,0 +1,1472 @@
+[
+  {
+    "Species": "cat",
+    "Name": "Derek",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "horse",
+    "Name": "Brian",
+    "Age": "5",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Maxwell",
+    "Age": "3",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Henry",
+    "Age": "6",
+    "Type": "mammal"
+  },
+  {
+    "Species": "rabbit",
+    "Name": "Snoopy",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "rabbit",
+    "Name": "Peter",
+    "Age": "1",
+    "Type": "mammal"
+  },
+  {
+    "Species": "cat",
+    "Name": "Jeremy",
+    "Age": "8",
+    "Type": "mammal"
+  },
+  {
+    "Species": "goldfish",
+    "Name": "Jaws",
+    "Age": "1",
+    "Type": "fish"
+  },
+  {
+    "Species": "hamster",
+    "Name": "Janet",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Einstein",
+    "Age": "12",
+    "Type": "mammal"
+  },
+  {
+    "Species": "chinchilla",
+    "Name": "Timothy",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "horse",
+    "Name": "Lucy",
+    "Age": "13",
+    "Type": "mammal"
+  },
+  {
+    "Species": "cat",
+    "Name": "Hilli",
+    "Age": "14",
+    "Type": "mammal"
+  },
+  {
+    "Species": "hamster",
+    "Name": "Daisy",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "horse",
+    "Name": "Tigger",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Jim",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "cat",
+    "Name": "Lawrence",
+    "Age": "5",
+    "Type": "mammal"
+  },
+  {
+    "Species": "gerbil",
+    "Name": "Gerald",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Florence",
+    "Age": "14",
+    "Type": "mammal"
+  },
+  {
+    "Species": "goldfish",
+    "Name": "Jaws II",
+    "Age": "2",
+    "Type": "fish"
+  },
+  {
+    "Species": "cat",
+    "Name": "Willhelm",
+    "Age": "16",
+    "Type": "mammal"
+  },
+  {
+    "Species": "horse",
+    "Name": "Bob",
+    "Age": "19",
+    "Type": "mammal"
+  },
+  {
+    "Species": "donkey",
+    "Name": "Gordon",
+    "Age": "13",
+    "Type": "mammal"
+  },
+  {
+    "Species": "pig",
+    "Name": "Henry",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "otter",
+    "Name": "Bismarck",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "rabbit",
+    "Name": "Harry",
+    "Age": "1",
+    "Type": "mammal"
+  },
+  {
+    "Species": "cat",
+    "Name": "Dave",
+    "Age": "1",
+    "Type": "mammal"
+  },
+  {
+    "Species": "badger",
+    "Name": "Barney",
+    "Age": "3",
+    "Type": "mammal"
+  },
+  {
+    "Species": "rabbit",
+    "Name": "Roger",
+    "Age": "3",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Sam",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Brookie",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "mole",
+    "Name": "Avogadro",
+    "Age": "1",
+    "Type": "mammal"
+  },
+  {
+    "Species": "hamster",
+    "Name": "Herodotus",
+    "Age": "1",
+    "Type": "mammal"
+  },
+  {
+    "Species": "tortoise",
+    "Name": "Socrates",
+    "Age": "21",
+    "Type": "reptile"
+  },
+  {
+    "Species": "horse",
+    "Name": "Velazquez",
+    "Age": "17",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Xerxes",
+    "Age": "8",
+    "Type": "mammal"
+  },
+  {
+    "Species": "wookie",
+    "Name": "Chewie",
+    "Age": "126",
+    "Type": "imaginary"
+  },
+  {
+    "Species": "Pony",
+    "Name": "Darius",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "Rabbit",
+    "Name": "Fandango",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "hamster",
+    "Name": "Peter",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "elephant",
+    "Name": "Eratosthenes",
+    "Age": "28",
+    "Type": "mammal"
+  },
+  {
+    "Species": "Ewok",
+    "Name": "Sam",
+    "Age": "14",
+    "Type": "imaginary"
+  },
+  {
+    "Species": "tortoise",
+    "Name": "Jim",
+    "Age": "2",
+    "Type": "reptile"
+  },
+  {
+    "Species": "dog",
+    "Name": "Duncan",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Montgommery",
+    "Age": "8",
+    "Type": "mammal"
+  },
+  {
+    "Species": "squirrel",
+    "Name": "stinky",
+    "Age": "12",
+    "Type": "mammal"
+  },
+  {
+    "Species": "rabbit",
+    "Name": "Sam",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "ferret",
+    "Name": "Ferrero",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "hamster",
+    "Name": "Cheeky",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "horse",
+    "Name": "Hermann",
+    "Age": "12",
+    "Type": "mammal"
+  },
+  {
+    "Species": "rat",
+    "Name": "Rattus",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "Squirrel",
+    "Name": "Squeaky",
+    "Age": "3",
+    "Type": "mammal"
+  },
+  {
+    "Species": "alpaca",
+    "Name": "Alejandro",
+    "Age": "14",
+    "Type": "mammal"
+  },
+  {
+    "Species": "tortoise",
+    "Name": "Dudley",
+    "Age": "2",
+    "Type": "reptile"
+  },
+  {
+    "Species": "horse",
+    "Name": "Maxwell",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Dilbert",
+    "Age": "8",
+    "Type": "mammal"
+  },
+  {
+    "Species": "wookie",
+    "Name": "Caesar",
+    "Age": "89",
+    "Type": "imaginary"
+  },
+  {
+    "Species": "Pony",
+    "Name": "Picasso",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "ferret",
+    "Name": "Fandango",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Balthazaar",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "alpaca",
+    "Name": "Henry",
+    "Age": "14",
+    "Type": "mammal"
+  },
+  {
+    "Species": "chinchilla",
+    "Name": "Henry",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "pig",
+    "Name": "Terrence",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Victoria",
+    "Age": "8",
+    "Type": "mammal"
+  },
+  {
+    "Species": "wookie",
+    "Name": "Roger",
+    "Age": "52",
+    "Type": "imaginary"
+  },
+  {
+    "Species": "badger",
+    "Name": "Barbarossa",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "goat",
+    "Name": "Derek",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "ferret",
+    "Name": "Cyrus",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dromedary",
+    "Name": "Democritus",
+    "Age": "6",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Rodolfo",
+    "Age": "14",
+    "Type": "mammal"
+  },
+  {
+    "Species": "donkey",
+    "Name": "Donkey",
+    "Age": "12",
+    "Type": "mammal"
+  },
+  {
+    "Species": "cat",
+    "Name": "Jezzabelle",
+    "Age": "12",
+    "Type": "mammal"
+  },
+  {
+    "Species": "cat",
+    "Name": "Kitty",
+    "Age": "8",
+    "Type": "mammal"
+  },
+  {
+    "Species": "wookie",
+    "Name": "Chubster",
+    "Age": "211",
+    "Type": "imaginary"
+  },
+  {
+    "Species": "chicken",
+    "Name": "Norman",
+    "Age": "1",
+    "Type": "bird"
+  },
+  {
+    "Species": "badger",
+    "Name": "Franklin",
+    "Age": "3",
+    "Type": "mammal"
+  },
+  {
+    "Species": "parrot",
+    "Name": "Daryl",
+    "Age": "4",
+    "Type": "bird"
+  },
+  {
+    "Species": "newt",
+    "Name": "Bubbles",
+    "Age": "3",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "frog",
+    "Name": "Jiggles",
+    "Age": "2",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "viper",
+    "Name": "Petain",
+    "Age": "4",
+    "Type": "reptile"
+  },
+  {
+    "Species": "viper",
+    "Name": "Darlan",
+    "Age": "5",
+    "Type": "reptile"
+  },
+  {
+    "Species": "dolphin",
+    "Name": "Jellicoe",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "duck",
+    "Name": "Donald",
+    "Age": "2",
+    "Type": "bird"
+  },
+  {
+    "Species": "rabbit",
+    "Name": "Feynman",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "rat",
+    "Name": "Joan",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "gerbil",
+    "Name": "Knuth",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "hamster",
+    "Name": "Geoff",
+    "Age": "1",
+    "Type": "mammal"
+  },
+  {
+    "Species": "chinchilla",
+    "Name": "Watson",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "goat",
+    "Name": "Crick",
+    "Age": "5",
+    "Type": "mammal"
+  },
+  {
+    "Species": "goose",
+    "Name": "Turing",
+    "Age": "4",
+    "Type": "bird"
+  },
+  {
+    "Species": "panda",
+    "Name": "Victoria",
+    "Age": "8",
+    "Type": "mammal"
+  },
+  {
+    "Species": "goat",
+    "Name": "Nero",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "pig",
+    "Name": "Patrick",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "pig",
+    "Name": "Claudius",
+    "Age": "5",
+    "Type": "mammal"
+  },
+  {
+    "Species": "chicken",
+    "Name": "Pompey",
+    "Age": "2",
+    "Type": "bird"
+  },
+  {
+    "Species": "duck",
+    "Name": "Cicero",
+    "Age": "4",
+    "Type": "bird"
+  },
+  {
+    "Species": "pangolin",
+    "Name": "Leonidis",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "chicken",
+    "Name": "Planck",
+    "Age": "3",
+    "Type": "bird"
+  },
+  {
+    "Species": "terrapin",
+    "Name": "Tammy",
+    "Age": "5",
+    "Type": "reptile"
+  },
+  {
+    "Species": "dog",
+    "Name": "Digger",
+    "Age": "9",
+    "Type": "mammal"
+  },
+  {
+    "Species": "hamster",
+    "Name": "Pythagoras",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "terrapin",
+    "Name": "Ferdinand",
+    "Age": "16",
+    "Type": "reptile"
+  },
+  {
+    "Species": "duck",
+    "Name": "Honey",
+    "Age": "8",
+    "Type": "bird"
+  },
+  {
+    "Species": "duck",
+    "Name": "Dorothy",
+    "Age": "6",
+    "Type": "bird"
+  },
+  {
+    "Species": "pony",
+    "Name": "Richard",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Dostoyevsky",
+    "Age": "12",
+    "Type": "mammal"
+  },
+  {
+    "Species": "cat",
+    "Name": "Zeno",
+    "Age": "11",
+    "Type": "mammal"
+  },
+  {
+    "Species": "duck",
+    "Name": "Dawkins",
+    "Age": "14",
+    "Type": "bird"
+  },
+  {
+    "Species": "pony",
+    "Name": "Newton",
+    "Age": "13",
+    "Type": "mammal"
+  },
+  {
+    "Species": "frog",
+    "Name": "Troy",
+    "Age": "3",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "parrot",
+    "Name": "Charles",
+    "Age": "9",
+    "Type": "bird"
+  },
+  {
+    "Species": "toad",
+    "Name": "Oliver",
+    "Age": "4",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "hamster",
+    "Name": "Euler",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "parrot",
+    "Name": "Plato",
+    "Age": "17",
+    "Type": "mammal"
+  },
+  {
+    "Species": "ewok",
+    "Name": "Pericles",
+    "Age": "19",
+    "Type": "imaginary"
+  },
+  {
+    "Species": "ewok",
+    "Name": "Terrence",
+    "Age": "12",
+    "Type": "imaginary"
+  },
+  {
+    "Species": "wookie",
+    "Name": "Themistocles",
+    "Age": "98",
+    "Type": "imaginary"
+  },
+  {
+    "Species": "dog",
+    "Name": "Harpagus",
+    "Age": "13",
+    "Type": "mammal"
+  },
+  {
+    "Species": "squirrel",
+    "Name": "Astiages",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "toad",
+    "Name": "Tickle",
+    "Age": "5",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "toad",
+    "Name": "Tolstoy",
+    "Age": "3",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "frog",
+    "Name": "Claude",
+    "Age": "4",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "cockatoo",
+    "Name": "Tiberius",
+    "Age": "21",
+    "Type": "bird"
+  },
+  {
+    "Species": "chicken",
+    "Name": "Virgil",
+    "Age": "2",
+    "Type": "bird"
+  },
+  {
+    "Species": "badger",
+    "Name": "Homer",
+    "Age": "3",
+    "Type": "mammal"
+  },
+  {
+    "Species": "ferret",
+    "Name": "Archimedes",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "turtle",
+    "Name": "Tipple",
+    "Age": "23",
+    "Type": "reptile"
+  },
+  {
+    "Species": "turtle",
+    "Name": "Tickle",
+    "Age": "21",
+    "Type": "reptile"
+  },
+  {
+    "Species": "frog",
+    "Name": "Homer",
+    "Age": "3",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "goose",
+    "Name": "Gauss",
+    "Age": "6",
+    "Type": "bird"
+  },
+  {
+    "Species": "goldfish",
+    "Name": "Jawws III",
+    "Age": "3",
+    "Type": "fish"
+  },
+  {
+    "Species": "parrot",
+    "Name": "Leibniz",
+    "Age": "17",
+    "Type": "bird"
+  },
+  {
+    "Species": "terrapin",
+    "Name": "Alan",
+    "Age": "15",
+    "Type": "mammal"
+  },
+  {
+    "Species": "panda",
+    "Name": "Claude",
+    "Age": "12",
+    "Type": "mammal"
+  },
+  {
+    "Species": "sheep",
+    "Name": "Henckel",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "weasel",
+    "Name": "Eric",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "chipmunk",
+    "Name": "Tolstoy",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "cat",
+    "Name": "Shroedinger",
+    "Age": "12",
+    "Type": "mammal"
+  },
+  {
+    "Species": "sheep",
+    "Name": "Dolly",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "monkey",
+    "Name": "Naruto",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "rhino",
+    "Name": "Sudan",
+    "Age": "22",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Diesel",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dugong",
+    "Name": "Dirac",
+    "Age": "8",
+    "Type": "mammal"
+  },
+  {
+    "Species": "ferret",
+    "Name": "Feynman",
+    "Age": "3",
+    "Type": "mammal"
+  },
+  {
+    "Species": "newt",
+    "Name": "Newton",
+    "Age": "9",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "ewe",
+    "Name": "Euclid",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "rabbit",
+    "Name": "Reimann",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "hedgehog",
+    "Name": "Hardy",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "red squirrel",
+    "Name": "Stalin",
+    "Age": "3",
+    "Type": "mammal"
+  },
+  {
+    "Species": "coelocanth",
+    "Name": "Darwin",
+    "Age": "2",
+    "Type": "fish"
+  },
+  {
+    "Species": "red kite",
+    "Name": "Marx",
+    "Age": "2",
+    "Type": "bird"
+  },
+  {
+    "Species": "red squirrel",
+    "Name": "Lenin",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "red panda",
+    "Name": "Molotov",
+    "Age": "5",
+    "Type": "mammal"
+  },
+  {
+    "Species": "ferret",
+    "Name": "Fermat",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "panda",
+    "Name": "Pascal",
+    "Age": "5",
+    "Type": "mammal"
+  },
+  {
+    "Species": "newt",
+    "Name": "frank",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "deer",
+    "Name": "Descartes",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "red kite",
+    "Name": "Engels",
+    "Age": "3",
+    "Type": "bird"
+  },
+  {
+    "Species": "mouse",
+    "Name": "Michael",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "llama",
+    "Name": "Lavoisiere",
+    "Age": "1",
+    "Type": "mammal"
+  },
+  {
+    "Species": "mink",
+    "Name": "Mendeleev",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "opossum",
+    "Name": "Oppenheimer",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "owl",
+    "Name": "Wisdom",
+    "Age": "6",
+    "Type": "bird"
+  },
+  {
+    "Species": "hamster",
+    "Name": "Hadrian",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "axolotl",
+    "Name": "Aidrian",
+    "Age": "3",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "kodkod",
+    "Name": "Konrad",
+    "Age": "5",
+    "Type": "mammal"
+  },
+  {
+    "Species": "axolotl",
+    "Name": "Thucydides",
+    "Age": "2",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "capibara",
+    "Name": "Jim",
+    "Age": "8",
+    "Type": "mammal"
+  },
+  {
+    "Species": "horned dragon",
+    "Name": "Herodotus",
+    "Age": "2",
+    "Type": "reptile"
+  },
+  {
+    "Species": "horned dragon",
+    "Name": "Mephistopheles",
+    "Age": "2",
+    "Type": "reptile"
+  },
+  {
+    "Species": "marmot",
+    "Name": "Scooby-Doo",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "hawk",
+    "Name": "Hawking",
+    "Age": "4",
+    "Type": "bird"
+  },
+  {
+    "Species": "clownfish",
+    "Name": "Boris",
+    "Age": "56",
+    "Type": "fish"
+  },
+  {
+    "Species": "bearded dragon",
+    "Name": "Kesselring",
+    "Age": "2",
+    "Type": "reptile"
+  },
+  {
+    "Species": "racoon",
+    "Name": "Michaelangelo",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Dobzhansky",
+    "Age": "12",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Debussy",
+    "Age": "14",
+    "Type": "mammal"
+  },
+  {
+    "Species": "parrot",
+    "Name": "Chomsky",
+    "Age": "17",
+    "Type": "bird"
+  },
+  {
+    "Species": "adder",
+    "Name": "Newton",
+    "Age": "2",
+    "Type": "reptile"
+  },
+  {
+    "Species": "dog",
+    "Name": "Pavlov",
+    "Age": "12",
+    "Type": "mammal"
+  },
+  {
+    "Species": "puff adder",
+    "Name": "Pdiddy",
+    "Age": "4",
+    "Type": "reptile"
+  },
+  {
+    "Species": "python",
+    "Name": "Monty",
+    "Age": "6",
+    "Type": "reptile"
+  },
+  {
+    "Species": "boa constrictor",
+    "Name": "Conrad",
+    "Age": "2",
+    "Type": "reptile"
+  },
+  {
+    "Species": "python",
+    "Name": "Francesca",
+    "Age": "2",
+    "Type": "reptile"
+  },
+  {
+    "Species": "penguin",
+    "Name": "Penrose",
+    "Age": "3",
+    "Type": "mammal"
+  },
+  {
+    "Species": "penguin",
+    "Name": "Penfold",
+    "Age": "5",
+    "Type": "mammal"
+  },
+  {
+    "Species": "penguin",
+    "Name": "Pingu",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "bearded dragon",
+    "Name": "Beardie",
+    "Age": "2",
+    "Type": "reptile"
+  },
+  {
+    "Species": "salamander",
+    "Name": "Sal",
+    "Age": "2",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "salamander",
+    "Name": "Salvador",
+    "Age": "17",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "salamander",
+    "Name": "Salvatore",
+    "Age": "8",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "salamander",
+    "Name": "Salvadore",
+    "Age": "4",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "salamander",
+    "Name": "Patricia",
+    "Age": "9",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "salamander",
+    "Name": "Patrick",
+    "Age": "8",
+    "Type": "amphibian"
+  },
+  {
+    "Species": "capibara",
+    "Name": "Rufus",
+    "Age": "3",
+    "Type": "mammal"
+  },
+  {
+    "Species": "arabian cobra",
+    "Name": "Lawrence",
+    "Age": "5",
+    "Type": "reptile"
+  },
+  {
+    "Species": "condor",
+    "Name": "Andy",
+    "Age": "9",
+    "Type": "bird"
+  },
+  {
+    "Species": "rabbit",
+    "Name": "Hopper",
+    "Age": "5",
+    "Type": "mammal"
+  },
+  {
+    "Species": "gnu",
+    "Name": "Knuth",
+    "Age": "6",
+    "Type": "mammal"
+  },
+  {
+    "Species": "owl",
+    "Name": "Turing",
+    "Age": "9",
+    "Type": "bird"
+  },
+  {
+    "Species": "turtle",
+    "Name": "Turing",
+    "Age": "34",
+    "Type": "reptile"
+  },
+  {
+    "Species": "rat",
+    "Name": "Ritchie",
+    "Age": "1",
+    "Type": "mammal"
+  },
+  {
+    "Species": "badger",
+    "Name": "Bentley",
+    "Age": "8",
+    "Type": "mammal"
+  },
+  {
+    "Species": "chipmunk",
+    "Name": "Thompson",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "kangaroo",
+    "Name": "Kernighan",
+    "Age": "6",
+    "Type": "mammal"
+  },
+  {
+    "Species": "ocelot",
+    "Name": "Stoustroup",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "sloth",
+    "Name": "Dijkstra",
+    "Age": "14",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dromedary",
+    "Name": "Hopper",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "capibara",
+    "Name": "Knuth",
+    "Age": "9",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Snover",
+    "Age": "11",
+    "Type": "mammal"
+  },
+  {
+    "Species": "alpaca",
+    "Name": "Turing",
+    "Age": "5",
+    "Type": "mammal"
+  },
+  {
+    "Species": "pigeon",
+    "Name": "vonNeumann",
+    "Age": "6",
+    "Type": "bird"
+  },
+  {
+    "Species": "pika",
+    "Name": "Hopper",
+    "Age": "1",
+    "Type": "mammal"
+  },
+  {
+    "Species": "antelope",
+    "Name": "Turing",
+    "Age": "6",
+    "Type": "mammal"
+  },
+  {
+    "Species": "marmot",
+    "Name": "Knuth",
+    "Age": "8",
+    "Type": "mammal"
+  },
+  {
+    "Species": "ferret",
+    "Name": "Kernighan",
+    "Age": "3",
+    "Type": "mammal"
+  },
+  {
+    "Species": "antelope",
+    "Name": "Thompson",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dove",
+    "Name": "Bentley",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "sheep",
+    "Name": "Schneir",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "aardvark",
+    "Name": "Flowers",
+    "Age": "6",
+    "Type": "mammal"
+  },
+  {
+    "Species": "pig",
+    "Name": "Babbage",
+    "Age": "5",
+    "Type": "mammal"
+  },
+  {
+    "Species": "llama",
+    "Name": "Lovelace",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "pigeon",
+    "Name": "Cox",
+    "Age": "13",
+    "Type": "bird"
+  },
+  {
+    "Species": "parrot",
+    "Name": "Rivest",
+    "Age": "14",
+    "Type": "bird"
+  },
+  {
+    "Species": "cockatoo",
+    "Name": "Adelman",
+    "Age": "3",
+    "Type": "bird"
+  },
+  {
+    "Species": "pangolin",
+    "Name": "Shamir",
+    "Age": "3",
+    "Type": "mammal"
+  },
+  {
+    "Species": "goat",
+    "Name": "Church",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "rabbit",
+    "Name": "Turing",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "cat",
+    "Name": "Godel",
+    "Age": "9",
+    "Type": "mammal"
+  },
+  {
+    "Species": "horse",
+    "Name": "Hilbert",
+    "Age": "8",
+    "Type": "mammal"
+  },
+  {
+    "Species": "ocelot",
+    "Name": "Diffie",
+    "Age": "11",
+    "Type": "mammal"
+  },
+  {
+    "Species": "alpaca",
+    "Name": "Hellman",
+    "Age": "9",
+    "Type": "mammal"
+  },
+  {
+    "Species": "llama",
+    "Name": "Shannon",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "cat",
+    "Name": "Bell",
+    "Age": "9",
+    "Type": "mammal"
+  },
+  {
+    "Species": "chinchilla",
+    "Name": "Vint",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "loris",
+    "Name": "Berners-Lee",
+    "Age": "3",
+    "Type": "mammal"
+  },
+  {
+    "Species": "cow",
+    "Name": "Cutler",
+    "Age": "7",
+    "Type": "mammal"
+  },
+  {
+    "Species": "sheep",
+    "Name": "Flowers",
+    "Age": "6",
+    "Type": "mammal"
+  },
+  {
+    "Species": "badger",
+    "Name": "Huffman",
+    "Age": "4",
+    "Type": "mammal"
+  },
+  {
+    "Species": "dog",
+    "Name": "Lamarr",
+    "Age": "11",
+    "Type": "mammal"
+  },
+  {
+    "Species": "gerbil",
+    "Name": "Newman",
+    "Age": "2",
+    "Type": "mammal"
+  },
+  {
+    "Species": "penguin",
+    "Name": "Linus",
+    "Age": "6",
+    "Type": "mammal"
+  },
+  {
+    "Species": "tortoise",
+    "Name": "Torvalds",
+    "Age": "21",
+    "Type": "reptile"
+  },
+  {
+    "Species": "adder",
+    "Name": "Euler",
+    "Age": "4",
+    "Type": "reptile"
+  },
+  {
+    "Species": "bat",
+    "Name": "Bob",
+    "Age": "2",
+    "Type": "mammal"
+  }
+]
