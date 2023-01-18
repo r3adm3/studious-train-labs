@@ -1,3 +1,7 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
 #!markdown
 
 # Collections and Data
@@ -38,12 +42,10 @@ Use the above techniques for creating an array in the code cell below:
 
 #!pwsh
 
-<#
 $myarray = @()
 $myarray = @(22,5,10,8,12,9,80)
 $myarray = 22,5,10,8,12,9,80
 [int32[]]$myarray = 22,5,10,8,12,9,80
-#>
 
 #!markdown
 
@@ -59,11 +61,9 @@ Try these in the code cell below.
 
 #!pwsh
 
-<#
-$myarray[4]
+#$myarray[4]
 
 $myarray[2..6]
-#>
 
 #!markdown
 
@@ -411,7 +411,7 @@ Next we will import the data from a csv into an array. We do this in the next co
 
 #!pwsh
 
-$myPetsArrayfromCSV = Import-Csv -Path "C:\Users\jmgadmin\arstechnica\lbginteractive\Commands and Code\PowerShell\Datasets\Pet data\newpets\Pet data\pet-data.csv"
+$myPetsArrayfromCSV = Import-Csv -Path "C:\Users\studentadmin\Source\05_02_pet_data.csv"
 $myPetsArrayfromCSV | gm
 $myPetsArrayfromCSV
 
@@ -421,3 +421,92 @@ $myPetsArrayfromCSV
 https://www.varonis.com/blog/powershell-array
 https://adamtheautomator.com/powershell-array/
 https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays?view=powershell-7.3
+
+#!markdown
+
+# Misc Questions.
+1) Loop through the pets array with a foreach loop and write each name and age to screen
+
+#!pwsh
+
+foreach($pet in $petsArray){
+    write-host $pet.Name $pet.Age
+}
+
+#!markdown
+
+2) Loop through the pets array with a for loop and write each name and age to screen
+
+#!pwsh
+
+$noOfPets = $petsArray.Length
+
+for($i = 0; $i -le $noOfPets;$i++){
+    write-host $petsArray[$i].Name $petsArray[$i].Age
+}
+
+#!markdown
+
+3) Loop through the pets array with a while loop and write each name and age to screen
+
+#!pwsh
+
+$i = 0
+
+while($i -le $noOfPets){
+    Write-Host $petsArray[$i].name $petsArray[$i].Age
+    $i++ 
+
+}
+
+#!markdown
+
+4) Select all items from the name that contain 'oo' in the name write to screen
+
+#!pwsh
+
+for($i = 0; $i -le $petsArray.Length;$i++){
+    if($petsArray[$i].Name -match "oo"){
+    Write-Host $petsArray[$i]
+    }
+
+}
+
+#!markdown
+
+5) Loop through all pets in the array and write to screen only this pets who are older than ten
+
+#!pwsh
+
+for($i = 0; $i -le $petsArray.Length;$i++){
+    $Age = $petsArray[$i].Age -as [int]
+    if($Age -gt "10"){Write-Host $petsArray[$i]}
+}
+
+#!markdown
+
+6) Select all dogs and write to screen
+
+#!pwsh
+
+foreach($pet in $petsArray){
+if($pet.Species -eq "dog"){ Write-Host $pet}
+}
+
+#!pwsh
+
+7) 
+
+#!pwsh
+
+$highestAge = 0
+$oldestPet = $petsArray[0]
+
+foreach($pet in $petsArray){
+$age = $pet.Age -as [int]
+if($age -gt $highestAge){
+    $oldestPet = $pet
+    $highestAge = $age}
+}
+
+Write-Host $oldestPet
