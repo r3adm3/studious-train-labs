@@ -1,0 +1,3 @@
+"Connect"
+
+Get-MgUser
