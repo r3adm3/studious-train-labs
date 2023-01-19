@@ -11,6 +11,45 @@ Options 1. and 2. are similar but not identical. For basic use cases they are in
 
 Some tasks for practicing:
 1. Invoke following endpoint and observe the data it returns using both *curl* and *Invoke-RestMethod*. Endpoint: `https://catfact.ninja/fact`
+
+ curl https://catfact.ninja/fact
+{"fact":"Cats' hearing is much more sensitive than humans and dogs.","length":58}
+
+Invoke-RestMethod -Uri https://catfact.ninja/fact
+
+fact
+----
+A cat's smell is their strongest sense, and they rely on this leading sense to identify people and objects; a feline's…
+
 2. Invoke slightly more complex endpoint `https://www.boredapi.com/api/activity` and access only a single part of the response (for instance `type`)
+
+(Invoke-RestMethod -Uri https://www.boredapi.com/api/activity).type
+
+
 3. Create a powershell script and call endpoint `https://catfact.ninja/fact` 10 times. Store the results in an arraylist. Print the arraylist.
+
+$newArrayList = New-Object System.Collections.ArrayList
+
+for ($i = 0; $i -lt 10; $i++) {
+    $entry = Invoke-RestMethod https://www.boredapi.com/api/activity
+    $null = $newArrayList.add($entry)    
+}
+
+$newArrayList
+
 4. Create a powershell script and call endpoint `https://www.boredapi.com/api/activity` 10 times. Transform each response to an object and store each object in arraylist.
+
+
+# Create an array to store the activities
+$activities = @()
+
+# Call the endpoint 10 times
+for ($i = 0; $i -lt 10; $i++) {
+    # Use Invoke-RestMethod to call the endpoint and store the result in a variable
+    $activity = Invoke-RestMethod -Uri https://www.boredapi.com/api/activity
+
+    # Convert the result to a PSObject and add the object to the array
+    $activities += [PSCustomObject]$activity
+}
+
+$activities
