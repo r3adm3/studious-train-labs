@@ -1,7 +1,18 @@
-$firstNumber = 1
+function addtwonumbersfunction{
+    param (
+        $nooffootballteams,
+        $noofmanagers
+    )
 
-$secondNumber = 2
+    return $nooffootballteams + $managers
+    
+}
 
-$addedNumbers = $firstNumber + $secondNumber
+Write-Output "Football Managers in total"
 
-Write-Output "your numbers added together is" $addedNumbers
+$nooffootballteams = 20
+$noofmanagers = 20
+
+$addednumbers = addtwonumbersfunction -nooffootballteams 20 -noofmanagers 20
+
+Write-Output "Total Football Teams and Managers are $addednumbers"
