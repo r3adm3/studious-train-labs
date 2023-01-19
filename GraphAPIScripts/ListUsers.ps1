@@ -1,3 +1,7 @@
-"Connect"
+Connect-MgGraph
 
-Get-MgUser
+$users = Get-MgUser
+
+foreach ($user in $users) {
+    Write-Output $user.displayName
+}
