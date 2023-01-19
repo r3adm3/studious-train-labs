@@ -26,22 +26,4 @@ Invoke-RestMethod https://www.boredapi.com/api/activity).type type: education
 
 3. Create a powershell script and call endpoint `https://catfact.ninja/fact` 10 times. Store the results in an arraylist. Print the arraylist.
 
-$cat = @()
-($i = 0; $i -lt 10; $i++) 
-$catFact = Invoke-RestMethod https://catfact.ninja/fact
-$cat += $catFact.fact
-}
-
-$cat
-
-$activities = @()
-
 4. Create a powershell script and call endpoint `https://www.boredapi.com/api/activity` 10 times. Transform each response to an object and store each object in arraylist.
-
-($i = 0; $i -lt 10; $i++) 
-$activity = Invoke-RestMethod https://www.boredapi.com/api/activity
-$activities += [PSCustomObject]$activity
-
-}
-
-$activities
