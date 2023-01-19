@@ -11,6 +11,43 @@ Options 1. and 2. are similar but not identical. For basic use cases they are in
 
 Some tasks for practicing:
 1. Invoke following endpoint and observe the data it returns using both *curl* and *Invoke-RestMethod*. Endpoint: `https://catfact.ninja/fact`
+
+        PS C:\Users\studentadmin\source\engreskill\sourcetwo\studious-train-labs\studious-train-labs> Invoke-restmethod
+
+cmdlet Invoke-RestMethod at command pipeline position 1
+Supply values for the following parameters:
+Uri: https://catfact.ninja/fact
+
+fact                                                                                     length
+----                                                                                     ------
+A cat’s heart beats nearly twice as fast as a human heart, at 110 to 140 beats a minute.     88
+
+
+PS C:\Users\studentadmin\source\engreskill\sourcetwo\studious-train-labs\studious-train-labs> curl  https://catfact.ninja/fact
+
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : {"fact":"Cats are the world's most popular pets, outnumbering dogs by as many as three to
+                    one","length":84}
+RawContent        : HTTP/1.1 200 OK
+                    Transfer-Encoding: chunked
+                    Connection: keep-alive
+                    Vary: Accept-Encoding
+                    X-Ratelimit-Limit: 100
+                    X-Ratelimit-Remaining: 99
+                    Access-Control-Allow-Origin: *
+                    Cache-Control: no-cache, ...
+Forms             : {}
+Headers           : {[Transfer-Encoding, chunked], [Connection, keep-alive], [Vary, Accept-Encoding],
+                    [X-Ratelimit-Limit, 100]...}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : System.__ComObject
+RawContentLength  : 107
+
+
 2. Invoke slightly more complex endpoint `https://www.boredapi.com/api/activity` and access only a single part of the response (for instance `type`)
 3. Create a powershell script and call endpoint `https://catfact.ninja/fact` 10 times. Store the results in an arraylist. Print the arraylist.
 4. Create a powershell script and call endpoint `https://www.boredapi.com/api/activity` 10 times. Transform each response to an object and store each object in arraylist.
