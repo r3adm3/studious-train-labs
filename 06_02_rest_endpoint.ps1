@@ -26,8 +26,15 @@ while ($continue) {
 
             # Convert the returned data to JSON and set the HTTP content type to JSON
             $message = $result | ConvertTo-Json; 
-            $response.ContentType = 'application/json';
-
+            $response.ContentType = 'application/json';}
+            if ($requestvars[4] -eq "bum") {
+           
+                # Define your answer
+                $result = "Hello, I have heard that you are a bum! " + $requestvars[4]
+    
+                # Convert the returned data to JSON and set the HTTP content type to JSON
+                $message = $result | ConvertTo-Json; 
+                $response.ContentType = 'application/json';
        } else {
             $message = "This is not the page you're looking for." | ConvertTo-Json;
             $response.ContentType = 'application/json' ;
