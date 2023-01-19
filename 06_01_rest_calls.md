@@ -11,6 +11,42 @@ Options 1. and 2. are similar but not identical. For basic use cases they are in
 
 Some tasks for practicing:
 1. Invoke following endpoint and observe the data it returns using both *curl* and *Invoke-RestMethod*. Endpoint: `https://catfact.ninja/fact`
-2. Invoke slightly more complex endpoint `https://www.boredapi.com/api/activity` and access only a single part of the response (for instance `type`)
-3. Create a powershell script and call endpoint `https://catfact.ninja/fact` 10 times. Store the results in an arraylist. Print the arraylist.
+>    1. curl : 
+>     
+> {"fact":"A cat has the ability to rotate their ears 180 degrees,with the help of 32 muscles that they use to control them.","length":113}
+> 
+>    2. Invoke-RestMethod :
+> 
+>   Fact | Lengh | 
+> ---------|----------|
+>  Cats like milk | 33 |
+
+
+1. Invoke slightly more complex endpoint `https://www.boredapi.com/api/activity` and access only a single part of the response (for instance `type`)
+>    1. `$endpoint = Invoke-RestMethod https://www.boredapi.com/api/activity; $endpoint.type`
+
+1. Create a powershell script and call endpoint `https://catfact.ninja/fact` 10 times. Store the results in an arraylist. Print the arraylist.
+   1. 
+```
+$facts = [System.Collections.Generic.List[String]]::new()
+
+for ($i = 0; $i -lt 10; $i++) {
+  $endpoint = Invoke-RestMethod https://catfact.ninja/fact 
+  $fact = $endpoint.fact
+  $facts.Add($fact)
+}
+$facts
+
+```
 4. Create a powershell script and call endpoint `https://www.boredapi.com/api/activity` 10 times. Transform each response to an object and store each object in arraylist.
+   1. 
+```
+  $facts = [System.Collections.Generic.List[PSObject]]::new()
+
+  for ($i = 0; $i -lt 10; $i++) {
+    $endpoint = Invoke-RestMethod https://www.boredapi.com/api/activity
+    $facts.Add($endpoint)
+  }
+  $facts
+
+```

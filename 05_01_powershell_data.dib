@@ -1,3 +1,7 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","aliases":[]},{"name":"vscode","languageName":null,"aliases":["frontend"]}]}}
+
 #!markdown
 
 # Working with Data
