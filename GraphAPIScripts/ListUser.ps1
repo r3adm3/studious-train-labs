@@ -1,0 +1,3 @@
+Connect-MgGraph
+
+Get-MgUser
