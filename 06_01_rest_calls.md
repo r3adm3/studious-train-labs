@@ -18,7 +18,7 @@ Some tasks for practicing:
 Invoke-RestMethod -Uri https://catfact.ninja/fact
 
 fact
-----
+
 A cat's smell is their strongest sense, and they rely on this leading sense to identify people and objects; a feline's…
 
 2. Invoke slightly more complex endpoint `https://www.boredapi.com/api/activity` and access only a single part of the response (for instance `type`)
@@ -40,15 +40,20 @@ $newArrayList
 4. Create a powershell script and call endpoint `https://www.boredapi.com/api/activity` 10 times. Transform each response to an object and store each object in arraylist.
 
 
-# Create an array to store the activities
+#Create an array to store the activities
+
 $activities = @()
 
-# Call the endpoint 10 times
+#Call the endpoint 10 times
+
 for ($i = 0; $i -lt 10; $i++) {
+
     # Use Invoke-RestMethod to call the endpoint and store the result in a variable
+    
     $activity = Invoke-RestMethod -Uri https://www.boredapi.com/api/activity
 
     # Convert the result to a PSObject and add the object to the array
+    
     $activities += [PSCustomObject]$activity
 }
 
