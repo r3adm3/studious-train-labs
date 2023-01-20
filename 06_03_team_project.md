@@ -11,3 +11,8 @@ You are making a backend system for internet banking. Your team is preparing ser
    - The imaginary internet banking server queries the first service one to find out how much money can it lend to a client. (curl or invoke the request manually).
    - The first service then asks the second, third, and fourth service for their inputs on the particular client.
    - The first service then applies following calculation: `amount = months * 1000 - already_borrowed`. If you implement the fourth service as well add a condition: only approve a loan if crime score is under 30.
+
+Potential extensions:
+- When you search for a specific client each service stores te particular client and repeated request for the details of the particular client then return the previous results - not newly generated random one.
+- For each unique user search for a random dog picture and assign that picture's url to the particular user.
+- Add another endpoint that would return all the data known about a particular client. Including the client's soul dog.
