@@ -1,0 +1,27 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
+#!pwsh
+
+[string]$longestcmd
+$longestcmdlen = 0
+$jeffscmds = Get-Command
+
+foreach($commandvar in $jeffscmds){
+    if($commandvar.Name.Length -gt $longestcmdlen){
+        $longestcmd = $commandvar.Name
+        $longestcmdlen = $commandvar.Name.Length
+    }
+}
+Write-Output "The longest command is: $longestcmd, the length is $longestcmdlen" #>
+Remove-Variable cmds
+$cmds = @()
+$jeffscmds = Get-Command
+$instantfile = New-Item -ItemType File -Name instantfile.txt -ErrorAction SilentlyContinue
+$endfile = New-Item -ItemType File -Name endfile.txt -ErrorAction SilentlyContinue
+for($i=0; $i -lt 200; $i++){
+        $cmds += $jeffscmds[$i].Name
+       Add-Content -Path instantfile.txt -Value $jeffscmds[$i].Name
+}
+Add-Content -Path endfile.txt -Value $cmds

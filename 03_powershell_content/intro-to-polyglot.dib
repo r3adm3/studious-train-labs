@@ -1,0 +1,41 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
+#!markdown
+
+# My First Polyglot
+
+This is my first PowerShell Polyglot Notebook.
+
+#!pwsh
+
+Write-Host "Everything written in this cell is false" -ForegroundColor DarkRed -BackgroundColor DarkBlue
+
+#!pwsh
+
+$noofapples = 5
+$appleseaten = 3
+$applesleft = $noofapples - $appleseaten
+Write-Host "I have $applesleft apples left"
+
+#!pwsh
+
+$noofeggsperbox = 12
+$noofboxes = 5
+$noofeggs = $noofeggsperbox * $noofboxes
+Write-Host "I have $noofeggs eggs"
+
+#!pwsh
+
+$numbergames = 48
+$numberofgoals = 129
+$averagegoals = $numberofgoals / $numbergames
+Write-Host "The average number of goals per game is $averagegoals"
+
+#!pwsh
+
+$englandgoalsalready = 9
+$englandgoalstoscore = 12
+$englandtotalgoals = $englandgoalsalready + $englandgoalstoscore
+Write-Host "England will score $englandtotalgoals goals in the tournament"
