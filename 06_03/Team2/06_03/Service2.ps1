@@ -4,7 +4,7 @@ $listener.Prefixes.Add('http://+:8080/')
 $listener.Start()
 'Listening ...'
 $continue = $true
-$owedAmount = get-random -Minimum 0 -maximum 50000
+
 
 while ($continue) {
     $context = $listener.GetContext() 
@@ -23,7 +23,8 @@ while ($continue) {
         if ($requestvars[3] -eq "owed") {
            
             # Define your answer
-            $result = "$owedAmount" + $requestvars[4]
+            $owedAmount = get-random -Minimum 0 -maximum 50000
+            $result = $owedAmount + $requestvars[4]
 
             # Convert the returned data to JSON and set the HTTP content type to JSON
             $message = $result | ConvertTo-Json; 
