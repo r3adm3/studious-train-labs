@@ -476,7 +476,7 @@ $petsArray.name | Select-String "oo"
 # using foreach loop and -match to find names containing "oo"
 foreach ($i in $petsArray) {
     if ($i.name -match "oo") {
-    Write-Output $i.name7   
+    Write-Output $i.name   
     }
 }
 
@@ -484,12 +484,14 @@ foreach ($i in $petsArray) {
 
 # Loop through all pets in the array and write to screen only this pets who are older than ten
 
-# age in array is string and unsure how to change to integer. Using .length of age instead to find pets over than 10
- 
 for ($i = 0; $i -lt $count; $i++) {
- if (($($petsArray[$i].age).Length -gt 1) -and ($($petsArray[$i].age -ne '10'))) {
- "$($petsArray[$i].name) is $($petsArray[$i].age) and is older than 10"
- }
+
+# change pets ages to integers
+    $petsAge = [int]$petsArray[$i].age
+
+    if ($petsAge -gt 10) {
+    "$($petsArray[$i].name) is $($petsArray[$i].age) and is older than 10"
+}
 }
 
 #!pwsh
