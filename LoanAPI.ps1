@@ -3,20 +3,23 @@
 function LoanAmount {
     param([string]$firstName, [string]$lastName)
 
+
+    #First get the risk score of the customer,
+    $riskScore = 29 #Invoke-RestMethod http://10.0.1.26:8080/AlreadyBorrowed/AlreadyBorrowed/$firstName/$lastName
+
+
+    #Check if the customer is able to have a loan. This is based on the risk score being less than 30.
+    #If eligible, call required services to check what loan amount they can get.
+    if($riskScore -lt 30){
+
     #Second service, how much is already owed. Function called AlreadyBorrowed()
-    $outstandingBalance =  3500 #Invoke-RestMethod 
+    $outstandingBalance =  3500 #Invoke-RestMethod http://10.0.1.26:8080/AlreadyBorrowed/AlreadyBorrowed/$firstName/$lastName
 
     #Third service, how long the loan has been getting repaid.
-    $repaymentLength = 45
+    $repaymentLength = 45 #Invoke-RestMethod http://10.0.1.26:8080/AlreadyBorrowed/AlreadyBorrowed/$firstName/$lastName
 
-    #Optional.
-    $riskScore = 30
-    
-    #Calculat the loan amount based on the return values of the 
+    #Calculate the loan amount based on the return values of the 
     $loanAmount = ($repaymentLength * 1000) - $outstandingBalance
-
-    #Check if the customer is able to have a loan. This is based on the risk score being less than 30
-    if($riskScore -lt 30){
 
     #Create a PS Custom object with the positive reply reply
     $returnObject = [PSCustomObject]@{ outstandingBalance = $outstandingBalance; `
