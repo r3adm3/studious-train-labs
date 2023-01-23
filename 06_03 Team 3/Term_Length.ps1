@@ -19,11 +19,10 @@ while ($continue) {
         $requestvars = ([String]$request.Url).split("/");        
 
         # Endpoint definition
-        if ($requestvars[3] -eq "Months") {
+        if ($requestvars[3] -eq "months") {
            
             # Define your answer
-            $months = Get-Random(0..120)
-            $result = $months + $requestvars[4]
+            $result = Get-Random(0..120)
 
             # Convert the returned data to JSON and set the HTTP content type to JSON
             $message = $result | ConvertTo-Json; 
