@@ -9,3 +9,5 @@ $PasswordProfile = @{
     -MailNickname 'AbdulG' `
     -UserPrincipalName 'AbdulGhani@blanknessplc.onmicrosoft.com' `
     -UsageLocation GB
+
+    Get-MgUser
