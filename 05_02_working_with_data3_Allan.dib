@@ -1,0 +1,635 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
+#!markdown
+
+# Collections and Data Continued
+
+## Introduction
+
+We've looked at arrays and become familiar with the main features and some drawbacks. In this section we are going to look at ArrayLists.
+
+### ArrayLists vs Arrays
+
+ArrayLists re very similar to arrays in functionality, but they work differently behind the scenes. They also offer more flexibility in terms of inserting, adding and ordering their elements. The table below lists the similarities and differences between arrays and ArrayLists.
+
+| Feature                                                   | Arrays | ArrayLists |
+| --------------------------------------------------------- | ------ | ---------- |
+| Stores a series of similar objects in a single collection | Yes    | Yes        |
+| Elements Stored contiguously in memory                    | Yes    | No         |
+| Fixed in size                                             | Yes    | No         |
+| Needs to be recreated to add or remove an element         | Yes    | No         |
+| Can insert, remove and add elements                       | No     | Yes        |
+| Can iterate through a collection using foreach            | Yes    | Yes        |
+| Can access elements through index notation (e.g. [3])     | Yes    | Yes        |
+| Indexing starts at zero                                   | Yes    | Yes        |
+
+#### ArrayList Functionality
+
+Arrays and ArrayLists can hold virtually any type of data, from primitive data types like an integer, to complex custom objects which you have created yourself. They perform exactly the same basic functions:
+
+* store multiple instances of an object, each known as an element, in an ordered collection
+* allow data to be iterated over, and accessed by using index notation i.e. [n], where n is the index of the element
+
+The major difference is that in .net (and therefore PowerShell) an array is immutable. This means it cannot be added to once initialised. Therefore an array must be initialised with the number of elements that it will require to fulfill its intended purpose. This is fine if you know in advance how many elements you need, and are sure that it will not need to be added to. However, that is often not the case.
+
+Your code may need to deal with an unpredictable number of elements. In such cases, arrays can become very inefficient. Look at the following example. We first create an array using the '@()' notation. We then create a loop that will count to 50000, on each generation it will add the corresponding integer to the array. However, in order to add an element to an immutable array, we have to:
+
+1. Create a new array, increasing the number of elements by 1
+2. Copy the contents of the existing array to the new array
+3. Set the last element to the new value you want to add
+
+We will use the *Measure-Command* cmdlet that is built into PowerShell. It allows us to see exactly how long a piece of code will take to run.
+
+#!pwsh
+
+Measure-Command {
+$myArray = @()
+    for($i = 0; $i -lt 50000; $i++)
+    {
+        $myArray+=$i
+    }
+}
+
+#!markdown
+
+Now we will run some code to achieve the same ends. We're still using an array, but this time we are initialising the array with the required number of elements before we start adding values to it.
+
+#!pwsh
+
+Measure-Command {
+$myInitialisedArray = [int[]]::new(50000)
+    for($i = 0; $i -lt 50000; $i++)
+    {
+        $myInitialisedArray[$i]=$i
+    }
+}
+
+#!markdown
+
+Now let's do the equivalent using an ArrayList.
+
+#!pwsh
+
+Measure-Command {
+$myArrayList = New-Object System.Collections.ArrayList
+    for($i = 0; $i -lt 50000; $i++)
+    {
+        $myArrayList.Add($i)
+    }
+}
+
+#!markdown
+
+What you should have noticed in running the above code is that the slowest method by far is the first i.e. recreating the array every iteration. Next slowest is the ArrayList method, though it is *much* quicker than the first method.
+
+The fastest is the pre-initialised array. This is explained by the fact that an array has little overhead in memory management and already has all elements ready to populate. The ArrayList is just a little bit slower, because the increased flexibility and convenience requires more management overhead. However, this small decrease in performance is usually justified by the benefits.
+
+#!markdown
+
+##### A Note About Libraries
+
+You may have noticed that when an ArrayList is created, it is preceeded by text like this: 
+
+**System.Collections.ArrayList**
+
+This is necessary due to the fact that the code for the .Net framework, and therefore PowerShell, is actually stored in many files. To include all these files with every script or program would make them bloated and inefficient. Therefore, only the standard files required for a project are usually referenced by it.
+
+When an object type is not included in the default set of files, we need to reference them. These files, otherwise known as libraries are organised heirarchicly under 'System', the ArrayList type is found it the 'System.Collections' library. So, in order for PowerShell to locate it, we include the path in the declaration.
+
+##### Creating ArrayLists
+
+Primitive data types like int and char don't need to be created before use, but more complex object types often do. There is a reason for this, but the explanation lies outside the scope of this course. The ArrayList is one of the object types that do need creating, we therefor use the *New-Object* command to create an instance of ArrayList before we start ading to it. The simplest way of doing so is probably:
+
+#!pwsh
+
+# Create an arraylist with an initial capacity of 1 element
+$myArrayList = New-Object System.Collections.ArrayList
+
+#!markdown
+
+This will create an empty ArrayList, which can be added to at any time without it having to be recreated.
+
+###### Adding Items to an ArrayList
+
+New elements can be added to the array list using the Add method which appends the element to the end of the array list. It's also possible to add multiple elements at once using the AddRange method, this accepts a collection of elements (e.g. an array or array list), and again adds them to the end of the list. AddRange will not accept a raw series of values, it has to be a collection. We can therefore use the splatting (@) operator with the following syntax: @(1,4,2,7,8,5,4,9,3,1,6), or an array that has been created with that syntax, e.g. $array = @(1,4,2,7,8,5,4,9,3,1,6).
+
+It is also possible to add a single item or multiple items in the form (1,4,2,7,8,5,4,9,3,1,6) by using the += operator. However, this immediately converts the array list to an array.
+
+Try the examples below.
+
+#!pwsh
+
+# Add single elements to the array list using the Add method, like so:
+$myArrayList.Add(22)
+
+#!pwsh
+
+# Note that the Add method returns an index value, which we can use to retrieve the element we just added. This can sometimes be useful, but it's not necessary, and it will impede performance if written out to the console. We can avoid this by using the $null variable, like so (each of the following lines of code are equivalent):
+
+$myArrayList.Add(22) > $null
+$null = $myArrayList.Add(22)
+$myArrayList.Add(22) | Out-Null
+
+#!pwsh
+
+# We can add multiple elements to the array list using the AddRange method, like so:
+# Note that the AddRange method takes an array as an argument, so we need to use the splatting operator to pass in multiple values
+
+"Display contents of array list before adding elements"
+$myArrayList
+"Add range of elements to array list"
+$myArrayList.AddRange(@(1,2,3,4,5))
+"Display contents of array list after adding elements"
+$myArrayList
+
+# Alternatively, we can initialise and then pass an array
+"Display contents of array list before adding elements"
+$myArrayList
+"Add range of elements to array list"
+$myArray = 1,2,3,4,5
+$myArrayList.AddRange($myArray)
+"Display contents of array list after adding elements"
+$myArrayList
+
+#!markdown
+
+###### Inserting Items to an ArrayList
+
+The extra flexibility offered by an array list enables us to insert an element wherever we want within the collection. To do this we use the Insert method. Try the code in the cell below.
+
+#!pwsh
+
+# This code demonstrates how to insert an element into an array list at a specific index. It first displays the element at index 7, then inserts the value 99 at index 7, and finally displays the element at index 7 again.
+"Display element 7"
+$myArrayList[7]
+"Insert element of value 99 at index 7"
+$myArrayList.Insert(7, 99)
+"Display element 7"
+$myArrayList[7]
+
+#!markdown
+
+We can also insert a range at a specific index, just as we would with AddRange at the end of the arraylist. Try the code below:
+
+#!pwsh
+
+# This code demonstrates how to insert multiple elements into an array list at a specific index. It first displays the element from index 5 to 15. We then insert the values 1,2,3,4,5 at index 7, and finally display the elements from index 7 to 12 again.
+"Display elements 5 to 15"
+$myArrayList[5..15]
+"Insert range of elements starting from index 7"
+$myArrayList.InsertRange(7, @(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15))
+"Display elements 5 to 15"
+$myArrayList[5..15]
+
+#!markdown
+
+###### Removing Items from an ArrayList
+The extra flexibility offered by an array list enables us to remove an element wherever we want within the collection. To do this we use the Remove or RemoveAt method. Try the code in the cell below.
+
+#!pwsh
+
+# This code demonstrates how to remove an element from an array list at a specific index. It first displays the elements surrounding index 7, then removes that value, and finally displays the element at index 7 again.
+"Display elements 4 to 10"
+$myArrayList[4..10]
+"Remove element at index 7"
+$myArrayList.RemoveAt(7)
+"Display elements 4 to 10 after removing element at index 7"
+$myArrayList[4..10]
+
+#!pwsh
+
+# This code demonstrates how to remove an element from an array list based on its value. It first inserts a unique value, displays the elements around it, then removes that value, and finally displays the element at index 7 again. Note that the Remove method returns a boolean value, which we can use to determine whether the element was successfully removed. It also only identifies and removes the first instance of the value, so if there are multiple instances of the value, only the first will be removed.
+"Display elements 4 to 10"
+$myArrayList[4..10]
+"Remove 5 elements starting from index 5"
+$myArrayList.RemoveRange(5,5)
+"Display elements 4 to 10 after removing 5 elements starting from index 5"
+$myArrayList[4..10]
+
+#!pwsh
+
+# This code demonstrates how to remove an range of elements from an array list based on their index. It first displays the elements surrounding index 7, then removes the elements of value 99999, and finally displays those elements again.
+"Display elements 4 to 10"
+$myArrayList[4..10]
+"Insert element of value 99999 at index 7"
+$myArrayList.Insert(7,99999)
+"Display elements 4 to 10 after inserting element of value 99999 at index 7"
+$myArrayList[4..10]
+"Remove element with value 99999"
+$myArrayList.Remove(99999)
+"Display elements 4..10 after removing element with value 99999"
+$myArrayList[4..10]
+
+#!markdown
+
+###### Other ArrayList Methods
+
+The ArrayList type supports several other useful methods, such as:
+
+* IndexOf
+  * Returns the zero-based index of the first occurrence of a value in the ArrayList or in a portion of it.
+* Sort
+  * Sorts the elements in the ArrayList or a portion of it.
+* SetRange
+  * Copies the elements of a collection over a range of elements in the ArrayList.
+* GetRange
+  * Returns an ArrayList which represents a subset of the elements in the source ArrayList.
+
+A full list of methods can be found [here](https://learn.microsoft.com/en-us/dotnet/api/system.collections.arraylist?view=net-7.0)
+
+#!markdown
+
+##### Working with Data
+Let's start by creating an ArrayList variable and then adding the pet data as pscustomobjects.
+
+#!pwsh
+
+# Create the array list
+$petsArrayList = New-Object System.Collections.ArrayList
+
+# Add the objects to the array list
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cat'; Name = 'Derek'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'horse'; Name = 'Brian'; Age = '5'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Maxwell'; Age = '3'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Henry'; Age = '6'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'rabbit'; Name = 'Snoopy'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'rabbit'; Name = 'Peter'; Age = '1'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cat'; Name = 'Jeremy'; Age = '8'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'goldfish'; Name = 'Jaws'; Age = '1'; Type = 'fish' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'hamster'; Name = 'Janet'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Einstein'; Age = '12'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'chinchilla'; Name = 'Timothy'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'horse'; Name = 'Lucy'; Age = '13'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cat'; Name = 'Hilli'; Age = '14'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'hamster'; Name = 'Daisy'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'horse'; Name = 'Tigger'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Jim'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cat'; Name = 'Lawrence'; Age = '5'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'gerbil'; Name = 'Gerald'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Florence'; Age = '14'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'goldfish'; Name = 'Jaws II'; Age = '2'; Type = 'fish' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cat'; Name = 'Willhelm'; Age = '16'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'horse'; Name = 'Bob'; Age = '19'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'donkey'; Name = 'Gordon'; Age = '13'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'pig'; Name = 'Henry'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'otter'; Name = 'Bismarck'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'rabbit'; Name = 'Harry'; Age = '1'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cat'; Name = 'Dave'; Age = '1'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'badger'; Name = 'Barney'; Age = '3'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'rabbit'; Name = 'Roger'; Age = '3'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Sam'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Brookie'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'mole'; Name = 'Avogadro'; Age = '1'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'hamster'; Name = 'Herodotus'; Age = '1'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'tortoise'; Name = 'Socrates'; Age = '21'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'horse'; Name = 'Velazquez'; Age = '17'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Xerxes'; Age = '8'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'wookie'; Name = 'Chewie'; Age = '126'; Type = 'imaginary' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'Pony'; Name = 'Darius'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'Rabbit'; Name = 'Fandango'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'hamster'; Name = 'Peter'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'elephant'; Name = 'Eratosthenes'; Age = '28'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'Ewok'; Name = 'Sam'; Age = '14'; Type = 'imaginary' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'tortoise'; Name = 'Jim'; Age = '2'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Duncan'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Montgommery'; Age = '8'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'squirrel'; Name = 'stinky'; Age = '12'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'rabbit'; Name = 'Sam'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'ferret'; Name = 'Ferrero'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'hamster'; Name = 'Cheeky'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'horse'; Name = 'Hermann'; Age = '12'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'rat'; Name = 'Rattus'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'Squirrel'; Name = 'Squeaky'; Age = '3'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'alpaca'; Name = 'Alejandro'; Age = '14'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'tortoise'; Name = 'Dudley'; Age = '2'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'horse'; Name = 'Maxwell'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Dilbert'; Age = '8'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'wookie'; Name = 'Caesar'; Age = '89'; Type = 'imaginary' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'Pony'; Name = 'Picasso'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'ferret'; Name = 'Fandango'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Balthazaar'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'alpaca'; Name = 'Henry'; Age = '14'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'chinchilla'; Name = 'Henry'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'pig'; Name = 'Terrence'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Victoria'; Age = '8'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'wookie'; Name = 'Roger'; Age = '52'; Type = 'imaginary' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'badger'; Name = 'Barbarossa'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'goat'; Name = 'Derek'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'ferret'; Name = 'Cyrus'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dromedary'; Name = 'Democritus'; Age = '6'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Rodolfo'; Age = '14'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'donkey'; Name = 'Donkey'; Age = '12'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cat'; Name = 'Jezzabelle'; Age = '12'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cat'; Name = 'Kitty'; Age = '8'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'wookie'; Name = 'Chubster'; Age = '211'; Type = 'imaginary' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'chicken'; Name = 'Norman'; Age = '1'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'badger'; Name = 'Franklin'; Age = '3'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'parrot'; Name = 'Daryl'; Age = '4'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'newt'; Name = 'Bubbles'; Age = '3'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'frog'; Name = 'Jiggles'; Age = '2'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'viper'; Name = 'Petain'; Age = '4'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'viper'; Name = 'Darlan'; Age = '5'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dolphin'; Name = 'Jellicoe'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'duck'; Name = 'Donald'; Age = '2'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'rabbit'; Name = 'Feynman'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'rat'; Name = 'Joan'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'gerbil'; Name = 'Knuth'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'hamster'; Name = 'Geoff'; Age = '1'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'chinchilla'; Name = 'Watson'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'goat'; Name = 'Crick'; Age = '5'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'goose'; Name = 'Turing'; Age = '4'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'panda'; Name = 'Victoria'; Age = '8'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'goat'; Name = 'Nero'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'pig'; Name = 'Patrick'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'pig'; Name = 'Claudius'; Age = '5'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'chicken'; Name = 'Pompey'; Age = '2'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'duck'; Name = 'Cicero'; Age = '4'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'pangolin'; Name = 'Leonidis'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'chicken'; Name = 'Planck'; Age = '3'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'terrapin'; Name = 'Tammy'; Age = '5'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Digger'; Age = '9'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'hamster'; Name = 'Pythagoras'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'terrapin'; Name = 'Ferdinand'; Age = '16'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'duck'; Name = 'Honey'; Age = '8'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'duck'; Name = 'Dorothy'; Age = '6'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'pony'; Name = 'Richard'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Dostoyevsky'; Age = '12'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cat'; Name = 'Zeno'; Age = '11'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'duck'; Name = 'Dawkins'; Age = '14'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'pony'; Name = 'Newton'; Age = '13'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'frog'; Name = 'Troy'; Age = '3'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'parrot'; Name = 'Charles'; Age = '9'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'toad'; Name = 'Oliver'; Age = '4'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'hamster'; Name = 'Euler'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'parrot'; Name = 'Plato'; Age = '17'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'ewok'; Name = 'Pericles'; Age = '19'; Type = 'imaginary' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'ewok'; Name = 'Terrence'; Age = '12'; Type = 'imaginary' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'wookie'; Name = 'Themistocles'; Age = '98'; Type = 'imaginary' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Harpagus'; Age = '13'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'squirrel'; Name = 'Astiages'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'toad'; Name = 'Tickle'; Age = '5'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'toad'; Name = 'Tolstoy'; Age = '3'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'frog'; Name = 'Claude'; Age = '4'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cockatoo'; Name = 'Tiberius'; Age = '21'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'chicken'; Name = 'Virgil'; Age = '2'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'badger'; Name = 'Homer'; Age = '3'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'ferret'; Name = 'Archimedes'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'turtle'; Name = 'Tipple'; Age = '23'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'turtle'; Name = 'Tickle'; Age = '21'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'frog'; Name = 'Homer'; Age = '3'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'goose'; Name = 'Gauss'; Age = '6'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'goldfish'; Name = 'Jawws III'; Age = '3'; Type = 'fish' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'parrot'; Name = 'Leibniz'; Age = '17'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'terrapin'; Name = 'Alan'; Age = '15'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'panda'; Name = 'Claude'; Age = '12'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'sheep'; Name = 'Henckel'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'weasel'; Name = 'Eric'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'chipmunk'; Name = 'Tolstoy'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cat'; Name = 'Shroedinger'; Age = '12'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'sheep'; Name = 'Dolly'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'monkey'; Name = 'Naruto'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'rhino'; Name = 'Sudan'; Age = '22'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Diesel'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dugong'; Name = 'Dirac'; Age = '8'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'ferret'; Name = 'Feynman'; Age = '3'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'newt'; Name = 'Newton'; Age = '9'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'ewe'; Name = 'Euclid'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'rabbit'; Name = 'Reimann'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'hedgehog'; Name = 'Hardy'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'red squirrel'; Name = 'Stalin'; Age = '3'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'coelocanth'; Name = 'Darwin'; Age = '2'; Type = 'fish' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'red kite'; Name = 'Marx'; Age = '2'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'red squirrel'; Name = 'Lenin'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'red panda'; Name = 'Molotov'; Age = '5'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'ferret'; Name = 'Fermat'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'panda'; Name = 'Pascal'; Age = '5'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'newt'; Name = 'frank'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'deer'; Name = 'Descartes'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'red kite'; Name = 'Engels'; Age = '3'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'mouse'; Name = 'Michael'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'llama'; Name = 'Lavoisiere'; Age = '1'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'mink'; Name = 'Mendeleev'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'opossum'; Name = 'Oppenheimer'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'owl'; Name = 'Wisdom'; Age = '6'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'hamster'; Name = 'Hadrian'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'axolotl'; Name = 'Aidrian'; Age = '3'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'kodkod'; Name = 'Konrad'; Age = '5'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'axolotl'; Name = 'Thucydides'; Age = '2'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'capibara'; Name = 'Jim'; Age = '8'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'horned dragon'; Name = 'Herodotus'; Age = '2'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'horned dragon'; Name = 'Mephistopheles'; Age = '2'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'marmot'; Name = 'Scooby-Doo'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'hawk'; Name = 'Hawking'; Age = '4'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'clownfish'; Name = 'Boris'; Age = '56'; Type = 'fish' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'bearded dragon'; Name = 'Kesselring'; Age = '2'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'racoon'; Name = 'Michaelangelo'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Dobzhansky'; Age = '12'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Debussy'; Age = '14'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'parrot'; Name = 'Chomsky'; Age = '17'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'adder'; Name = 'Newton'; Age = '2'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Pavlov'; Age = '12'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'puff adder'; Name = 'Pdiddy'; Age = '4'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'python'; Name = 'Monty'; Age = '6'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'boa constrictor'; Name = 'Conrad'; Age = '2'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'python'; Name = 'Francesca'; Age = '2'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'penguin'; Name = 'Penrose'; Age = '3'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'penguin'; Name = 'Penfold'; Age = '5'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'penguin'; Name = 'Pingu'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'bearded dragon'; Name = 'Beardie'; Age = '2'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'salamander'; Name = 'Sal'; Age = '2'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'salamander'; Name = 'Salvador'; Age = '17'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'salamander'; Name = 'Salvatore'; Age = '8'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'salamander'; Name = 'Salvadore'; Age = '4'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'salamander'; Name = 'Patricia'; Age = '9'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'salamander'; Name = 'Patrick'; Age = '8'; Type = 'amphibian' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'capibara'; Name = 'Rufus'; Age = '3'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'arabian cobra'; Name = 'Lawrence'; Age = '5'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'condor'; Name = 'Andy'; Age = '9'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'rabbit'; Name = 'Hopper'; Age = '5'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'gnu'; Name = 'Knuth'; Age = '6'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'owl'; Name = 'Turing'; Age = '9'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'turtle'; Name = 'Turing'; Age = '34'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'rat'; Name = 'Ritchie'; Age = '1'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'badger'; Name = 'Bentley'; Age = '8'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'chipmunk'; Name = 'Thompson'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'kangaroo'; Name = 'Kernighan'; Age = '6'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'ocelot'; Name = 'Stoustroup'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'sloth'; Name = 'Dijkstra'; Age = '14'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dromedary'; Name = 'Hopper'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'capibara'; Name = 'Knuth'; Age = '9'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Snover'; Age = '11'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'alpaca'; Name = 'Turing'; Age = '5'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'pigeon'; Name = 'vonNeumann'; Age = '6'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'pika'; Name = 'Hopper'; Age = '1'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'antelope'; Name = 'Turing'; Age = '6'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'marmot'; Name = 'Knuth'; Age = '8'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'ferret'; Name = 'Kernighan'; Age = '3'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'antelope'; Name = 'Thompson'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dove'; Name = 'Bentley'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'sheep'; Name = 'Schneir'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'aardvark'; Name = 'Flowers'; Age = '6'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'pig'; Name = 'Babbage'; Age = '5'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'llama'; Name = 'Lovelace'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'pigeon'; Name = 'Cox'; Age = '13'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'parrot'; Name = 'Rivest'; Age = '14'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cockatoo'; Name = 'Adelman'; Age = '3'; Type = 'bird' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'pangolin'; Name = 'Shamir'; Age = '3'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'goat'; Name = 'Church'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'rabbit'; Name = 'Turing'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cat'; Name = 'Godel'; Age = '9'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'horse'; Name = 'Hilbert'; Age = '8'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'ocelot'; Name = 'Diffie'; Age = '11'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'alpaca'; Name = 'Hellman'; Age = '9'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'llama'; Name = 'Shannon'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cat'; Name = 'Bell'; Age = '9'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'chinchilla'; Name = 'Vint'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'loris'; Name = 'Berners-Lee'; Age = '3'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'cow'; Name = 'Cutler'; Age = '7'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'sheep'; Name = 'Flowers'; Age = '6'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'badger'; Name = 'Huffman'; Age = '4'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'dog'; Name = 'Lamarr'; Age = '11'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'gerbil'; Name = 'Newman'; Age = '2'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'penguin'; Name = 'Linus'; Age = '6'; Type = 'mammal' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'tortoise'; Name = 'Torvalds'; Age = '21'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'adder'; Name = 'Euler'; Age = '4'; Type = 'reptile' }) | Out-Null
+$petsArrayList.Add([PSCustomObject]@{ Species = 'bat'; Name = 'Bob'; Age = '2'; Type = 'mammal' }) | Out-Null
+
+#!markdown
+
+Use the following code cell to experiment with the methods you have been introduced to above.
+
+#!pwsh
+
+$petsArrayList
+
+#!markdown
+
+Next we will import the data from a csv into our array list. We do this in the next code cell. To do this yourself, replace the path I am using with your own path for the pet-data-csv file.
+
+#!pwsh
+
+# First we must create a new array list to hold our pets, so let's just recreate the one we used in the previous example. Then we import the data with Import-Csv and assign it to the array list.
+$petsArrayList = New-Object System.Collections.ArrayList
+$petsArrayList = Import-Csv -Path "C:\Users\Cameron\studious-train-labs\05_02_pet_data.csv"
+#$petsArrayList.Add(@{ Species = 'Nano'; Name = 'Bob'; Age = '20'; Type = 'Unknown' }) | Out-Null
+$petsArrayList
+
+#!markdown
+
+Use the following code cell to try out some of the methods introduced above. Is the data or the array list any different if it has been imported from csv?
+
+#!markdown
+
+##### Challenges
+
+1. How many elements does the $petsArrayList contain?
+
+#!markdown
+
+2. Display the first 10 elements of $petsArrayList, and only the name and species of the last 10 elements?
+
+#!markdown
+
+3. Sort $petsArrayList by alphabetical order of the pet's name. Display the first ten records in full, and the last 30.
+
+#!markdown
+
+4. Create 4 pscustomobjects of the petdata type, add these to the end of the $petsArrayList.
+
+#!markdown
+
+5. Create 4 new pscustomobjects of the petdata type, insert these at position 76 in the $petsArrayList
+
+#!markdown
+
+6. Retrieve and display a range of elements - 18 to 76 - from $petsArrayList, next list just the ages of pets in that range, then calculate the sum of those ages.
+
+#!markdown
+
+7. Select and display the full details of each pet record for the 12 oldest pets.
+
+#!markdown
+
+8. Calculate the mean age of all pets in the $petsArrayList.
+
+#!markdown
+
+9. Look at the starting letters of all the pet's names, how many unique starting letters are there?
+
+#!markdown
+
+10. How many distinct species are there in the $petsArrayList?
+
+#!markdown
+
+11. How many pets have a name that is shared by another pet?
+
+#!markdown
+
+12. Take the oldest pet from each species, create an array and an arraylist, populate each with the oldest pets records.
+
+#!markdown
+
+13. Taking the $petsArrayList, what is the ratio of mammals to birds?
+
+#!markdown
+
+14. What is the ratio of reptiles to dogs in $petsArrayList?
+
+#!markdown
+
+15. What is the total number of characters in names of pets in the range from index 37 to 185?
+
+#!markdown
+
+16. Find the oldest dog in the array, calculate the factorial of it age as an integer
+
+#!markdown
+
+17. Iterate over all elements in the array list. Take the number of characters in the name of each pet as an integer and add that to the integer value of the pet's age. Create a new array list and add the resulting integer value for each pet to the array.
+
+#!markdown
+
+18.  Iterate over all elements in the array list. Take the number of characters in the name of each pet as an integer and add that to the integer value of the pet's age. Create a new array (with the correct number of elements) and add the resulting integer value for each pet to the array in descending order based on that value.
+
+#!markdown
+
+19. Take an arbitrary contiguous range of 100 records from the $petsArrayList and for each pet calculate the total integer value of the ASCII values of the characters in its name.
+
+#!markdown
+
+20. Iterate over the $petsArrayList and sum the number of characters in each name. Return the ten pet records which have the highest average ASCII values per character, and the ten which have the lowest. Display them to screen.
+
+#!markdown
+
+21. Take an arbitrary contiguous range of 100 records from the $petsArrayList and for each pet calculate the total integer value of the ASCII values of the characters in its name. Take this value and divide it by the integer age of the next pet in the contiguous list. The last record must perform a circular shift and use the value of the age of the pet in the first record in your selection.
+
+#!markdown
+
+22. Iterate over all elements in the array list. Take the number of characters in the name of each pet as an integer and add that to the integer value of the pet's age. Create a new array and add the total for each pet.
+
+#!markdown
+
+23. Find the species with the greatest average (mean) age, compare it to the species with the next greatest mean age. What are those values and what is the ratio between the two.
+
+#!markdown
+
+24. Concatenate the names of all pets into a single string, reverse the order of characters in that string using only your own code. No built-in methods offered by .net and powershell are allowed.
+
+#!markdown
+
+25. Are there any palindromes in that string? If so, how many, and write them to screen.
+
+#!markdown
+
+26.  Create a new arraylist. Populate it with 200 records extracted from the existing $petsArrayList. However, you must populate the new arraylist from the middle upwards for the half of elements with the highest indexes, and the middle downwards for the elements with the lowest half of the indexes. For example $petsArrayList[199] will be placed in element 100 in the new array list, $petsArrayList[0] will be placed in element 99 in the new array list. Next $petsArrayList[198] is placed in element 101 in the new array list, $petsArrayList[1] is placed in element 98 in the new array list.
+
+#!markdown
+
+27.  A variation on the previous challenge. Create a new arraylist. Populate it with 200 records extracted from the existing $petsArrayList. However, you must populate the new arraylist from the middle downwards for the half of the elements with the highest indexes, and the middle upwards for the elements with the lowest half of the indexes. For example $petsArrayList[199] will be placed in element 99 in the new array list, $petsArrayList[0] will be placed in element 100 in the new array list. Next $petsArrayList[198] is placed in element 98 in the new array list, $petsArrayList[1] is placed in element 101 in the new array list.
+
+#!markdown
+
+28.  A variation on the previous challengs. Create a new arraylist. Populate it with 200 records extracted from the existing $petsArrayList. However, you must populate the new arraylist from the oposite extent of the array, moving inwards until they meet in the middle. For example $petsArrayList[199] will be placed in element 0 in the new array list, $petsArrayList[0] will be placed in element 199 in the new array list. Next $petsArrayList[198] is placed in element 1 in the new array list, $petsArrayList[1] is placed in element 198 in the new array list.
