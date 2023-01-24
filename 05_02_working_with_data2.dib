@@ -484,6 +484,8 @@ foreach ($i in $petsArray) {
 
 # Loop through all pets in the array and write to screen only this pets who are older than ten
 
+$count = $petsArray.count
+
 for ($i = 0; $i -lt $count; $i++) {
 
 # change pets ages to integers
@@ -508,6 +510,17 @@ for ($i = 0; $i -lt $count; $i++) {
 #!pwsh
 
 # Find the oldest animal in the array
+
+
+for ($i = 0; $i -lt $count; $i++) {
+
+# change pets ages to integers
+    if( [int]$petsArray[$i].age -gt $ageMax) {
+    $ageMax = [int]$petsArray[$i].age
+    $oldestAnimal = $petsArray[$i]
+    }
+    }
+    "$oldestAnimal is the oldest pet"
 
 #!markdown
 
