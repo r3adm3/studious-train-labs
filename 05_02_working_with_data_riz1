@@ -1,0 +1,9 @@
+#!pwsh
+
+Measure-Command {
+    $myArray = @()
+        for($i = 0; $i -lt 50000; $i++)
+        {
+            $myArray+=$i
+        }
+    }
