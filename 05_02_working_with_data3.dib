@@ -82,9 +82,8 @@ $myArrayList = New-Object System.Collections.ArrayList
 
 #!markdown
 
-What you should have noticed in running the above code is that the slowest method by far is the first i.e. recreating the array every iteration. Next slowest is the ArrayList method, though it is *much* quicker than the first method.
-
-The fastest is the pre-initialised array. This is explained by the fact that an array has little overhead in memory management and already has all elements ready to populate. The ArrayList is just a little bit slower, because the increased flexibility and convenience requires more management overhead. However, this small decrease in performance is usually justified by the benefits.
+What you should have noticed in running the above code is that the slowest method by far is the first i.e. recreating the array every iteration. Next slowest is pretty much a tie between the ArrayList method and the pre-initialised array, though both are **much,much** quicker than the first method.
+This is explained by the fact that an array has little overhead in memory management and once all elements have been created, the elements are ready to populate, so there is no need to create a new array at any point. The ArrayList grows dynamically with the Add() method, this requires a little management overhead. However, this is almost always justified by its benefits.
 
 #!markdown
 
@@ -200,7 +199,7 @@ $myArrayList[4..10]
 
 #!pwsh
 
-# This code demonstrates how to remove an element from an array list based on its value. It first inserts a unique value, displays the elements around it, then removes that value, and finally displays the element at index 7 again. Note that the Remove method returns a boolean value, which we can use to determine whether the element was successfully removed. It also only identifies and removes the first instance of the value, so if there are multiple instances of the value, only the first will be removed.
+# This code demonstrates how to remove a range of elements from an array list based on their index. It first displays the elements surrounding [4..10], then removes the elements [5..9], and finally displays those elements again.
 "Display elements 4 to 10"
 $myArrayList[4..10]
 "Remove 5 elements starting from index 5"
@@ -210,7 +209,7 @@ $myArrayList[4..10]
 
 #!pwsh
 
-# This code demonstrates how to remove an range of elements from an array list based on their index. It first displays the elements surrounding index 7, then removes the elements of value 99999, and finally displays those elements again.
+# This code demonstrates how to remove an element from an array list based on its value. It first inserts a unique value, displays the elements around it, then removes that value, and finally displays the element at index 7 again. Note that the Remove method returns a boolean value, which we can use to determine whether an element was successfully removed. It's important to note that Remove() only identifies and removes the first instance of a value, so if there are multiple instances of the value in the collection, only the first instance will be removed.
 "Display elements 4 to 10"
 $myArrayList[4..10]
 "Insert element of value 99999 at index 7"
