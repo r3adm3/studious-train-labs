@@ -19,11 +19,11 @@ while ($continue) {
         $requestvars = ([String]$request.Url).split("/");        
 
         # Endpoint definition
-        if ($requestvars[3] -eq "data") {
+        if ($requestvars[3] -eq "OutstandingDebt") {
+
            
             # Define your answer
-            $result = "Hello, I have heard that you have requested some data! " + $requestvars[4]
-
+            $result = . '.\06_03_REST api team project_team1\Get-Outstanding.ps1'
             # Convert the returned data to JSON and set the HTTP content type to JSON
             $message = $result | ConvertTo-Json; 
             $response.ContentType = 'application/json';
