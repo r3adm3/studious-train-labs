@@ -1,3 +1,7 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
 #!markdown
 
 # Collections and Data
@@ -45,6 +49,9 @@ $myarray = 22,5,10,8,12,9,80
 [int32[]]$myarray = 22,5,10,8,12,9,80
 #>
 
+$myarray = 22,5,10,8,12,9,80
+$myarray
+
 #!markdown
 
 Array values are accessed by the element number, or index:
@@ -64,6 +71,9 @@ $myarray[4]
 
 $myarray[2..6]
 #>
+
+$myarray[4]
+$myarray[2..6]
 
 #!markdown
 
@@ -113,6 +123,8 @@ $petsArray+=([PSCustomObject]@{ Species = 'horse'; Name = 'Brian'; Age = '5'; Ty
 $petsArray+=([PSCustomObject]@{ Species = 'dog'; Name = 'Maxwell'; Age = '3'; Type = 'mammal' })
 $petsArray+=([PSCustomObject]@{ Species = 'dog'; Name = 'Henry'; Age = '6'; Type = 'mammal' })
 $petsArray+=([PSCustomObject]@{ Species = 'rabbit'; Name = 'Snoopy'; Age = '4'; Type = 'mammal' })
+
+$petsArray
 
 #!markdown
 
@@ -388,6 +400,8 @@ $petsArray = @()
     $petsArray+= [PSCustomObject]@{ Species = 'adder'; Name = 'Euler'; Age = '4'; Type = 'reptile' }
     $petsArray+= [PSCustomObject]@{ Species = 'bat'; Name = 'Bob'; Age = '2'; Type = 'mammal' }
 
+    $petsArray
+
 #!markdown
 
 There is a very important point to note here. As explained earlier, an array has a definite size who's elements are contiguous in memory. Therefore, if we create an array with zero elements e.g. by using *'$myArray = @()'*, we cannot add any objects to it, because it has zero length, and therefore, zero capacity to add any elements to it.
@@ -397,13 +411,15 @@ What this means is that every time you have to add an element to an array, Power
 * create a new array that is one element longer than the existing one
 * populate the last element of the array with the new object instance that you wish to add to it
 
-This is OK in most instances, but it is **incredibly** inneficient and can have a huge impact on performance when working with large datasets. We will lok at how to improve efficiency and performance in the next Polyglot file. 
+This is OK in most instances, but it is **incredibly** inneficient and can have a huge impact on performance when working with large datasets. We will look at how to improve efficiency and performance in the next Polyglot file. 
 
 Now, let's apply the techniques that we used above to access elements of the *'$petsArray'* array:
 
 #!pwsh
 
-$petsArray
+$petsArray[5..7].Type
+
+$petsArray[5..7]
 
 #!markdown
 
@@ -411,9 +427,100 @@ Next we will import the data from a csv into an array. We do this in the next co
 
 #!pwsh
 
-$myPetsArrayfromCSV = Import-Csv -Path "C:\Users\jmgadmin\arstechnica\lbginteractive\Commands and Code\PowerShell\Datasets\Pet data\newpets\Pet data\pet-data.csv"
+$myPetsArrayfromCSV = Import-Csv -Path "C:\Users\studentadmin\source\studious-train-labs\05_02_pet_data.csv"
 $myPetsArrayfromCSV | gm
 $myPetsArrayfromCSV
+
+#!pwsh
+
+# Loop through the pets array with a foreach loop and write each name and age to screen
+
+<# using a pipeline and writing out as a sentence:
+$petsArray | foreach {"The pet is called $($_.name) and is $($_.age) years old"} 
+#>
+
+foreach ($pet in $petsArray) {
+$pet.name
+$pet.Age
+}
+
+#!pwsh
+
+# Loop through the pets array with a for loop and write each name and age to screen
+
+$count = $petsArray.Count
+
+for ($i = 0; $i -lt $count; $i++) {
+    "The pet is called $($petsArray[$i].name) and is $($petsArray[$i].age) years old"
+}
+
+#!pwsh
+
+# Loop through the pets array with a while loop and write each name and age to screen
+
+$i = 0
+while($i -lt $petsArray.count) { 
+    "The pet is called $($petsArray[$i].name) and is $($petsArray[$i].age) years old"
+    $i++ 
+}
+
+#!pwsh
+
+# Select all items from the name that contain 'oo' in the name write to screen
+
+<# 
+using pipeline:
+$petsArray.name | Select-String "oo"
+#>
+
+# using foreach loop and -match to find names containing "oo"
+foreach ($i in $petsArray) {
+    if ($i.name -match "oo") {
+    Write-Output $i.name   
+    }
+}
+
+#!pwsh
+
+# Loop through all pets in the array and write to screen only this pets who are older than ten
+
+$count = $petsArray.count
+
+for ($i = 0; $i -lt $count; $i++) {
+
+# change pets ages to integers
+    $petsAge = [int]$petsArray[$i].age
+
+    if ($petsAge -gt 10) {
+    "$($petsArray[$i].name) is $($petsArray[$i].age) and is older than 10"
+}
+}
+
+#!pwsh
+
+# Select all dogs and write to screen
+
+ 
+for ($i = 0; $i -lt $count; $i++) {
+ if ($($petsArray[$i].Species) -eq 'dog') {
+ "$($petsArray[$i].name) is as $($petsArray[$i].Species)"
+ }
+}
+
+#!pwsh
+
+# Find the oldest animal in the array
+
+
+for ($i = 0; $i -lt $count; $i++) {
+
+# change pets ages to integers
+    if( [int]$petsArray[$i].age -gt $ageMax) {
+    $ageMax = [int]$petsArray[$i].age
+    $oldestAnimal = $petsArray[$i]
+    }
+    }
+    "$oldestAnimal is the oldest pet"
 
 #!markdown
 
