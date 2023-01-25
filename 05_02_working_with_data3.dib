@@ -521,13 +521,27 @@ Use the following code cell to try out some of the methods introduced above. Is 
 
 1. How many elements does the $petsArrayList contain?
 
+#!pwsh
+
+$echo($petsArrayList.count)
+
 #!markdown
 
 2. Display the first 10 elements of $petsArrayList, and only the name and species of the last 10 elements?
 
 #!markdown
 
+$var=$petsArrayList[0..9]| echo $var
+
+#!markdown
+
 3. Sort $petsArrayList by alphabetical order of the pet's name. Display the first ten records in full, and the last 30.
+
+#!pwsh
+
+#$petsArrayList|Sort-Object.name
+#$petsArrayList
+$petsArrayList[0,,9]|Sort-Object name
 
 #!markdown
 
@@ -540,6 +554,10 @@ Use the following code cell to try out some of the methods introduced above. Is 
 #!markdown
 
 6. Retrieve and display a range of elements - 18 to 76 - from $petsArrayList, next list just the ages of pets in that range, then calculate the sum of those ages.
+
+#!pwsh
+
+$echo($petsarraylist[18,,76])
 
 #!markdown
 
@@ -556,6 +574,10 @@ Use the following code cell to try out some of the methods introduced above. Is 
 #!markdown
 
 10. How many distinct species are there in the $petsArrayList?
+
+#!pwsh
+
+COUNT.DISTINCT (petsarraylist.species)
 
 #!markdown
 
