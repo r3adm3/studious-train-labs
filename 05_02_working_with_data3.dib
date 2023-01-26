@@ -508,7 +508,7 @@ Next we will import the data from a csv into our array list. We do this in the n
 
 # First we must create a new array list to hold our pets, so let's just recreate the one we used in the previous example. Then we import the data with Import-Csv and assign it to the array list.
 $petsArrayList = New-Object System.Collections.ArrayList
-$petsArrayList = Import-Csv -Path "C:\Users\jmgadmin\arstechnica\lbginteractive\Commands and Code\PowerShell\Datasets\Pet data\newpets\Pet data\05_02_pet_data.csv"
+$petsArrayList = Import-Csv -Path "C:\Users\Cameron\studious-train-labs\05_02_pet_data.csv"
 $petsArrayList
 
 #!markdown
@@ -523,15 +523,16 @@ Use the following code cell to try out some of the methods introduced above. Is 
 
 #!pwsh
 
-$echo($petsArrayList.count)
+echo $petsArrayList.count
 
 #!markdown
 
 2. Display the first 10 elements of $petsArrayList, and only the name and species of the last 10 elements?
 
-#!markdown
+#!pwsh
 
-$var=$petsArrayList[0..9]| echo $var
+$var=$petsArrayList[0..9]
+echo $var
 
 #!markdown
 
@@ -539,9 +540,9 @@ $var=$petsArrayList[0..9]| echo $var
 
 #!pwsh
 
-#$petsArrayList|Sort-Object.name
-#$petsArrayList
-$petsArrayList[0,,9]|Sort-Object name
+$MyArray=$petsArrayList|Sort-Object name
+echo $MyArray[0,,9]
+#$petsArrayList[0,,9]|Sort-Object-name
 
 #!markdown
 
