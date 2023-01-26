@@ -1,0 +1,13 @@
+# Azure Serverless function
+- Install func from [here](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Ccsharp%2Cportal%2Cbash#v2)
+- Install az cli from [here](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
+- Install .NET6 from [here](https://dotnet.microsoft.com/en-us/download)
+- execute: `func init YOUR_FUNCTION_PROJECT_NAME --powershell`
+- `cd YOUR_FUNCTION_PROJECT_NAME`
+- `func new --name FUNCTION_NAME --template "HTTP trigger" --authlevel "anonymous"`
+- `func start`
+   - once the function is running it tells you what the endpoint is
+   - try to hit that endpoint with `curl` and `Invoke-RestMethod`
+- You can edit the file executing the function logic by:
+   - `cd FUNCTION_NAME`
+   - you'll see file called `run.ps1` - open it with VSCode and you can edit what the function does
